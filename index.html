@@ -58,7 +58,7 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('1784212602485.png') no-repeat center center/cover;
-            height: 65vh;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -89,6 +89,22 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #2d6a4f;
+            color: #2d6a4f;
+            margin-top: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-outline:hover {
+            background-color: #2d6a4f;
+            color: white;
         }
 
         /* Sektioner */
@@ -105,6 +121,12 @@
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
             color: #1b4332;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .products-section h2:hover {
+            text-decoration: underline;
         }
 
         .section-intro {
@@ -114,7 +136,7 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             max-width: 1100px;
             margin: 0 auto;
@@ -124,18 +146,25 @@
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             text-align: left;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .product-card img {
             width: 100%;
-            height: 220px;
+            height: 240px;
             object-fit: cover;
         }
 
         .card-content {
-            padding: 1.2rem;
+            padding: 1.4rem;
         }
 
         .product-card h3 {
@@ -146,6 +175,93 @@
         .product-card p {
             color: #666;
             font-size: 0.9rem;
+        }
+
+        /* Modal (Pop-up fönster för paket) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            overflow-y: auto;
+            padding: 20px 10px;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 16px;
+            max-width: 800px;
+            width: 95%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 1.5rem;
+            top: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 1rem;
+        }
+
+        .modal-header h2 {
+            color: #1b4332;
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .package-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1.2rem;
+            background: #fafafa;
+            text-align: center;
+        }
+
+        .package-item h4 {
+            color: #2d6a4f;
+            margin-bottom: 0.4rem;
+        }
+
+        .package-item .badge {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-item p {
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 0.8rem;
         }
 
         /* Footer */
@@ -186,14 +302,15 @@
 
     <!-- SEKTION 1: Frystorkad Frukt -->
     <section id="frukt" class="products-section">
-        <h2>1. Frystorkad Frukt</h2>
-        <p class="section-intro">100% naturlig krispighet med all näring och smak intakt.</p>
+        <h2 onclick="openModal('frukt')">1. Frystorkad Frukt 🍓</h2>
+        <p class="section-intro">Klicka för att se våra olika fruktpaket och påsar.</p>
         <div class="product-grid">
-            <div class="product-card">
+            <div class="product-card" onclick="openModal('frukt')">
                 <img src="1784410818535.png" alt="Frystorkad frukt">
                 <div class="card-content">
-                    <h3>Krispiga Fruktbowls & Bär</h3>
-                    <p>Naturligt söta frystorkade bär och tropiska frukter. Perfekt till frukostskålen eller som krispigt snacks.</p>
+                    <h3>Krispiga Fruktbowls & Påsar</h3>
+                    <p>Naturligt söta frystorkade bär och tropiska frukter. 100% utan tillsatt socker.</p>
+                    <button class="btn btn-outline">Se alla fruktpaket & storlekar</button>
                 </div>
             </div>
         </div>
@@ -201,14 +318,15 @@
 
     <!-- SEKTION 2: Sea Moss -->
     <section id="seamoss" class="products-section alt-bg">
-        <h2>2. Sea Moss (Chondrus crispus)</h2>
-        <p class="section-intro">Vildskördad havsmossa rik på näring och mineraler.</p>
+        <h2 onclick="openModal('seamoss')">2. Sea Moss (Chondrus crispus) 🌿</h2>
+        <p class="section-intro">Klicka för att välja mellan Lila, Guld och Färdig Gelé.</p>
         <div class="product-grid">
-            <div class="product-card">
-                <img src="1784212602485.png" alt="Purple and Golden Sea Moss">
+            <div class="product-card" onclick="openModal('seamoss')">
+                <img src="1000008912.png" alt="Purple & Golden Sea Moss Gel">
                 <div class="card-content">
                     <h3>Purple & Golden Chondrus crispus</h3>
-                    <p>Ren vildskördad lila och gyllene havsmossa. Perfekt för att göra egen näringsrik gelé eller smoothies.</p>
+                    <p>Ren vildskördad havsmossa i både råform och fräsch färdigblandad gelé.</p>
+                    <button class="btn btn-outline">Se alla Sea Moss-paket & glasburkar</button>
                 </div>
             </div>
         </div>
@@ -216,18 +334,29 @@
 
     <!-- SEKTION 3: Premium-nötter -->
     <section id="notter" class="products-section">
-        <h2>3. Premium-nötter & Bulk</h2>
-        <p class="section-intro">Noggrant utvalda nötter för både privatpersoner och grossist.</p>
+        <h2 onclick="openModal('notter')">3. Premium-nötter & Bulk 🥜</h2>
+        <p class="section-intro">Klicka för att se olika nötpåsar och partier för grossist.</p>
         <div class="product-grid">
-            <div class="product-card">
-                <img src="1784212602485.png" alt="Nötter i butik">
+            <div class="product-card" onclick="openModal('notter')">
+                <img src="notter.png" alt="FRUITSNROOTS Premium Nötter">
                 <div class="card-content">
-                    <h3>Pistage, Cashew, Valnötter & Mandlar</h3>
-                    <p>Färska nötter av högsta kvalitet. Tillgängliga i både mindre förpackningar och i bulk (1000 kg+).</p>
+                    <h3>Pistage, Cashew, Mandlar & Valnötter</h3>
+                    <p>Fäska nötter av högsta kvalitet med fina hela valnötshalvor, krispiga mandlar och cashewnötter.</p>
+                    <button class="btn btn-outline">Se nötpåsar & bulkalternativ</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- POP-UP MODAL FÖR PRODUKTER -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalBody">
+                <!-- Innehållet laddas dynamiskt med JavaScript -->
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer id="kontakt">
@@ -236,6 +365,84 @@
         <p>Följ oss på Instagram & TikTok: @fruitsnroots</p>
         <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #95d5b2;">&copy; 2026 FRUITSNROOTS. Alla rättigheter förbehållna.</p>
     </footer>
+
+    <!-- JavaScript för Interaktivitet -->
+    <script>
+        const packageData = {
+            frukt: {
+                title: "Frystorkade Fruktpaket & Påsar",
+                intro: "Välj bland våra krispiga, naturliga frystorkade frukter utan tillsatser:",
+                packages: [
+                    { name: "Jordgubbar (Skivade)", size: "50g / 100g Påse", desc: "Söta och krispiga frystorkade jordgubbs-skivor. Perfekt för snack eller topping." },
+                    { name: "Tropisk Mangomix", size: "75g Påse", desc: "Intensiv smak av solmogen mango med bevarad näring och krispighet." },
+                    { name: "Mixade Bär Bowl", size: "100g Påse", desc: "Blandning av jordgubbar, blåbär och hallon för smoothiebowls." },
+                    { name: "Aroniabär & Vilda Bär", size: "50g Påse", desc: "Superbörs-mix laddad med antioxidanter." }
+                ]
+            },
+            seamoss: {
+                title: "Sea Moss (Chondrus crispus) Sortiment",
+                intro: "Välj din favorit av vår vildskördade irländska havsmossa:",
+                packages: [
+                    { name: "Golden Sea Moss Gel", size: "375 ml Glasburk", desc: "Klassisk näringsrik guldgelé redo att avnjutas direkt eller i smoothies." },
+                    { name: "Purple Sea Moss Gel", size: "375 ml Glasburk", desc: "Sällsynt lila havsmoss-gelé rik på antocyaniner och kraftfulla näringsämnen." },
+                    { name: "Rå Torkad Golden Moss", size: "100g Påse (Råform)", desc: "För dig som vill blötlägga och koka din egen fräscha gelé hemma." },
+                    { name: "Rå Torkad Purple Moss", size: "100g Påse (Råform)", desc: "100% naturlig vildskördad lila Chondrus crispus i torkad form." }
+                ]
+            },
+            notter: {
+                title: "Nötpåsar & Bulk-partier",
+                intro: "Våra premiumnötter finns i konsumentpåsar samt partier för B2B/grossist:",
+                packages: [
+                    { name: "Valnötshalvor Premium", size: "250g / 500g Påse", desc: "Riktigt fina, hela valnötshalvor av högsta sortering." },
+                    { name: "Skalade Pistagenötter", size: "200g / 500g Påse", desc: "Gröna, aromatiska och krispiga pistagenötter redo att ätas." },
+                    { name: "Krämiga Cashewnötter", size: "250g / 500g Påse", desc: "Stora, naturliga cashew med härlig mjuk textur." },
+                    { name: "Gyllene Mandlar", size: "250g / 500g Påse", desc: "Solmogna, krispiga mandlar packade med protein och fiber." },
+                    { name: "Bulk-mix Partier (Partihandel)", size: "Upp till 1 000 kg (1 Ton)", desc: "För grossister, bagerier och återförsäljare. Kontakta oss för offert." }
+                ]
+            }
+        };
+
+        function openModal(category) {
+            const data = packageData[category];
+            if (!data) return;
+
+            let html = `
+                <div class="modal-header">
+                    <h2>${data.title}</h2>
+                    <p style="color:#666; margin-top:5px;">${data.intro}</p>
+                </div>
+                <div class="package-grid">
+            `;
+
+            data.packages.forEach(pkg => {
+                html += `
+                    <div class="package-item">
+                        <span class="badge">${pkg.size}</span>
+                        <h4>${pkg.name}</h4>
+                        <p>${pkg.desc}</p>
+                        <a href="#kontakt" onclick="closeModal()" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.8rem;">Kontakta / Beställ</a>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+
+            document.getElementById('modalBody').innerHTML = html;
+            document.getElementById('productModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        // Stäng fönstret om man klickar utanför
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 
 </body>
 </html>
