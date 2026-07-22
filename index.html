@@ -22,7 +22,7 @@
             line-height: 1.6;
         }
 
-        /* Header med lätt transparens */
+        /* Header med snygg rad-layout för menyn */
         header {
             display: flex;
             justify-content: space-between;
@@ -37,18 +37,28 @@
         }
 
         .logo {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 1px;
             color: #1b4332;
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
         nav a {
-            margin-left: 1.2rem;
             text-decoration: none;
             color: #4a5568;
             font-weight: 500;
             font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: #2d6a4f;
         }
 
         .cta-btn {
@@ -321,6 +331,23 @@
             color: #d8f3dc;
             margin-top: 0.5rem;
         }
+
+        /* Anpassning för mindre mobiler så menyn inte krockar */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem;
+            }
+            nav {
+                gap: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav a {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -362,13 +389,13 @@
         </div>
     </section>
 
-    <!-- SEKTION 2: Sea Moss -->
+    <!-- SEKTION 2: Sea Moss (Korrekt bild) -->
     <section id="seamoss" class="products-section alt-bg">
         <h2 onclick="openModal('seamoss')">2. Sea Moss (Chondrus crispus) 🌿</h2>
         <p class="section-intro">Klicka för att välja mellan Lila, Guld och Färdig Gelé.</p>
         <div class="product-grid">
             <div class="product-card" onclick="openModal('seamoss')">
-                <img src="./1784707424319.png" alt="Purple & Golden Sea Moss Gel">
+                <img src="./1784707625353.png" alt="Purple & Golden Sea Moss Gel">
                 <div class="card-content">
                     <h3>Purple & Golden Chondrus crispus</h3>
                     <p>Ren vildskördad havsmossa i både råform och fräsch färdigblandad gelé.</p>
@@ -378,13 +405,13 @@
         </div>
     </section>
 
-    <!-- SEKTION 3: Premium-nötter -->
+    <!-- SEKTION 3: Premium-nötter (Korrekt bild) -->
     <section id="notter" class="products-section">
         <h2 onclick="openModal('notter')">3. Premium-nötter & Bulk 🥜</h2>
         <p class="section-intro">Klicka för att se olika nötpåsar och partier för grossist.</p>
         <div class="product-grid">
             <div class="product-card" onclick="openModal('notter')">
-                <img src="./1784707625353.png" alt="FRUITSNROOTS Premium Nötter">
+                <img src="./1784707424319.png" alt="FRUITSNROOTS Premium Nötter">
                 <div class="card-content">
                     <h3>Pistage, Cashew, Mandlar & Valnötter</h3>
                     <p>Färska nötter av högsta kvalitet med fina hela valnötshalvor, krispiga mandlar och cashewnötter.</p>
