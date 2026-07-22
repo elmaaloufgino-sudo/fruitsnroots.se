@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRUITSNROOTS | Frystorkade Frukter, Premium-nötter & Vild Havsmossa</title>
+    <title>FRUITSNROOTS | Frystorkade Frukter, Sea Moss & Nötter</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -40,22 +40,12 @@
             color: #1b4332;
         }
 
-        nav {
-            display: flex;
-            align-items: center;
-        }
-
         nav a {
-            margin-left: 1.5rem;
+            margin-left: 1.2rem;
             text-decoration: none;
             color: #4a5568;
             font-weight: 500;
             font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #2d6a4f;
         }
 
         .cta-btn {
@@ -65,14 +55,10 @@
             border-radius: 5px;
         }
 
-        .cta-btn:hover {
-            background-color: #1b4332;
-        }
-
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('1000008628.png') no-repeat center center/cover;
-            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('1784212602485.png') no-repeat center center/cover;
+            height: 65vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -82,14 +68,14 @@
         }
 
         .hero-content h1 {
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             margin-bottom: 1rem;
             font-weight: 700;
         }
 
         .hero-content p {
             font-size: 1.1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -99,20 +85,15 @@
             display: inline-block;
             background-color: #2d6a4f;
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
-            transition: background 0.3s;
         }
 
-        .btn:hover {
-            background-color: #1b4332;
-        }
-
-        /* Produkter & Sektioner */
+        /* Sektioner */
         .products-section {
-            padding: 5rem 5%;
+            padding: 4rem 5%;
             text-align: center;
         }
 
@@ -121,21 +102,21 @@
         }
 
         .products-section h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
             color: #1b4332;
         }
 
         .section-intro {
             color: #666;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -144,50 +125,27 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            transition: transform 0.3s;
             text-align: left;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
         }
 
         .product-card img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 1.2rem;
         }
 
         .product-card h3 {
             margin-bottom: 0.5rem;
             color: #2d6a4f;
-            font-size: 1.2rem;
         }
 
         .product-card p {
             color: #666;
-            font-size: 0.95rem;
-        }
-
-        /* Om oss */
-        .about {
-            background-color: #ffffff;
-            padding: 5rem 5%;
-            text-align: center;
-        }
-
-        .about-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about h2 {
-            color: #1b4332;
-            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
 
         /* Footer */
@@ -195,182 +153,88 @@
             background-color: #1b4332;
             color: white;
             text-align: center;
-            padding: 4rem 5%;
-        }
-
-        footer h2 {
-            margin-bottom: 1rem;
+            padding: 3rem 5%;
         }
 
         footer p {
-            margin-bottom: 0.5rem;
             color: #d8f3dc;
-        }
-
-        .email {
-            margin: 1.5rem 0;
-            font-size: 1.1rem;
-        }
-
-        .socials {
-            margin: 1.5rem 0;
-        }
-
-        .copyright {
-            margin-top: 2rem;
-            font-size: 0.85rem;
-            color: #95d5b2;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
+    <!-- Navbar -->
     <header>
         <div class="logo">FRUITSNROOTS</div>
         <nav>
-            <a href="#hem">Hem</a>
-            <a href="#frukt">Frystorkat</a>
-            <a href="#havsmossa">Havsmossa</a>
+            <a href="#frukt">Frukt</a>
+            <a href="#seamoss">Sea Moss</a>
             <a href="#notter">Nötter</a>
-            <a href="#om-oss">Om oss</a>
             <a href="#kontakt" class="cta-btn">Kontakt</a>
         </nav>
     </header>
 
-    <!-- Hero Section med butiksbild -->
-    <section id="hem" class="hero">
+    <!-- Hero -->
+    <section class="hero">
         <div class="hero-content">
-            <h1>Naturlig energi & superfoods av högsta kvalitet</h1>
-            <p>Välkommen till vår välsorterade butik av krystklara frystorkade frukter, premium-nötter i bulk och vildskördad havsmossa.</p>
-            <a href="#frukt" class="btn">Utforska frystorkat</a>
+            <h1>FRUITSNROOTS</h1>
+            <p>Frystorkade frukter, premium-nötter & vildskördad Sea Moss av högsta kvalitet.</p>
+            <a href="#frukt" class="btn">Utforska sortimentet</a>
         </div>
     </section>
 
-    <!-- Sektion 1: Frystorkad Frukt (Första sektionen) -->
+    <!-- SEKTION 1: Frystorkad Frukt -->
     <section id="frukt" class="products-section">
-        <h2>Frystorkad Frukt - Krispighet i varje tugga</h2>
-        <p class="section-intro">Upptäck naturens godis, bevarad med all smak, färg och näring utan tillsatt socker.</p>
+        <h2>1. Frystorkad Frukt</h2>
+        <p class="section-intro">100% naturlig krispighet med all näring och smak intakt.</p>
         <div class="product-grid">
-            
             <div class="product-card">
-                <img src="1000008530.png" alt="Aptitlig frystorkad fruktblandning på stranden">
+                <img src="1784410818535.png" alt="Frystorkad frukt">
                 <div class="card-content">
-                    <h3>Aptitlig Fruktblandning</h3>
-                    <p>En krispig explosion av tropiska frukter och bär. Perfekt för yoghurt bowls eller smoothies.</p>
+                    <h3>Krispiga Fruktbowls & Bär</h3>
+                    <p>Naturligt söta frystorkade bär och tropiska frukter. Perfekt till frukostskålen eller som krispigt snacks.</p>
                 </div>
             </div>
-
-            <div class="product-card">
-                <img src="1000008322.png" alt="Grid med diverse frystorkade frukter">
-                <div class="card-content">
-                    <h3>Krispiga Jordgubbar & Bananer</h3>
-                    <p>En söt och krispig blandning av solmogna jordgubbar och krämiga bananer. Full av vitaminer.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="1000008322.png" alt="Grid med diverse frystorkade frukter">
-                <div class="card-content">
-                    <h3>Exotiska Mangotärningar</h3>
-                    <p>Tärnad mango som bevarat sin söta och fylliga smak. En krispig delikatess.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="1000008322.png" alt="Grid med diverse frystorkade frukter">
-                <div class="card-content">
-                    <h3>Frukt Assortment Mix</h3>
-                    <p>Ett aptitligt urval av diverse frukter i praktiska förpackningar. För en varierad smakupplevelse.</p>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- Sektion 2: Havsmossa (Sea Moss) (Andra sektionen) -->
-    <section id="havsmossa" class="products-section alt-bg">
-        <h2>Vildskördad Havsmossa (Chondrus crispus)</h2>
-        <p class="section-intro">Naturens egna multivitamin, rik på 92 av kroppens 102 essentiella mineraler.</p>
+    <!-- SEKTION 2: Sea Moss -->
+    <section id="seamoss" class="products-section alt-bg">
+        <h2>2. Sea Moss (Chondrus crispus)</h2>
+        <p class="section-intro">Vildskördad havsmossa rik på näring och mineraler.</p>
         <div class="product-grid">
-            
             <div class="product-card">
-                <img src="1000008628.png" alt="Purple Sea Moss i butiken">
+                <img src="1784212602485.png" alt="Purple and Golden Sea Moss">
                 <div class="card-content">
-                    <h3>Purple Chondrus crispus</h3>
-                    <p>Vildvuxen röd/lila havsmossa, känd för sina höga nivåer av antioxidanter och djupt närande egenskaper för kropp och hud.</p>
+                    <h3>Purple & Golden Chondrus crispus</h3>
+                    <p>Ren vildskördad lila och gyllene havsmossa. Perfekt för att göra egen näringsrik gelé eller smoothies.</p>
                 </div>
             </div>
-
-            <div class="product-card">
-                <img src="1000008628.png" alt="Golden Sea Moss och oljor i butiken">
-                <div class="card-content">
-                    <h3>Golden Chondrus crispus</h3>
-                    <p>Soltorkad gyllene havsmossa, utmärkt för att göra gelé till smoothies, juicer och hudvård.</p>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- Sektion 3: Nötter (Bulk & Detalj) (Tredje sektionen) -->
+    <!-- SEKTION 3: Premium-nötter -->
     <section id="notter" class="products-section">
-        <h2>Premium-nötter & Bulk</h2>
-        <p class="section-intro">Noggrant utvalda för privatpersoner och grossist/bulk. Se vårt rika utbud i butiken.</p>
+        <h2>3. Premium-nötter & Bulk</h2>
+        <p class="section-intro">Noggrant utvalda nötter för både privatpersoner och grossist.</p>
         <div class="product-grid">
-            
             <div class="product-card">
-                <img src="1000008628.png" alt="Urval av nötter i butiken">
+                <img src="1784212602485.png" alt="Nötter i butik">
                 <div class="card-content">
-                    <h3>Pistagenötter</h3>
-                    <p>Rikt på proteiner och antioxidanter. Perfekta som energirikt snacks eller i bakverk.</p>
+                    <h3>Pistage, Cashew, Valnötter & Mandlar</h3>
+                    <p>Färska nötter av högsta kvalitet. Tillgängliga i både mindre förpackningar och i bulk (1000 kg+).</p>
                 </div>
             </div>
-
-            <div class="product-card">
-                <img src="1000008628.png" alt="Urval av nötter och bär i butiken">
-                <div class="card-content">
-                    <h3>Cashewnötter</h3>
-                    <p>Krämiga, fylliga och naturligt söta. Passar utmärkt till matlagning och snacking.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="1000008628.png" alt="Fina valnöts-halvor i butiken">
-                <div class="card-content">
-                    <h3>Valnöts-halvor</h3>
-                    <p>Oerhört fina hela halvor fyllda med nyttiga Omega-3-fettsyror.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="1000008628.png" alt="Mandlar i butiken">
-                <div class="card-content">
-                    <h3>Mandlar</h3>
-                    <p>Krispiga, näringstäta mandlar av absolut högsta kvalitet.</p>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- Om oss -->
-    <section id="om-oss" class="about">
-        <div class="about-content">
-            <h2>Om FRUITSNROOTS</h2>
-            <p>Vi på FRUITSNROOTS brinner för rena, näringstäta och naturliga råvaror. Vi levererar noga utvalda superfoods, nötter i bulk och frystorkade delikatesser för en hälsosam livsstil – både för privatpersoner och grossistled.</p>
-        </div>
-    </section>
-
-    <!-- Kontakt -->
+    <!-- Footer -->
     <footer id="kontakt">
-        <h2>Kontakta oss</h2>
-        <p>Intresserad av bulk-köp eller vill du veta mer om produkterna? Hör av dig!</p>
-        <p class="email">E-post: <strong>info@fruitsnroots.com</strong></p>
-        <div class="socials">
-            <p>Följ oss på Instagram & TikTok: <strong>@fruitsnroots</strong></p>
-        </div>
-        <p class="copyright">&copy; 2026 FRUITSNROOTS. Alla rättigheter förbehållna.</p>
+        <h2>Kontakta FRUITSNROOTS</h2>
+        <p>E-post: info@fruitsnroots.com</p>
+        <p>Följ oss på Instagram & TikTok: @fruitsnroots</p>
+        <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #95d5b2;">&copy; 2026 FRUITSNROOTS. Alla rättigheter förbehållna.</p>
     </footer>
 
 </body>
