@@ -14,19 +14,22 @@
             scroll-behavior: smooth;
         }
 
+        /* Färgglad fruktsida som bakgrund för hela hemsidan */
         body {
-            background-color: #f9f8f6;
+            background: linear-gradient(rgba(255, 255, 255, 0.87), rgba(255, 255, 255, 0.87)), url('./1784410818535.png') no-repeat center center fixed;
+            background-size: cover;
             color: #2b2b2b;
             line-height: 1.6;
         }
 
-        /* Header */
+        /* Header med lätt transparens */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.2rem 5%;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
@@ -55,9 +58,9 @@
             border-radius: 5px;
         }
 
-        /* Hero Section */
+        /* Hero Section med Animering */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('1784212602485.png') no-repeat center center/cover;
+            position: relative;
             height: 60vh;
             display: flex;
             align-items: center;
@@ -65,12 +68,39 @@
             text-align: center;
             color: white;
             padding: 0 1rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('./1784212602485.png') no-repeat center center/cover;
+            animation: slowZoom 18s infinite alternate ease-in-out;
+            z-index: 1;
+        }
+
+        @keyframes slowZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.15);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content h1 {
             font-size: 2.2rem;
             margin-bottom: 1rem;
             font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero-content p {
@@ -79,6 +109,7 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
         .btn {
@@ -91,6 +122,7 @@
             font-weight: 600;
             cursor: pointer;
             border: none;
+            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
         }
 
         .btn-outline {
@@ -100,6 +132,7 @@
             margin-top: 1rem;
             width: 100%;
             text-align: center;
+            box-shadow: none;
         }
 
         .btn-outline:hover {
@@ -107,14 +140,18 @@
             color: white;
         }
 
-        /* Sektioner */
+        /* Sektioner med fräsch semi-transparent bakgrund */
         .products-section {
             padding: 4rem 5%;
             text-align: center;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
+            margin: 2rem 0;
+            border-radius: 20px;
         }
 
         .alt-bg {
-            background-color: #f0f4ef;
+            background-color: rgba(240, 244, 239, 0.65);
         }
 
         .products-section h2 {
@@ -130,7 +167,8 @@
         }
 
         .section-intro {
-            color: #666;
+            color: #444;
+            font-weight: 500;
             margin-bottom: 2.5rem;
         }
 
@@ -143,24 +181,30 @@
         }
 
         .product-card {
-            background: white;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             text-align: left;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
         }
 
+        /* Produktbild med mjuk zoom-effekt */
         .product-card img {
             width: 100%;
             height: 240px;
             object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.08);
         }
 
         .card-content {
@@ -173,7 +217,7 @@
         }
 
         .product-card p {
-            color: #666;
+            color: #555;
             font-size: 0.9rem;
         }
 
@@ -187,7 +231,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(5px);
             overflow-y: auto;
             padding: 20px 10px;
         }
@@ -266,10 +310,11 @@
 
         /* Footer */
         footer {
-            background-color: #1b4332;
+            background-color: rgba(27, 67, 50, 0.96);
             color: white;
             text-align: center;
             padding: 3rem 5%;
+            margin-top: 3rem;
         }
 
         footer p {
@@ -291,8 +336,9 @@
         </nav>
     </header>
 
-    <!-- Hero -->
+    <!-- Hero med Animerad Bakgrund -->
     <section class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>FRUITSNROOTS</h1>
             <p>Frystorkade frukter, premium-nötter & vildskördad Sea Moss av högsta kvalitet.</p>
@@ -306,7 +352,7 @@
         <p class="section-intro">Klicka för att se våra olika fruktpaket och påsar.</p>
         <div class="product-grid">
             <div class="product-card" onclick="openModal('frukt')">
-                <img src="1784410818535.png" alt="Frystorkad frukt">
+                <img src="./1784410818535.png" alt="Frystorkad frukt">
                 <div class="card-content">
                     <h3>Krispiga Fruktbowls & Påsar</h3>
                     <p>Naturligt söta frystorkade bär och tropiska frukter. 100% utan tillsatt socker.</p>
@@ -322,7 +368,7 @@
         <p class="section-intro">Klicka för att välja mellan Lila, Guld och Färdig Gelé.</p>
         <div class="product-grid">
             <div class="product-card" onclick="openModal('seamoss')">
-                <img src="1000008912.png" alt="Purple & Golden Sea Moss Gel">
+                <img src="./1784707424319.png" alt="Purple & Golden Sea Moss Gel">
                 <div class="card-content">
                     <h3>Purple & Golden Chondrus crispus</h3>
                     <p>Ren vildskördad havsmossa i både råform och fräsch färdigblandad gelé.</p>
@@ -338,10 +384,10 @@
         <p class="section-intro">Klicka för att se olika nötpåsar och partier för grossist.</p>
         <div class="product-grid">
             <div class="product-card" onclick="openModal('notter')">
-                <img src="notter.png" alt="FRUITSNROOTS Premium Nötter">
+                <img src="./1784707625353.png" alt="FRUITSNROOTS Premium Nötter">
                 <div class="card-content">
                     <h3>Pistage, Cashew, Mandlar & Valnötter</h3>
-                    <p>Fäska nötter av högsta kvalitet med fina hela valnötshalvor, krispiga mandlar och cashewnötter.</p>
+                    <p>Färska nötter av högsta kvalitet med fina hela valnötshalvor, krispiga mandlar och cashewnötter.</p>
                     <button class="btn btn-outline">Se nötpåsar & bulkalternativ</button>
                 </div>
             </div>
@@ -376,7 +422,7 @@
                     { name: "Jordgubbar (Skivade)", size: "50g / 100g Påse", desc: "Söta och krispiga frystorkade jordgubbs-skivor. Perfekt för snack eller topping." },
                     { name: "Tropisk Mangomix", size: "75g Påse", desc: "Intensiv smak av solmogen mango med bevarad näring och krispighet." },
                     { name: "Mixade Bär Bowl", size: "100g Påse", desc: "Blandning av jordgubbar, blåbär och hallon för smoothiebowls." },
-                    { name: "Aroniabär & Vilda Bär", size: "50g Påse", desc: "Superbörs-mix laddad med antioxidanter." }
+                    { name: "Aroniabär & Vilda Bär", size: "50g Påse", desc: "Superbärs-mix laddad med antioxidanter." }
                 ]
             },
             seamoss: {
@@ -395,7 +441,7 @@
                 packages: [
                     { name: "Valnötshalvor Premium", size: "250g / 500g Påse", desc: "Riktigt fina, hela valnötshalvor av högsta sortering." },
                     { name: "Skalade Pistagenötter", size: "200g / 500g Påse", desc: "Gröna, aromatiska och krispiga pistagenötter redo att ätas." },
-                    { name: "Krämiga Cashewnötter", size: "250g / 500g Påse", desc: "Stora, naturliga cashew med härlig mjuk textur." },
+                    { name: "Krämiga Cashewnötter", size: "250g / 500g Påse", desc: "Stora, naturliga cashews med härlig mjuk textur." },
                     { name: "Gyllene Mandlar", size: "250g / 500g Påse", desc: "Solmogna, krispiga mandlar packade med protein och fiber." },
                     { name: "Bulk-mix Partier (Partihandel)", size: "Upp till 1 000 kg (1 Ton)", desc: "För grossister, bagerier och återförsäljare. Kontakta oss för offert." }
                 ]
@@ -435,7 +481,6 @@
             document.getElementById('productModal').style.display = 'none';
         }
 
-        // Stäng fönstret om man klickar utanför
         window.onclick = function(event) {
             const modal = document.getElementById('productModal');
             if (event.target == modal) {
