@@ -330,7 +330,6 @@
             margin-bottom: 0.8rem;
         }
 
-        /* Musikspelare widget - Vänster hörn */
         .music-player-widget {
             position: fixed;
             bottom: 20px;
@@ -391,7 +390,6 @@
 </head>
 <body>
 
-    <!-- Navbar -->
     <header>
         <div class="logo">
             <img src="./1784710545310.png" alt="FRUITS 'N ROOTS Logotyp">
@@ -405,7 +403,6 @@
         </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
@@ -414,7 +411,6 @@
         </div>
     </section>
 
-    <!-- Sektion: Frukt -->
     <section id="frukt" class="products-section">
         <h2 onclick="openModal('frukt')">Frystorkad Frukt 🍓</h2>
         <p class="section-intro">Klicka för att se våra olika fruktpaket och påsar.</p>
@@ -430,7 +426,6 @@
         </div>
     </section>
 
-    <!-- Sektion: Sea Moss -->
     <section id="seamoss" class="products-section alt-bg">
         <h2 onclick="openModal('seamoss')">Sea Moss (Chondrus crispus) 🌿</h2>
         <p class="section-intro">Klicka för att välja mellan Lila, Guld och Färdig Gelé.</p>
@@ -446,7 +441,6 @@
         </div>
     </section>
 
-    <!-- Sektion: Nötter -->
     <section id="notter" class="products-section">
         <h2 onclick="openModal('notter')">Premium-nötter & Bulk 🥜</h2>
         <p class="section-intro">Klicka för att se olika nötpåsar och partier för grossist.</p>
@@ -462,7 +456,6 @@
         </div>
     </section>
 
-    <!-- Modal -->
     <div id="productModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -470,7 +463,6 @@
         </div>
     </div>
 
-    <!-- Flytande musikspelare -->
     <div class="music-player-widget">
         <button id="musicToggleBtn" onclick="toggleMusic()">
             🎵 <span id="musicBtnText">Spela låt</span>
@@ -481,7 +473,6 @@
         </audio>
     </div>
 
-    <!-- Footer -->
     <footer id="kontakt">
         <h2>Kontakta FRUITS 'N ROOTS</h2>
         <p>E-post: info@fruitsnroots.com</p>
@@ -489,7 +480,6 @@
         <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #95d5b2;">&copy; 2026 FRUITS 'N ROOTS. Alla rättigheter förbehållna.</p>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         const packageData = {
             frukt: {
@@ -512,13 +502,13 @@
                         name: "Frystorkade Hallon", 
                         size: "50g Påse", 
                         desc: "Krispiga och smakrika frystorkade helbär med härlig sötma och syra.", 
-                        img: "" 
+                        img: "./1784731325580.png" 
                     },
                     { 
                         name: "Frystorkad Drakfrukt", 
                         size: "50g / 75g Påse", 
                         desc: "Exotisk och vacker frystorkad drakfrukt full av färg och smak.", 
-                        img: "" 
+                        img: "./1784731295580.png" 
                     }
                 ]
             },
@@ -587,7 +577,6 @@
             }
         }
 
-        // Musikspelare logik
         const music = document.getElementById('bgMusic');
         const musicBtnText = document.getElementById('musicBtnText');
         let isPlaying = false;
@@ -609,7 +598,6 @@
         }
     </script>
 
-    <!-- Botpress AI Chatbot Skript -->
     <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2026/07/22/11/20260722115943-CVTZXKE0.js" defer></script>
 
