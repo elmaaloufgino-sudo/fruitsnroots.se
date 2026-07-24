@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRUITS 'N ROOTS | Frystorkade Frukter, Sea Moss & Nötter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Fredoka:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, .logo, .hero-title, .products-section h2, .package-item h4 {
+        h1, h2, h3, h4, .logo, .hero-content p, .products-section h2, .package-item h4 {
             font-family: 'Fredoka', sans-serif;
         }
 
@@ -42,10 +42,10 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: 1px;
-            color: #1b4332;
+            font-family: 'Dancing Script', cursive;
+            color: #ffb703; /* Guld */
         }
 
         .logo img {
@@ -81,9 +81,36 @@
             border-radius: 5px;
         }
 
+        /* Ny "Om oss"-sektion placerad mellan header och hero */
+        .about-intro-section {
+            background: linear-gradient(135deg, #f4f9f4 0%, #e8f4ec 100%);
+            padding: 3rem 5%;
+            text-align: center;
+            border-bottom: 1px solid #d8e8dc;
+        }
+
+        .about-intro-container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .about-intro-section h2 {
+            font-size: 2.2rem;
+            color: #1b4332;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .about-intro-section p {
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
         .hero {
             position: relative;
-            height: 48vh;
+            height: 42vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -112,7 +139,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./1784729911178.png') no-repeat center center;
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('./1784729911178.png') no-repeat center center;
             background-size: cover;
             z-index: 1;
             animation: heroZoom 6s ease-in-out infinite;
@@ -125,11 +152,19 @@
 
         .hero-title {
             font-size: 3.2rem;
-            font-weight: 600; /* Mjukare vikt */
+            font-weight: 600;
             margin-bottom: 0.8rem;
             text-shadow: 0 3px 8px rgba(0,0,0,0.5);
             letter-spacing: 1px;
-            color: #ffb703; /* Varm guldig och mjuk ton */
+            color: #ffb703;
+        }
+
+        .color-fruits {
+            color: #ff4d6d;
+        }
+
+        .color-roots {
+            color: #ffd166;
         }
 
         .hero-content p {
@@ -459,9 +494,6 @@
             nav a {
                 font-size: 0.85rem;
             }
-            .hero-title {
-                font-size: 2.2rem;
-            }
         }
     </style>
 </head>
@@ -483,11 +515,20 @@
         </nav>
     </header>
 
+    <!-- Om oss - Utökad sektion placerad mellan Header och Hero -->
+    <section class="about-intro-section" id="om-oss">
+        <div class="about-intro-container">
+            <h2>Vilka är FRUITS 'N ROOTS?</h2>
+            <p>Välkommen till vår värld av ren hälsa och naturlig livskraft! På <strong>FRUITS 'N ROOTS</strong> brinner vi för att erbjuda det allra bästa som naturen har att erbjuda. Vår affärsidé bygger på en stark övertygelse om att riktig mat ska vara fri från onödiga tillsatser, sockerbomber och industriella processer. Vi handplockar därför ett exklusivt sortiment av krispiga, frystorkade frukter som behåller alla sina naturliga vitaminer och smaker, vildskördad näringsrik Sea Moss från rena hav, samt noggrant utvalda premiumnötter av högsta kvalitet.</p>
+            <p>Vi tror på hållbarhet, transparens och äkta kvalitet i varje led – från jord till bord. Oavsett om du letar efter en hälsosam vardagssnack, ingredienser till din smoothie eller storpack och bulkordrar för ditt företag, finns vi här för att ge dig en smakupplevelse utöver det vanliga. Besök oss gärna i våra butiker i Göteborg eller upptäck vårt sortiment här på webben!</p>
+        </div>
+    </section>
+
     <!-- Hero -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1 class="hero-title">FRUITS 'N ROOTS</h1>
+            <h1 class="hero-title"><span class="color-fruits">FRUITS 'N</span> <span class="color-roots">ROOTS</span></h1>
             <p>Frystorkade frukter, premium-nötter & vildskördad Sea Moss av högsta kvalitet.</p>
             <a href="#frukt" class="btn">Utforska sortimentet</a>
         </div>
@@ -547,10 +588,10 @@
         </div><!-- Slut på .main-content -->
 
         <!-- Sidebar Kolumn -->
-        <aside class="sidebar-column" id="om-oss">
+        <aside class="sidebar-column">
             <div class="sidebar-widget">
-                <h3>Om FRUITS 'N ROOTS</h3>
-                <p>Vi erbjuder marknadens finaste frystorkade frukter, vildskördad Sea Moss och premiumnötter. Vårt fokus är ren hälsa, naturliga råvaror och högsta kvalitet utan tillsatser.</p>
+                <h3>Vårt Löfte</h3>
+                <p>100% naturliga råvaror utan tillsatser. Vi strävar efter att erbjuda marknadens bästa kvalitet inom hälsa och superfoods.</p>
             </div>
 
             <div class="sidebar-widget" id="oppettider">
