@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRUITS 'N ROOTS | Frystorkade Frukter, Sea Moss & Nötter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .logo, .hero-content p, .products-section h2, .package-item h4 {
+            font-family: 'Fredoka', sans-serif;
         }
 
         body {
@@ -157,12 +161,72 @@
             color: white;
         }
 
+        /* Tvåkolumns-layout med Sidebar */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 2rem auto;
+            padding: 0 5%;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        .sidebar-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-widget {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-left: 4px solid #2d6a4f;
+        }
+
+        .sidebar-widget h3 {
+            color: #1b4332;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .sidebar-widget p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .store-location h4 {
+            color: #2d6a4f;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .map-container {
+            margin-top: 0.6rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 900px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .products-section {
-            padding: 4rem 5%;
+            padding: 3rem 5%;
             text-align: center;
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(4px);
-            margin: 2rem 0;
+            margin-bottom: 2rem;
             border-radius: 20px;
         }
 
@@ -190,7 +254,7 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             max-width: 1100px;
             margin: 0 auto;
@@ -213,7 +277,7 @@
 
         .product-card img {
             width: 100%;
-            height: 240px;
+            height: 220px;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
@@ -401,6 +465,8 @@
             <a href="#frukt">Frukt</a>
             <a href="#seamoss">Sea Moss</a>
             <a href="#notter">Nötter</a>
+            <a href="#om-oss">Om oss</a>
+            <a href="#hitta-oss">Hitta oss</a>
             <a href="#kontakt" class="cta-btn">Kontakt</a>
         </nav>
     </header>
@@ -414,53 +480,98 @@
         </div>
     </section>
 
-    <!-- Sektion: Frukt -->
-    <section id="frukt" class="products-section">
-        <h2 onclick="openModal('frukt')">Frystorkad Frukt 🍓</h2>
-        <p class="section-intro">Klicka för att se våra olika fruktpaket och påsar.</p>
-        <div class="product-grid">
-            <div class="product-card" onclick="openModal('frukt')">
-                <img src="./1784729911178.png" alt="FRUITS 'N ROOTS Frystorkad Frukt och Påsar">
-                <div class="card-content">
-                    <h3>Krispiga Fruktbowls & Påsar</h3>
-                    <p>Naturligt söta frystorkade bär och tropiska frukter. 100% utan tillsatt socker.</p>
-                    <button class="btn btn-outline">Se alla fruktpaket & storlekar</button>
+    <!-- Main Container med Sidebar och Innehåll -->
+    <div class="content-layout">
+        <!-- Huvudinnehåll -->
+        <div class="main-content">
+            <!-- Sektion: Frukt -->
+            <section id="frukt" class="products-section">
+                <h2 onclick="openModal('frukt')">Frystorkad Frukt 🍓</h2>
+                <p class="section-intro">Klicka för att se våra olika fruktpaket och påsar.</p>
+                <div class="product-grid">
+                    <div class="product-card" onclick="openModal('frukt')">
+                        <img src="./1784729911178.png" alt="FRUITS 'N ROOTS Frystorkad Frukt och Påsar">
+                        <div class="card-content">
+                            <h3>Krispiga Fruktbowls & Påsar</h3>
+                            <p>Naturligt söta frystorkade bär och tropiska frukter. 100% utan tillsatt socker.</p>
+                            <button class="btn btn-outline">Se alla fruktpaket & storlekar</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Sektion: Sea Moss -->
-    <section id="seamoss" class="products-section alt-bg">
-        <h2 onclick="openModal('seamoss')">Sea Moss (Chondrus crispus) 🌿</h2>
-        <p class="section-intro">Klicka för att välja mellan Lila, Guld och Färdig Gelé.</p>
-        <div class="product-grid">
-            <div class="product-card" onclick="openModal('seamoss')">
-                <img src="./1784707625353.png" alt="Purple & Golden Sea Moss Gel">
-                <div class="card-content">
-                    <h3>Purple & Golden Chondrus crispus</h3>
-                    <p>Ren vildskördad havsmossa i både råform och fräsch färdigblandad gelé.</p>
-                    <button class="btn btn-outline">Se alla Sea Moss-paket & glasburkar</button>
+            <!-- Sektion: Sea Moss -->
+            <section id="seamoss" class="products-section alt-bg">
+                <h2 onclick="openModal('seamoss')">Sea Moss (Chondrus crispus) 🌿</h2>
+                <p class="section-intro">Klicka för att välja mellan Lila, Guld och Färdig Gelé.</p>
+                <div class="product-grid">
+                    <div class="product-card" onclick="openModal('seamoss')">
+                        <img src="./1784707625353.png" alt="Purple & Golden Sea Moss Gel">
+                        <div class="card-content">
+                            <h3>Purple & Golden Chondrus crispus</h3>
+                            <p>Ren vildskördad havsmossa i både råform och fräsch färdigblandad gelé.</p>
+                            <button class="btn btn-outline">Se alla Sea Moss-paket & glasburkar</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Sektion: Nötter -->
-    <section id="notter" class="products-section">
-        <h2 onclick="openModal('notter')">Premium-nötter & Bulk 🥜</h2>
-        <p class="section-intro">Klicka för att se olika nötpåsar och partier för grossist.</p>
-        <div class="product-grid">
-            <div class="product-card" onclick="openModal('notter')">
-                <img src="./1784707424319.png" alt="FRUITS 'N ROOTS Premium Nötter">
-                <div class="card-content">
-                    <h3>Pistage, Cashew, Mandlar & Valnötter</h3>
-                    <p>Färska nötter av högsta kvalitet med fina hela valnötshalvor, krispiga mandlar och cashewnötter.</p>
-                    <button class="btn btn-outline">Se nötpåsar & bulkalternativ</button>
+            <!-- Sektion: Nötter -->
+            <section id="notter" class="products-section">
+                <h2 onclick="openModal('notter')">Premium-nötter & Bulk 🥜</h2>
+                <p class="section-intro">Klicka för att se olika nötpåsar och partier för grossist.</p>
+                <div class="product-grid">
+                    <div class="product-card" onclick="openModal('notter')">
+                        <img src="./1784707424319.png" alt="FRUITS 'N ROOTS Premium Nötter">
+                        <div class="card-content">
+                            <h3>Pistage, Cashew, Mandlar & Valnötter</h3>
+                            <p>Färska nötter av högsta kvalitet med fina hela valnötshalvor, krispiga mandlar och cashewnötter.</p>
+                            <button class="btn btn-outline">Se nötpåsar & bulkalternativ</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div><!-- Slut på .main-content -->
+
+        <!-- Sidebar Kolumn -->
+        <aside class="sidebar-column" id="om-oss">
+            <div class="sidebar-widget">
+                <h3>Om FRUITS 'N ROOTS</h3>
+                <p>Vi erbjuder marknadens finaste frystorkade frukter, vildskördad Sea Moss och premiumnötter. Vårt fokus är ren hälsa, naturliga råvaror och högsta kvalitet utan tillsatser.</p>
+            </div>
+
+            <div class="sidebar-widget" id="oppettider">
+                <h3>⏰ Öppettider</h3>
+                <p><strong>Måndag – Söndag:</strong><br>08:00 – 19:00</p>
+            </div>
+
+            <div class="sidebar-widget" id="hitta-oss">
+                <h3>📍 Våra Butiker i Göteborg</h3>
+                
+                <div class="store-location">
+                    <h4>Frölunda Torg</h4>
+                    <p>Besök vår butik/kiosk vid Frölunda Torg för färska produkter och provsmakning.</p>
+                    <div class="map-container">
+                        <iframe width="100%" height="160" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Fr%C3%B6lunda%20Torg,%20G%C3%B6teborg&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+                    </div>
+                </div>
+
+                <div class="store-location" style="margin-top: 1.5rem;">
+                    <h4>Nordstan</h4>
+                    <p>Hitta oss mitt i centrala Göteborg i Nordstans shoppingcenter.</p>
+                    <div class="map-container">
+                        <iframe width="100%" height="160" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Nordstan,%20G%C3%B6teborg&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+
+            <div class="sidebar-widget" id="kontakt-sida">
+                <h3>📞 Snabbkontakt</h3>
+                <p>Har du frågor om bulkordrar eller produkter?</p>
+                <a href="#kontakt" class="btn" style="display: block; text-align: center; margin-top: 0.8rem;">Gå till kontakt</a>
+            </div>
+        </aside>
+    </div><!-- Slut på .content-layout -->
 
     <!-- Modal -->
     <div id="productModal" class="modal">
@@ -526,30 +637,10 @@
                 title: "Sea Moss (Chondrus crispus) Sortiment",
                 intro: "Välj din favorit av vår vildskördade irländska havsmossa:",
                 packages: [
-                    { 
-                        name: "Golden Sea Moss Gel", 
-                        size: "375 ml Glasburk", 
-                        desc: "Klassisk näringsrik guldgelé redo att avnjutas direkt eller i smoothies.",
-                        img: "./1784731868488.png"
-                    },
-                    { 
-                        name: "Purple Sea Moss Gel", 
-                        size: "375 ml Glasburk", 
-                        desc: "Sällsynt lila havsmoss-gelé rik på antocyaniner och kraftfulla näringsämnen.",
-                        img: "./1784731991768.png"
-                    },
-                    { 
-                        name: "Rå Torkad Golden Moss", 
-                        size: "100g Påse (Råform)", 
-                        desc: "För dig som vill blötlägga och koka din egen fräscha gelé hemma.",
-                        img: "./1784732302663.png"
-                    },
-                    { 
-                        name: "Rå Torkad Purple Moss", 
-                        size: "100g Påse (Råform)", 
-                        desc: "100% naturlig vildskördad lila Chondrus crispus i torkad form.",
-                        img: "./1784732365574.png"
-                    }
+                    { name: "Golden Sea Moss Gel", size: "375 ml Glasburk", desc: "Klassisk näringsrik guldgelé redo att avnjutas direkt eller i smoothies." },
+                    { name: "Purple Sea Moss Gel", size: "375 ml Glasburk", desc: "Sällsynt lila havsmoss-gelé rik på antocyaniner och kraftfulla näringsämnen." },
+                    { name: "Rå Torkad Golden Moss", size: "100g Påse (Råform)", desc: "För dig som vill blötlägga och koka din egen fräscha gelé hemma." },
+                    { name: "Rå Torkad Purple Moss", size: "100g Påse (Råform)", desc: "100% naturlig vildskördad lila Chondrus crispus i torkad form." }
                 ]
             },
             notter: {
