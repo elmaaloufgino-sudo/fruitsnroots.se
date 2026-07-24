@@ -321,7 +321,7 @@
         }
 
         /* ==========================================
-           5. KNAPPAR & LÄNKAR
+           5. KNAPPAR & LÄNKAR (UPPDATERADE BUBBLOR)
            ========================================== */
         .btn {
             display: inline-block;
@@ -343,23 +343,30 @@
             background: linear-gradient(135deg, #388465 0%, #22543d 100%);
         }
 
+        /* HÄR ÄR DEN NYA TYDLIGA BUBBEL-KNAPPEN PÅ KORTEN */
         .btn-outline {
-            background-color: transparent;
+            background: var(--primary-green);
             border: 2px solid var(--primary-green);
-            color: var(--primary-green);
-            margin-top: 1rem;
+            color: #ffffff !important;
+            margin-top: 1.2rem;
             width: 100%;
             text-align: center;
-            box-shadow: none;
-            border-radius: 10px;
-            padding: 0.65rem;
+            border-radius: 30px; /* Rund bubbla */
+            padding: 0.75rem 1rem;
             font-weight: 600;
+            font-size: 0.92rem;
+            box-shadow: 0 4px 14px rgba(45, 106, 79, 0.28);
             transition: all 0.25s ease;
+            cursor: pointer;
+            display: inline-block;
         }
 
         .btn-outline:hover {
-            background-color: var(--primary-green);
-            color: white;
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            color: var(--accent-gold) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(27, 67, 50, 0.38);
         }
 
         /* ==========================================
@@ -428,10 +435,17 @@
         }
 
         .section-intro {
-            color: var(--text-muted);
-            font-weight: 500;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 0.2rem;
             margin-bottom: 2.2rem;
-            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.85);
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border: 1px solid rgba(45, 106, 79, 0.15);
         }
 
         .product-grid {
@@ -994,14 +1008,16 @@
             <!-- Sektion: Frukt -->
             <section id="frukt" class="products-section">
                 <h2 class="elegant-heading" onclick="openModal('frukt')">Frystorkad Frukt 🍓</h2>
-                <p class="section-intro">Klicka för att se våra olika fruktpaket och påsar.</p>
+                <div style="text-align: center;">
+                    <p class="section-intro">Klicka här för att se våra fruktpaket och påsar</p>
+                </div>
                 <div class="product-grid">
                     <div class="product-card" onclick="openModal('frukt')">
                         <img src="./1784729911178.png" alt="FRUITS 'N ROOTS Frystorkad Frukt och Påsar">
                         <div class="card-content">
                             <h3>Krispiga Fruktbowls & Påsar</h3>
                             <p>Naturligt söta frystorkade bär och tropiska frukter. 100% utan tillsatt socker.</p>
-                            <button class="btn btn-outline">Se alla fruktpaket & storlekar</button>
+                            <button class="btn-outline">Se alla fruktpaket & storlekar</button>
                         </div>
                     </div>
                 </div>
@@ -1010,14 +1026,16 @@
             <!-- Sektion: Sea Moss -->
             <section id="seamoss" class="products-section alt-bg">
                 <h2 class="elegant-heading" onclick="openModal('seamoss')">Sea Moss (Chondrus crispus) 🌿</h2>
-                <p class="section-intro">Klicka för att välja mellan Lila, Guld och Färdig Gelé.</p>
+                <div style="text-align: center;">
+                    <p class="section-intro">Klicka här för att välja mellan Lila, Guld och Färdig Gelé</p>
+                </div>
                 <div class="product-grid">
                     <div class="product-card" onclick="openModal('seamoss')">
                         <img src="./1784707625353.png" alt="Purple & Golden Sea Moss Gel">
                         <div class="card-content">
                             <h3>Purple & Golden Chondrus crispus</h3>
                             <p>Ren vildskördad havsmossa i både råform och fräsch färdigblandad gelé.</p>
-                            <button class="btn btn-outline">Se alla Sea Moss-paket & glasburkar</button>
+                            <button class="btn-outline">Se alla Sea Moss-paket & glasburkar</button>
                         </div>
                     </div>
                 </div>
@@ -1026,14 +1044,16 @@
             <!-- Sektion: Nötter -->
             <section id="notter" class="products-section">
                 <h2 class="elegant-heading" onclick="openModal('notter')">Premium-nötter & Bulk 🥜</h2>
-                <p class="section-intro">Klicka för att se olika nötpåsar och partier för grossist.</p>
+                <div style="text-align: center;">
+                    <p class="section-intro">Klicka här för att se nötpåsar och partier för grossist</p>
+                </div>
                 <div class="product-grid">
                     <div class="product-card" onclick="openModal('notter')">
                         <img src="./1784707424319.png" alt="FRUITS 'N ROOTS Premium Nötter">
                         <div class="card-content">
                             <h3>Pistage, Cashew, Mandlar & Valnötter</h3>
                             <p>Färska nötter av högsta kvalitet med fina hela valnötshalvor, krispiga mandlar och cashewnötter.</p>
-                            <button class="btn btn-outline">Se nötpåsar & bulkalternativ</button>
+                            <button class="btn-outline">Se nötpåsar & bulkalternativ</button>
                         </div>
                     </div>
                 </div>
