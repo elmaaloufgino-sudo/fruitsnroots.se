@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv-SE">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRUITS 'N ROOTS | Frystorkade Frukter, Sea Moss & Nötter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Fredoka:wght@300;400;500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>FRUITS N ROOTS | Ren hälsa & naturlig kraft</title>
+    
+    <!-- Typsnitt -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Snipcart CSS (För varukorgen) -->
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.css" />
+
     <style>
         /* ==========================================
            1. GLOBAL RESET & VARIABLER
@@ -13,1201 +19,574 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             scroll-behavior: smooth;
         }
 
         :root {
-            --primary-dark: #1b4332;
-            --primary-green: #2d6a4f;
-            --accent-gold: #ffb703;
-            --bg-light-green: #f4f9f5;
-            --text-dark: #2b2b2b;
-            --text-muted: #555555;
-            --glass-bg: rgba(255, 255, 255, 0.95);
-            --glass-border: rgba(255, 255, 255, 0.8);
-            --card-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            --hover-shadow: 0 15px 35px rgba(0,0,0,0.12);
-        }
-
-        /* Offset vid klick i menyn så headern inte döljer rubriker */
-        section, div[id], footer[id] {
-            scroll-margin-top: 90px;
+            --primary-dark: #2C3E2D;
+            --primary-light: #5A7D5C;
+            --accent: #E6B981;
+            --bg-color: #FAFAFA;
+            --text-main: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
         }
 
         body {
-            background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('./1784729911178.png') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--text-dark);
-            line-height: 1.65;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Global Typografi-standard med smalare/tunnare vikter */
-        h1, h3, h4, .hero-content p, .package-item h4 {
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 400;
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-dark);
         }
 
-        .elegant-heading {
-            font-family: 'Dancing Script', cursive !important;
-            font-weight: 600 !important;
-            letter-spacing: 0.8px;
+        section[id], footer[id] {
+            scroll-margin-top: 90px;
         }
 
         /* ==========================================
-           2. HEADER & LOGOTYP (ÄNNU SMALARE)
+           2. NAVIGATION & HEADER
            ========================================== */
         header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 5%;
-            background: rgba(27, 67, 50, 0.96);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
         }
 
-        .logo {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
-            text-align: left;
+            gap: 1rem;
+            text-decoration: none;
         }
 
-        .logo img {
-            width: 38px;
-            height: 38px;
-            object-fit: cover;
+        .logo-container img {
+            height: 45px;
             border-radius: 50%;
-            border: 2px solid #ffffff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        /* Extra smal och elegant logotyptext */
-        .logo-text, .logo-text span {
-            font-family: 'Dancing Script', cursive !important;
-            font-size: 1.15rem;
-            font-weight: 400;
-            letter-spacing: 0.8px;
-            white-space: nowrap;
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: var(--primary-dark);
         }
 
-        .hamburger-btn {
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background-color: var(--primary-dark);
+            color: var(--white) !important;
+            padding: 0.6rem 1.8rem;
+            border-radius: 30px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* Varukorgs-knapp i menyn */
+        .cart-btn {
             background: none;
             border: none;
             cursor: pointer;
             display: flex;
-            flex-direction: column;
-            gap: 5px;
-            padding: 6px;
-            border-radius: 6px;
-            transition: background-color 0.2s ease;
-        }
-
-        .hamburger-btn:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .hamburger-btn span {
-            display: block;
-            width: 26px;
-            height: 3px;
-            background-color: #ffffff;
-            border-radius: 3px;
-            transition: 0.3s;
-        }
-
-        /* ==========================================
-           3. DRAWER MENY (SIDOMENY)
-           ========================================== */
-        .drawer-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(15, 35, 25, 0.55);
-            z-index: 1000;
-            backdrop-filter: blur(6px);
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .drawer-menu {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 260px;
-            height: 100%;
-            background: linear-gradient(180deg, #ffffff 0%, #f4f9f5 100%);
-            z-index: 1001;
-            box-shadow: -10px 0 40px rgba(0,0,0,0.22);
-            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 1.5rem 1.2rem;
-            border-top-left-radius: 24px;
-            border-bottom-left-radius: 24px;
-            border-left: 3px solid var(--accent-gold);
-        }
-
-        .drawer-menu.open {
-            right: 0;
-        }
-
-        .drawer-header {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(45, 106, 79, 0.12);
-            padding-bottom: 0.8rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .drawer-title {
-            font-family: 'Dancing Script', cursive !important;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-
-        .close-drawer {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: #f0f4f1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            gap: 8px;
             font-size: 1.2rem;
             color: var(--primary-dark);
-            cursor: pointer;
-            transition: all 0.25s ease;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+        
+        .cart-btn:hover {
+            transform: scale(1.1);
         }
 
-        .close-drawer:hover {
-            background-color: var(--primary-dark);
-            color: #ffffff;
-            transform: rotate(90deg);
-        }
-
-        .drawer-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .drawer-nav a {
-            text-decoration: none;
-            color: #2c3e35;
-            font-weight: 500;
-            font-size: 0.98rem;
-            padding: 0.55rem 0.9rem;
-            border-radius: 10px;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .drawer-nav a .arrow {
+        .snipcart-items-count {
+            background-color: var(--accent);
+            color: var(--primary-dark);
             font-size: 0.8rem;
-            opacity: 0.4;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-        }
-
-        .drawer-nav a:hover {
-            color: var(--primary-dark);
-            background-color: rgba(45, 106, 79, 0.08);
-            transform: translateX(-3px);
-            font-weight: 600;
-        }
-
-        .drawer-nav a:hover .arrow {
-            opacity: 1;
-            transform: translateX(3px);
-            color: var(--primary-green);
-        }
-
-        .drawer-nav .cta-btn {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
-            color: #ffffff !important;
-            text-align: center;
-            border-radius: 10px;
-            padding: 0.65rem;
-            margin-top: 0.6rem;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.2);
-            justify-content: center;
-        }
-
-        .drawer-nav .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(45, 106, 79, 0.3);
-        }
-
-        .drawer-footer {
-            border-top: 1px solid rgba(45, 106, 79, 0.12);
-            padding-top: 0.8rem;
-            text-align: center;
-        }
-
-        .drawer-footer span {
-            font-family: 'Dancing Script', cursive !important;
-            color: var(--accent-gold);
-            font-size: 1.2rem;
-            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 20px;
         }
 
         /* ==========================================
-           4. HERO SEKTION
+           3. HERO SEKTION
            ========================================== */
         .hero {
-            position: relative;
-            height: 38vh;
-            min-height: 260px;
+            height: 75vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(44, 62, 45, 0.75), rgba(44, 62, 45, 0.75)), url('./1784410818535.png') center/cover;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            color: white;
-            padding: 0 1rem;
-            overflow: hidden;
-            background-color: var(--primary-dark);
-            border-bottom: 3px solid var(--accent-gold);
+            color: var(--white);
+            padding: 0 5%;
         }
 
-        @keyframes heroZoom {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
+        .hero h1 {
+            font-size: 4.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./1784410818535.png') no-repeat center center;
-            background-size: cover;
-            z-index: 1;
-            animation: heroZoom 7s ease-in-out infinite;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            max-width: 680px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.8);
-            font-weight: 400;
-            letter-spacing: 0.3px;
-        }
-
-        /* ==========================================
-           5. KNAPPAR & LÄNKAR
-           ========================================== */
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 15px rgba(45, 106, 79, 0.35);
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(45, 106, 79, 0.5);
-            background: linear-gradient(135deg, #388465 0%, #22543d 100%);
-        }
-
-        .btn-outline {
-            background: var(--primary-green);
-            border: 1.5px solid var(--primary-green);
-            color: #ffffff !important;
-            margin-top: 1rem;
-            display: inline-block;
-            text-align: center;
-            border-radius: 25px;
-            padding: 0.5rem 1.1rem;
-            font-weight: 500;
-            font-size: 0.82rem;
-            box-shadow: 0 3px 10px rgba(45, 106, 79, 0.22);
-            transition: all 0.25s ease;
-            cursor: pointer;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-dark);
-            border-color: var(--primary-dark);
-            color: var(--accent-gold) !important;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(27, 67, 50, 0.32);
-        }
-
-        /* ==========================================
-           6. OM OSS SEKTION
-           ========================================== */
-        .about-intro-section {
-            padding: 2.5rem 5% 1rem 5%;
-            text-align: center;
-        }
-
-        .about-intro-container {
-            max-width: 850px;
-            margin: 0 auto;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            padding: 2rem 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--glass-border);
-            border-left: 5px solid var(--primary-green);
-            text-align: left;
-        }
-
-        .about-intro-section h2 {
-            font-size: 2.2rem;
-            color: var(--primary-dark);
-            margin-bottom: 0.8rem;
-            text-align: center;
-            font-weight: 600;
+        .hero p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
             letter-spacing: 0.5px;
         }
 
-        .about-intro-section p {
-            color: var(--text-dark);
-            font-size: 0.95rem;
-            line-height: 1.65;
-            margin-bottom: 0.8rem;
-            font-weight: 300;
+        .btn-main {
+            background-color: var(--accent);
+            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(230, 185, 129, 0.3);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            background-color: #dcb079;
         }
 
         /* ==========================================
-           7. PRODUKTSEKTIONER
+           4. OM OSS
+           ========================================== */
+        .about-section {
+            padding: 6rem 10%;
+            text-align: center;
+            background-color: var(--white);
+        }
+
+        .about-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* ==========================================
+           5. PRODUKTER
            ========================================== */
         .products-section {
-            padding: 3.5rem 5%;
+            padding: 6rem 5%;
+            background-color: #f7f9f7;
+        }
+        
+        .section-title {
             text-align: center;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(6px);
-            margin: 2rem 0;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-        }
-
-        .alt-bg {
-            background-color: rgba(240, 244, 239, 0.75);
-        }
-
-        .products-section h2 {
-            font-size: 2rem;
-            font-weight: 500;
-            letter-spacing: 0.8px;
-            margin-bottom: 1.5rem;
-            color: var(--primary-dark);
-            cursor: pointer;
-            display: inline-block;
-            transition: color 0.2s;
-        }
-
-        .products-section h2:hover {
-            color: var(--primary-green);
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .product-card {
-            background: rgba(255, 255, 255, 0.96);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--glass-border);
-            text-align: left;
-            cursor: pointer;
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .product-card:hover img {
-            transform: scale(1.07);
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .product-card h3 {
-            margin-bottom: 0.4rem;
-            color: var(--primary-green);
-            font-size: 1.15rem;
-            font-weight: 500;
-        }
-
-        .product-card p {
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            font-weight: 300;
-        }
-
-        /* ==========================================
-           8. LAYOUT MED SIDEBAR
-           ========================================== */
-        .content-layout {
-            display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 2rem;
-            max-width: 1300px;
-            margin: 2rem auto;
-            padding: 0 5%;
-        }
-
-        .main-content {
-            min-width: 0;
-        }
-
-        .sidebar-column {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .sidebar-widget {
-            background: var(--glass-bg);
-            backdrop-filter: blur(8px);
-            padding: 1.6rem;
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            border-left: 4px solid var(--primary-green);
-            border-top: 1px solid var(--glass-border);
-        }
-
-        .sidebar-widget h3 {
-            color: var(--primary-dark);
-            margin-bottom: 0.8rem;
-            font-size: 1.15rem;
-            font-weight: 500;
-        }
-
-        .sidebar-widget p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.55;
-            font-weight: 300;
-        }
-
-        .store-location h4 {
-            color: var(--primary-green);
-            font-size: 0.95rem;
-            margin-bottom: 0.3rem;
-            font-weight: 500;
-        }
-
-        .map-container {
-            margin-top: 0.6rem;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        /* ==========================================
-           9. NYHETSBREV
-           ========================================== */
-        .newsletter-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            max-width: 850px;
-            margin: 3rem auto 1rem auto;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            text-align: center;
-            border-top: 4px solid var(--accent-gold);
-            border-left: 1px solid var(--glass-border);
-            border-right: 1px solid var(--glass-border);
-        }
-
-        .newsletter-section h3 {
-            color: var(--primary-dark);
-            font-size: 2.2rem;
-            margin-bottom: 0.4rem;
-            font-weight: 600;
-        }
-
-        .newsletter-section p {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            max-width: 520px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .newsletter-form input[type="email"] {
-            flex: 1;
-            min-width: 250px;
-            padding: 0.8rem 1.2rem;
-            border: 1.5px solid #e0e0e0;
-            border-radius: 30px;
-            font-size: 0.92rem;
-            outline: none;
-            transition: all 0.25s ease;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
-            font-weight: 300;
-        }
-
-        .newsletter-form input[type="email"]:focus {
-            border-color: var(--primary-green);
-            box-shadow: 0 0 0 4px rgba(45, 106, 79, 0.15);
-        }
-
-        /* ==========================================
-           10. KONTAKT & FOOTER
-           ========================================== */
-        .contact-footer-wrapper {
-            background: linear-gradient(180deg, var(--primary-dark) 0%, #0d2818 100%);
-            color: white;
-            margin-top: 4rem;
-            padding: 4rem 5% 2rem 5%;
-            border-top: 4px solid var(--accent-gold);
-            position: relative;
-        }
-
-        .contact-container {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .contact-header {
+        .product-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .contact-header h2 {
-            font-size: 2.2rem;
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .contact-header p {
-            color: #d8f3dc;
-            font-size: 1rem;
-            font-weight: 300;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-            margin-bottom: 3.5rem;
-        }
-
-        .contact-info-card {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
-            padding: 2.2rem;
-        }
-
-        .contact-info-card h3 {
-            color: #ffffff;
-            font-size: 1.3rem;
-            margin-bottom: 1.2rem;
-            border-bottom: 2px solid rgba(255, 183, 3, 0.4);
-            padding-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .contact-detail-item {
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.03);
             display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 1.5rem;
+            flex-direction: column;
         }
 
-        .contact-detail-item .icon-box {
-            background: rgba(255, 183, 3, 0.15);
-            color: var(--accent-gold);
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--accent);
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .card-content {
+            padding: 2rem 1.5rem;
+            flex-grow: 1;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .contact-detail-item div h4 {
+        .product-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card p {
+            color: var(--text-light);
             font-size: 0.95rem;
-            color: #ffffff;
-            margin-bottom: 2px;
-            font-weight: 500;
-        }
-
-        .contact-detail-item div p, .contact-detail-item div a {
-            color: #b7e4c7;
-            font-size: 0.88rem;
-            text-decoration: none;
-            transition: color 0.2s;
-            font-weight: 300;
-        }
-
-        .contact-detail-item div a:hover {
-            color: var(--accent-gold);
-        }
-
-        .social-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 1.5rem;
-        }
-
-        .social-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 0.5rem 1.1rem;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 400;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.25s ease;
-        }
-
-        .social-btn:hover {
-            background: var(--accent-gold);
-            color: var(--primary-dark);
-            transform: translateY(-2px);
-            font-weight: 500;
-        }
-
-        .contact-form-card {
-            background: rgba(255, 255, 255, 0.97);
-            color: var(--text-dark);
-            border-radius: 20px;
-            padding: 2.2rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-        }
-
-        .contact-form-card h3 {
-            color: var(--primary-dark);
-            font-size: 1.3rem;
-            margin-bottom: 0.4rem;
-            font-weight: 500;
-        }
-
-        .contact-form-card p {
-            color: #666;
-            font-size: 0.88rem;
             margin-bottom: 1.5rem;
-            font-weight: 300;
         }
 
-        .form-group {
-            margin-bottom: 1.1rem;
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid var(--primary-dark);
+            color: var(--primary-dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            margin-top: auto;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--primary-green);
-            margin-bottom: 0.3rem;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 0.7rem 1rem;
-            border: 1.5px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            outline: none;
-            transition: border-color 0.2s;
-            background: #fafafa;
-            font-weight: 300;
-        }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: var(--primary-green);
-            background: #ffffff;
-        }
-
-        .contact-form-card button[type="submit"] {
-            width: 100%;
-            margin-top: 0.5rem;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
-            padding-top: 1.8rem;
-            text-align: center;
-            color: #95d5b2;
-            font-size: 0.82rem;
-            font-weight: 300;
+        .btn-outline:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
         }
 
         /* ==========================================
-           11. MODAL & DIVERSE WIDGETS
+           6. INFO & BUTIKER
+           ========================================== */
+        .info-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 6rem 10%;
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        .info-box {
+            background: rgba(255,255,255,0.04);
+            padding: 3rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .info-box h3 {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+        }
+
+        /* ==========================================
+           7. MODAL (PRODUKTKORT-POPUP MED KÖPKNAPP)
            ========================================== */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 2000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.65);
-            backdrop-filter: blur(6px);
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
             overflow-y: auto;
-            padding: 20px 10px;
-            animation: fadeIn 0.25s ease;
+            padding: 40px 10px;
         }
 
         .modal-content {
-            background-color: #ffffff;
-            margin: 4% auto;
-            padding: 2rem;
-            border-radius: 20px;
+            background-color: var(--white);
+            margin: 0 auto;
+            padding: 2.5rem;
+            border-radius: 15px;
             max-width: 900px;
-            width: 95%;
             position: relative;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
         }
 
         .close-btn {
             position: absolute;
             right: 1.5rem;
             top: 1rem;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #888;
+            font-size: 2.5rem;
+            color: var(--text-light);
             cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .close-btn:hover {
-            color: #000;
-        }
-
-        .modal-header {
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 1rem;
+            line-height: 1;
         }
 
         .modal-header h2 {
-            color: var(--primary-dark);
-            font-weight: 500;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1.5rem;
         }
 
         .package-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.2rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
         }
 
         .package-item {
-            border: 1px solid #e8e8e8;
-            border-radius: 12px;
-            padding: 1.1rem;
-            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 1.5rem;
             text-align: center;
-            transition: transform 0.2s ease;
-        }
-
-        .package-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+            background-color: #fafafa;
+            display: flex;
+            flex-direction: column;
         }
 
         .package-item img {
             width: 100%;
-            height: 150px;
+            height: 160px;
             object-fit: cover;
             border-radius: 8px;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .package-item h4 {
-            color: var(--primary-green);
-            margin-bottom: 0.4rem;
-            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
-        .package-item .badge {
-            display: inline-block;
-            background: #e8f5e9;
-            color: #2e7d32;
-            font-size: 0.72rem;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+        .package-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
         }
 
         .package-item p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            margin-bottom: 0.8rem;
-            font-weight: 300;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            flex-grow: 1;
         }
 
-        .music-player-widget {
+        .badge {
+            display: inline-block;
+            background-color: #e8f0e9;
+            color: var(--primary-dark);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 0.8rem;
+        }
+
+        /* ==========================================
+           8. FOOTER & MUSIK
+           ========================================== */
+        footer {
+            background-color: #1a251b;
+            color: #cccccc;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-col h3 { color: var(--white); margin-bottom: 1.5rem; }
+        .footer-col a { color: var(--accent); text-decoration: none; }
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; font-size: 0.85rem; }
+
+        .music-widget {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            z-index: 999;
+            z-index: 1000;
         }
 
         #musicToggleBtn {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
-            color: white;
-            border: none;
-            padding: 0.7rem 1.4rem;
+            background-color: var(--white);
+            color: var(--primary-dark);
+            border: 1px solid #ddd;
+            padding: 0.6rem 1.2rem;
             border-radius: 30px;
             cursor: pointer;
-            font-weight: 400;
-            font-size: 0.88rem;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        #musicToggleBtn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 900px) {
-            .content-layout {
-                grid-template-columns: 1fr;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
 
-    <!-- Header med Logotyp & Hamburgarmeny -->
+    <!-- HEADER -->
     <header>
-        <div class="logo">
-            <img src="./1784710545310.png" alt="FRUITS 'N ROOTS Logotyp">
-            <span class="logo-text">
-                <span style="color: #ffffff;">FRUITS</span> 
-                <span style="color: #ffb703;">'N</span> 
-                <span style="color: #ffffff;">ROOTS</span>
-            </span>
-        </div>
-        
-        <button class="hamburger-btn" onclick="toggleDrawer()" aria-label="Öppna meny">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <a href="#" class="logo-container">
+            <img src="./1784710545310.png" alt="FRUITS N ROOTS Logotyp">
+            <span class="logo-text">FRUITS N ROOTS</span>
+        </a>
+        <nav class="nav-links">
+            <a href="#frukt">Frystorkat</a>
+            <a href="#seamoss">Sea Moss</a>
+            <a href="#notter">Nötter</a>
+            <a href="#kontakt">Kontakt</a>
+            
+            <!-- Kundkorgs-knapp som öppnar Snipcart -->
+            <button class="cart-btn snipcart-checkout">
+                🛒 <span class="snipcart-items-count">0</span>
+            </button>
+        </nav>
     </header>
 
-    <!-- Drawer Meny Overlay -->
-    <div id="drawerOverlay" class="drawer-overlay" onclick="closeDrawer()"></div>
-
-    <!-- Drawer Sidomeny -->
-    <div id="drawerMenu" class="drawer-menu">
-        <div>
-            <div class="drawer-header">
-                <span class="drawer-title">Meny</span>
-                <div class="close-drawer" onclick="closeDrawer()">&times;</div>
-            </div>
-            <nav class="drawer-nav">
-                <a href="#frukt" onclick="closeDrawer()"><span>Frystorkad Frukt</span> <span class="arrow">➔</span></a>
-                <a href="#seamoss" onclick="closeDrawer()"><span>Sea Moss</span> <span class="arrow">➔</span></a>
-                <a href="#notter" onclick="closeDrawer()"><span>Premium Nötter</span> <span class="arrow">➔</span></a>
-                <a href="#om-oss" onclick="closeDrawer()"><span>✨ Om oss</span> <span class="arrow">➔</span></a>
-                <a href="#nyhetsbrev" onclick="closeDrawer()"><span>✉️ Nyhetsbrev</span> <span class="arrow">➔</span></a>
-                <a href="#hitta-oss" onclick="closeDrawer()"><span>📍 Hitta oss</span> <span class="arrow">➔</span></a>
-                <a href="#kontakt" class="cta-btn" onclick="closeDrawer()">Kontakta oss</a>
-            </nav>
-        </div>
-        <div class="drawer-footer">
-            <span>FRUITS 'N ROOTS</span>
-            <p style="font-size: 0.75rem; color: #666; margin-top: 2px;">Ren hälsa & naturlig kraft</p>
-        </div>
-    </div>
-
-    <!-- Hero -->
+    <!-- HERO SECTION -->
     <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <p>Frystorkade frukter, premium-nötter & vildskördad Sea Moss av högsta kvalitet.</p>
-            <a href="#frukt" class="btn">Utforska sortimentet</a>
+        <h1>Ren hälsa & naturlig kraft</h1>
+        <p>Frystorkade frukter, premium-nötter & vildskördad Sea Moss av högsta kvalitet – från jord till bord.</p>
+        <a href="#frukt" class="btn-main">Utforska Sortimentet</a>
+    </section>
+
+    <!-- OM OSS -->
+    <section id="om-oss" class="about-section">
+        <h2>Välkommen till FRUITS N ROOTS</h2>
+        <p>Din destination för ren hälsa och naturlig livskraft. Vi brinner för att erbjuda frystorkade frukter helt utan tillsatser, vildskördad Sea Moss från rena hav och krispiga premiumnötter av högsta kvalitet.</p>
+        <p>Oavsett om du söker ett hälsosamt vardagssnack eller storpack för ditt företag (B2B), garanterar vi 100% naturliga råvaror. Inga kompromisser.</p>
+    </section>
+
+    <!-- PRODUKTER -->
+    <section class="products-section">
+        <h2 class="section-title">Våra Produkter</h2>
+        <div class="product-grid">
+            
+            <div id="frukt" class="product-card" onclick="openModal('frukt')">
+                <img src="./1784729911178.png" alt="Frystorkad Frukt">
+                <div class="card-content">
+                    <h3>Frystorkad Frukt</h3>
+                    <p>Naturligt söta frystorkade bär och tropiska frukter. Krispiga bowls och påsar, 100% utan tillsatt socker.</p>
+                    <button class="btn-outline">Se produkter & köp</button>
+                </div>
+            </div>
+
+            <div id="seamoss" class="product-card" onclick="openModal('seamoss')">
+                <img src="./1784707625353.png" alt="Purple & Golden Sea Moss Gel">
+                <div class="card-content">
+                    <h3>Purple & Golden Sea Moss</h3>
+                    <p>Ren vildskördad havsmossa. Finns i råform och som fräsch, färdigblandad gelé.</p>
+                    <button class="btn-outline">Se produkter & köp</button>
+                </div>
+            </div>
+
+            <div id="notter" class="product-card" onclick="openModal('notter')">
+                <img src="./1784707424319.png" alt="Premium Nötter">
+                <div class="card-content">
+                    <h3>Premium-nötter</h3>
+                    <p>Nötter av absolut högsta kvalitet. Krispiga mandlar, cashewnötter och fina, hela valnötshalvor.</p>
+                    <button class="btn-outline">Se produkter & köp</button>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Om oss -->
-    <section class="about-intro-section" id="om-oss">
-        <div class="about-intro-container">
-            <h2 class="elegant-heading">Om oss</h2>
-            <p>Välkommen till <strong>FRUITS 'N ROOTS</strong> – din destination för ren hälsa och naturlig livskraft! Vi brinner för att erbjuda frystorkade frukter helt utan tillsatser, vildskördad Sea Moss från rena hav och krispiga premiumnötter av högsta kvalitet.</p>
-            <p>Från jord till bord tror vi på äkta kvalitet och hållbarhet. Oavsett om du söker ett hälsosamt vardagssnack eller storpack för ditt företag, hittar du det hos oss i Göteborg eller här på webben.</p>
+    <!-- BUTIKER & INFO -->
+    <section class="info-section">
+        <div class="info-box">
+            <h3>📍 Våra Butiker i Göteborg</h3>
+            <p><strong>Frölunda Torg</strong><br>Besök vår butik för färska produkter och provsmakning.</p><br>
+            <p><strong>Nordstan</strong><br>Hitta oss mitt i centrala Göteborg i Nordstans shoppingcenter.</p>
+        </div>
+        <div class="info-box">
+            <h3>📦 Partihandel & Bulk (B2B)</h3>
+            <p>Driver du företag och behöver större volymer? Vi erbjuder leverans av nötter, Sea Moss och frystorkat i bulk från mindre påsar upp till 1 000 kg.</p><br>
+            <p>Kontakta oss för prislista och offert.</p>
         </div>
     </section>
 
-    <!-- Main Container med Sidebar och Innehåll -->
-    <div class="content-layout">
-        <div class="main-content">
-            <!-- Sektion: Frukt -->
-            <section id="frukt" class="products-section">
-                <h2 class="elegant-heading" onclick="openModal('frukt')">Frystorkad Frukt</h2>
-                <div class="product-grid">
-                    <div class="product-card" onclick="openModal('frukt')">
-                        <img src="./1784729911178.png" alt="FRUITS 'N ROOTS Frystorkad Frukt och Påsar">
-                        <div class="card-content">
-                            <h3>Krispiga Fruktbowls & Påsar</h3>
-                            <p>Naturligt söta frystorkade bär och tropiska frukter. 100% utan tillsatt socker.</p>
-                            <button class="btn-outline">Se alla fruktpaket & storlekar</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Sektion: Sea Moss -->
-            <section id="seamoss" class="products-section alt-bg">
-                <h2 class="elegant-heading" onclick="openModal('seamoss')">Sea Moss</h2>
-                <div class="product-grid">
-                    <div class="product-card" onclick="openModal('seamoss')">
-                        <img src="./1784707625353.png" alt="Purple & Golden Sea Moss Gel">
-                        <div class="card-content">
-                            <h3>Purple & Golden Sea Moss</h3>
-                            <p>Ren vildskördad havsmossa i både råform och fräsch färdigblandad gelé.</p>
-                            <button class="btn-outline">Se alla Sea Moss-paket & glasburkar</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Sektion: Nötter -->
-            <section id="notter" class="products-section">
-                <h2 class="elegant-heading" onclick="openModal('notter')">Premium-nötter & Bulk</h2>
-                <div class="product-grid">
-                    <div class="product-card" onclick="openModal('notter')">
-                        <img src="./1784707424319.png" alt="FRUITS 'N ROOTS Premium Nötter">
-                        <div class="card-content">
-                            <h3>Pistage, Cashew, Mandlar & Valnötter</h3>
-                            <p>Färska nötter av högsta kvalitet med fina hela valnötshalvor, krispiga mandlar och cashewnötter.</p>
-                            <button class="btn-outline">Se nötpåsar & bulkalternativ</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <!-- FOOTER & KONTAKT -->
+    <footer id="kontakt">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>FRUITS N ROOTS</h3>
+                <p>Ren hälsa & naturlig kraft. Frystorkat, Sea Moss och nötter av högsta kvalitet.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Kontakta Oss</h3>
+                <p><a href="mailto:info@fruitsnroots.com">📧 info@fruitsnroots.com</a></p>
+                <p>Vi svarar normalt inom 24 timmar på vardagar.</p>
+            </div>
         </div>
-
-        <!-- Sidebar Kolumn -->
-        <aside class="sidebar-column">
-            <div class="sidebar-widget">
-                <h3>Vårt Löfte</h3>
-                <p>100% naturliga råvaror utan tillsatser. Vi strävar efter att erbjuda marknadens bästa kvalitet inom hälsa och superfoods.</p>
-            </div>
-
-            <div class="sidebar-widget" id="oppettider">
-                <h3>⏰ Öppettider</h3>
-                <p><strong>Måndag – Söndag:</strong><br>08:00 – 19:00</p>
-            </div>
-
-            <div class="sidebar-widget" id="hitta-oss">
-                <h3>📍 Våra Butiker i Göteborg</h3>
-                
-                <div class="store-location">
-                    <h4>Frölunda Torg</h4>
-                    <p>Besök vår butik/kiosk vid Frölunda Torg för färska produkter och provsmakning.</p>
-                    <div class="map-container">
-                        <iframe width="100%" height="160" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Fr%C3%B6lunda%20Torg,%20G%C3%B6teborg&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
-                    </div>
-                </div>
-
-                <div class="store-location" style="margin-top: 1.5rem;">
-                    <h4>Nordstan</h4>
-                    <p>Hitta oss mitt i centrala Göteborg i Nordstans shoppingcenter.</p>
-                    <div class="map-container">
-                        <iframe width="100%" height="160" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Nordstan,%20G%C3%B6teborg&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sidebar-widget" id="kontakt-sida">
-                <h3>📞 Snabbkontakt</h3>
-                <p>Har du frågor om bulkordrar eller produkter?</p>
-                <a href="#kontakt" class="btn" style="display: block; text-align: center; margin-top: 0.8rem;">Gå till kontakt</a>
-            </div>
-        </aside>
-    </div>
-
-    <!-- Nyhetsbrev -->
-    <section class="newsletter-section" id="nyhetsbrev">
-        <h3 class="elegant-heading">Håll dig uppdaterad</h3>
-        <p>Prenumerera på vårt nyhetsbrev för exklusiva erbjudanden, nya produkter och hälsotips!</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Tack för din prenumeration!');">
-            <input type="email" placeholder="Skriv in din e-postadress..." required>
-            <button type="submit" class="btn">Prenumerera</button>
-        </form>
-    </section>
-
-    <!-- Kontakt & Footer -->
-    <footer class="contact-footer-wrapper" id="kontakt">
-        <div class="contact-container">
-            <div class="contact-header">
-                <h2 class="elegant-heading">Kontakta oss</h2>
-                <p>Har du frågor om våra produkter, vill lägga en bulkbeställning eller besöka våra butiker?</p>
-            </div>
-
-            <div class="contact-grid">
-                <!-- Vänster kolumn: Kontaktinfo & B2B -->
-                <div class="contact-info-card">
-                    <h3>Hör av dig till oss</h3>
-
-                    <div class="contact-detail-item">
-                        <div class="icon-box">📧</div>
-                        <div>
-                            <h4>E-postadress</h4>
-                            <p><a href="mailto:info@fruitsnroots.com">info@fruitsnroots.com</a></p>
-                        </div>
-                    </div>
-
-                    <div class="contact-detail-item">
-                        <div class="icon-box">📍</div>
-                        <div>
-                            <h4>Butiker i Göteborg</h4>
-                            <p>Frölunda Torg & Nordstan Shoppingcenter</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-detail-item">
-                        <div class="icon-box">📦</div>
-                        <div>
-                            <h4>Partihandel & Bulk (B2B)</h4>
-                            <p>Leverans av nötter, Sea Moss & frystorkat från mindre påsar upp till 1 000 kg.</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-detail-item">
-                        <div class="icon-box">⚡</div>
-                        <div>
-                            <h4>Snabb svarstid</h4>
-                            <p>Vi besvarar alla e-postmeddelanden inom 24 timmar på vardagar.</p>
-                        </div>
-                    </div>
-
-                    <h4 style="color: #ffffff; margin-top: 1.5rem; font-size: 0.95rem;">Följ vår resa</h4>
-                    <div class="social-buttons">
-                        <a href="https://instagram.com" target="_blank" class="social-btn">📷 Instagram</a>
-                        <a href="https://tiktok.com" target="_blank" class="social-btn">🎵 TikTok</a>
-                    </div>
-                </div>
-
-                <!-- Höger kolumn: Interaktivt Kontaktformulär -->
-                <div class="contact-form-card">
-                    <h3>Skicka ett meddelande</h3>
-                    <p>Fyll i formuläret nedan så återkommer vi så snabbt vi kan!</p>
-
-                    <form onsubmit="event.preventDefault(); alert('Tack för ditt meddelande! Vi återkommer inom kort.'); this.reset();">
-                        <div class="form-group">
-                            <label for="contact-name">Ditt Namn</label>
-                            <input type="text" id="contact-name" placeholder="För- och efternamn" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contact-email">Din E-post</label>
-                            <input type="email" id="contact-email" placeholder="exempel@email.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contact-subject">Ärende</label>
-                            <select id="contact-subject">
-                                <option value="general">Allmän fråga</option>
-                                <option value="b2b">Bulk & Partihandel (Grossist)</option>
-                                <option value="stores">Butikerna i Göteborg</option>
-                                <option value="feedback">Feedback / Övrigt</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contact-message">Meddelande</label>
-                            <textarea id="contact-message" rows="4" placeholder="Skriv ditt meddelande här..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn">Skicka Meddelande</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Copyright -->
-            <div class="footer-bottom">
-                <p>&copy; 2026 FRUITS 'N ROOTS. Alla rättigheter förbehållna. Ren hälsa & naturlig kraft.</p>
-            </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 FRUITS N ROOTS. Alla rättigheter förbehållna.</p>
         </div>
     </footer>
 
-    <!-- Modal -->
+    <!-- MODAL FÖR PRODUKTER (Genereras av JS) -->
     <div id="productModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -1215,132 +594,50 @@
         </div>
     </div>
 
-    <!-- Flytande musikspelare -->
-    <div class="music-player-widget">
-        <button id="musicToggleBtn" onclick="toggleMusic()">
-            🎵 <span id="musicBtnText">Spela låt</span>
-        </button>
-        <audio id="bgMusic" loop>
-            <source src="Fruitsnroots.mp3" type="audio/mpeg">
-            Din webbläsare stöder inte ljudelementet.
-        </audio>
+    <!-- MUSIK-WIDGET -->
+    <div class="music-widget">
+        <button id="musicToggleBtn" onclick="toggleMusic()">🎵 <span id="musicBtnText">Spela musik</span></button>
+        <audio id="bgMusic" loop><source src="Fruitsnroots.mp3" type="audio/mpeg"></audio>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JAVASCRIPT & E-HANDEL SDATA -->
     <script>
-        function toggleDrawer() {
-            const drawer = document.getElementById('drawerMenu');
-            const overlay = document.getElementById('drawerOverlay');
-            drawer.classList.toggle('open');
-            overlay.style.display = drawer.classList.contains('open') ? 'block' : 'none';
-        }
-
-        function closeDrawer() {
-            const drawer = document.getElementById('drawerMenu');
-            const overlay = document.getElementById('drawerOverlay');
-            drawer.classList.remove('open');
-            overlay.style.display = 'none';
-        }
-
+        // Produktdatan med Priser och Unika E-handels ID:n
         const packageData = {
             frukt: {
                 title: "Frystorkade Fruktpaket & Påsar",
-                intro: "Välj bland våra krispiga, naturliga frystorkade frukter utan tillsatser:",
+                intro: "Krispiga, naturliga frystorkade frukter helt utan tillsatser.",
                 packages: [
-                    { 
-                        name: "Skivade Jordgubbar", 
-                        size: "50g - 100g Påse", 
-                        desc: "Söta och krispiga frystorkade jordgubbs-skivor i produktpåse.", 
-                        img: "./1784907097844.png" 
-                    },
-                    { 
-                        name: "Tropisk Mangomix", 
-                        size: "100g Påse", 
-                        desc: "Intensiv smak av solmogen frystorkad mango i förslutningsbar påse.", 
-                        img: "./1784907251270.png" 
-                    },
-                    { 
-                        name: "Frystorkade Hallon", 
-                        size: "50g Påse", 
-                        desc: "Krispiga och smakrika frystorkade helbär med härlig sötma och syra.", 
-                        img: "./1784734785323.png" 
-                    },
-                    { 
-                        name: "Frystorkad Drakfrukt", 
-                        size: "50g / 75g Påse", 
-                        desc: "Exotisk och vacker frystorkad drakfrukt full av färg och smak.", 
-                        img: "./1784907182584.png" 
-                    }
+                    { id: "frukt-jordgubb", price: "69.00", name: "Skivade Jordgubbar", size: "50g Påse", desc: "Söta frystorkade jordgubbs-skivor.", img: "./1784907097844.png" },
+                    { id: "frukt-mango", price: "79.00", name: "Tropisk Mangomix", size: "100g Påse", desc: "Intensiv smak av solmogen frystorkad mango.", img: "./1784907251270.png" },
+                    { id: "frukt-hallon", price: "69.00", name: "Frystorkade Hallon", size: "50g Påse", desc: "Krispiga helbär med härlig sötma och syra.", img: "./1784734785323.png" },
+                    { id: "frukt-drakfrukt", price: "89.00", name: "Frystorkad Drakfrukt", size: "75g Påse", desc: "Exotisk och vacker frystorkad drakfrukt.", img: "./1784907182584.png" }
                 ]
             },
             seamoss: {
                 title: "Sea Moss Sortiment",
-                intro: "Välj din favorit av vår vildskördade irländska havsmossa:",
+                intro: "Välj din favorit av vår rena, vildskördade havsmossa.",
                 packages: [
-                    { 
-                        name: "Golden Sea Moss Gel", 
-                        size: "375 ml Glasburk", 
-                        desc: "Klassisk näringsrik guldgelé redo att avnjutas direkt eller i smoothies.",
-                        img: "./1784906366996.png"
-                    },
-                    { 
-                        name: "Purple Sea Moss Gel", 
-                        size: "375 ml Glasburk", 
-                        desc: "Sällsynt lila havsmoss-gelé rik på antocyaniner och kraftfulla näringsämnen.",
-                        img: "./1784906173116.png"
-                    },
-                    { 
-                        name: "Rå Torkad Golden Moss", 
-                        size: "100g Påse (Råform)", 
-                        desc: "För dig som vill blötlägga och koka din egen fräscha gelé hemma.",
-                        img: "./1784906440086.png"
-                    },
-                    { 
-                        name: "Rå Torkad Purple Moss", 
-                        size: "100g Påse (Råform)", 
-                        desc: "100% naturlig vildskördad lila Chondrus crispus i torkad form.",
-                        img: "./1784906477486.png"
-                    }
+                    { id: "sm-gold-gel", price: "249.00", name: "Golden Sea Moss Gel", size: "375 ml", desc: "Klassisk näringsrik guldgelé redo att avnjutas.", img: "./1784906366996.png" },
+                    { id: "sm-purple-gel", price: "299.00", name: "Purple Sea Moss Gel", size: "375 ml", desc: "Ren lila havsmossa. Endast källvatten och färsk lime. Helt utan bär eller onödiga tillsatser.", img: "./1784906173116.png" },
+                    { id: "sm-gold-raw", price: "199.00", name: "Rå Torkad Golden Moss", size: "100g Påse", desc: "För dig som vill blötlägga och koka egen gelé.", img: "./1784906440086.png" },
+                    { id: "sm-purple-raw", price: "249.00", name: "Rå Torkad Purple Moss", size: "100g Påse", desc: "100% naturlig lila havsmossa i torkad form.", img: "./1784906477486.png" }
                 ]
             },
             notter: {
-                title: "Nötpåsar & Bulk-partier",
-                intro: "Våra premiumnötter finns i konsumentpåsar samt partier för B2B/grossist:",
+                title: "Premium Nötter & Bulk",
+                intro: "Premiumnötter i konsumentpåsar samt partier för B2B/grossist.",
                 packages: [
-                    { 
-                        name: "Valnötshalvor Premium", 
-                        size: "250g / 500g Påse", 
-                        desc: "Riktigt fina, hela valnötshalvor av högsta sortering.",
-                        img: "./1784905572207.png"
-                    },
-                    { 
-                        name: "Skalade Pistagenötter", 
-                        size: "200g / 500g Påse", 
-                        desc: "Gröna, aromatiska och krispiga pistagenötter redo att ätas.",
-                        img: "./1784905679038.png"
-                    },
-                    { 
-                        name: "Krämiga Cashewnötter", 
-                        size: "250g / 500g Påse", 
-                        desc: "Stora, naturliga cashews med härlig mjuk textur.",
-                        img: "./1784905645560.png"
-                    },
-                    { 
-                        name: "Gyllene Mandlar", 
-                        size: "250g / 500g Påse", 
-                        desc: "Solmogna, krispiga mandlar packade med protein och fiber.",
-                        img: "./1784905760867.png"
-                    },
-                    { 
-                        name: "Bulk-mix Partier (Partihandel)", 
-                        size: "Upp till 1 000 kg (1 Ton)", 
-                        desc: "För grossister, bagerier och återförsäljare. Kontakta oss för offert.",
-                        img: "./1784906643451.png"
-                    }
+                    { id: "not-valnot", price: "149.00", name: "Valnötshalvor Premium", size: "500g Påse", desc: "Fina, hela valnötshalvor. Inga krossade bitar.", img: "./1784905572207.png" },
+                    { id: "not-pistage", price: "159.00", name: "Skalade Pistagenötter", size: "500g Påse", desc: "Gröna, aromatiska och krispiga pistagenötter.", img: "./1784905679038.png" },
+                    { id: "not-cashew", price: "129.00", name: "Krämiga Cashewnötter", size: "500g Påse", desc: "Stora, naturliga cashews med mjuk textur.", img: "./1784905645560.png" },
+                    { id: "not-mandel", price: "119.00", name: "Gyllene Mandlar", size: "500g Påse", desc: "Solmogna, krispiga mandlar packade med protein.", img: "./1784905760867.png" },
+                    { isB2B: true, name: "Bulk-partier (B2B)", size: "Upp till 1 000 kg", desc: "För grossister och bagerier. Kontakta oss för offert.", img: "./1784906643451.png" }
                 ]
             }
         };
 
+        // Hantera Modalfönstret och generera köpknappar
         function openModal(category) {
             const data = packageData[category];
             if (!data) return;
@@ -1348,26 +645,42 @@
             let html = `
                 <div class="modal-header">
                     <h2>${data.title}</h2>
-                    <p style="color:#666; margin-top:5px;">${data.intro}</p>
+                    <p>${data.intro}</p>
                 </div>
                 <div class="package-grid">
             `;
 
             data.packages.forEach(pkg => {
-                let imgHtml = pkg.img ? `<img src="${pkg.img}" alt="${pkg.name}">` : '';
+                let imgHtml = pkg.img ? `<img src="${pkg.img}" alt="${pkg.name}" onerror="this.src='https://via.placeholder.com/200x160?text=Bild+saknas'">` : '';
+                
+                // Generera Snipcart-knapp om det är en vanlig produkt, eller länk till kontakt för Bulk
+                let buttonHtml = pkg.isB2B 
+                    ? `<a href="#kontakt" onclick="closeModal()" class="btn-outline" style="text-align:center; display:block; text-decoration:none; margin-top:auto;">Begär Offert</a>`
+                    : `<button class="btn-outline snipcart-add-item" style="width:100%; margin-top:auto;"
+                            data-item-id="${pkg.id}"
+                            data-item-price="${pkg.price}"
+                            data-item-url="/"
+                            data-item-description="${pkg.desc}"
+                            data-item-image="${pkg.img}"
+                            data-item-name="${pkg.name}">
+                            Lägg i kundkorg
+                        </button>`;
+                
+                let priceHtml = pkg.price ? `<div class="package-price">${pkg.price} kr</div>` : '';
+
                 html += `
                     <div class="package-item">
                         ${imgHtml}
                         <span class="badge">${pkg.size}</span>
                         <h4>${pkg.name}</h4>
+                        ${priceHtml}
                         <p>${pkg.desc}</p>
-                        <a href="#kontakt" onclick="closeModal()" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.8rem;">Kontakta / Beställ</a>
+                        ${buttonHtml}
                     </div>
                 `;
             });
 
             html += `</div>`;
-
             document.getElementById('modalBody').innerHTML = html;
             document.getElementById('productModal').style.display = 'block';
         }
@@ -1383,30 +696,21 @@
             }
         }
 
+        // Hantera Musiken
         const music = document.getElementById('bgMusic');
         const musicBtnText = document.getElementById('musicBtnText');
         let isPlaying = false;
-
         function toggleMusic() {
-            if (isPlaying) {
-                music.pause();
-                musicBtnText.textContent = "Spela låt";
-                isPlaying = false;
-            } else {
-                music.play().then(() => {
-                    musicBtnText.textContent = "Pausa låt";
-                    isPlaying = true;
-                }).catch(error => {
-                    console.log("Kunde inte spela upp ljudet automatiskt:", error);
-                    alert("Kontrollera att ljudfilen heter 'Fruitsnroots.mp3' och ligger i samma mapp.");
-                });
-            }
+            if (isPlaying) { music.pause(); musicBtnText.textContent = "Spela musik"; isPlaying = false; } 
+            else { music.play(); musicBtnText.textContent = "Pausa musik"; isPlaying = true; }
         }
     </script>
 
-    <!-- Botpress AI Chatbot Skript -->
-    <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
-    <script src="https://files.bpcontent.cloud/2026/07/22/11/20260722115943-CVTZXKE0.js" defer></script>
+    <!-- Snipcart JS (Kärnan i varukorgen) -->
+    <script async src="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.js"></script>
+    
+    <!-- VIKTIGT: Byt ut koden nedan mot din riktiga Snipcart API-nyckel -->
+    <div hidden id="snipcart" data-api-key="DIN_API_NYCKEL_HÄR" data-config-modal-style="side"></div>
 
 </body>
 </html>
