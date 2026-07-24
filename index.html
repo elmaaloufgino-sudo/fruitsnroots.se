@@ -61,34 +61,111 @@
         }
 
         .logo-text {
-            font-size: 1.7rem;
+            font-size: 2rem;
             letter-spacing: 0.5px;
             white-space: nowrap;
         }
 
-        nav {
+        /* Hamburgarmeny-knapp */
+        .hamburger-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
             display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: #2d6a4f;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Drawer Meny (Sidomeny) */
+        .drawer-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            backdrop-filter: blur(3px);
+        }
+
+        .drawer-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 1001;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            transition: right 0.35s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+        }
+
+        .drawer-menu.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-drawer {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+        }
+
+        .close-drawer:hover {
+            color: #000;
+        }
+
+        .drawer-nav {
+            display: flex;
+            flex-direction: column;
             gap: 1.2rem;
         }
 
-        nav a {
+        .drawer-nav a {
             text-decoration: none;
-            color: #4a5568;
+            color: #2b2b2b;
             font-weight: 500;
-            font-size: 0.95rem;
-            white-space: nowrap;
+            font-size: 1.1rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f9f9f9;
+            transition: color 0.2s;
         }
 
-        nav a:hover {
+        .drawer-nav a:hover {
             color: #2d6a4f;
         }
 
-        .cta-btn {
+        .drawer-nav .cta-btn {
             background-color: #2d6a4f;
             color: white !important;
-            padding: 0.5rem 1rem;
+            text-align: center;
             border-radius: 5px;
+            padding: 0.8rem;
+            border-bottom: none;
+            margin-top: 0.5rem;
         }
 
         /* Om oss-sektion som en kompakt ruta */
@@ -481,31 +558,11 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
-                padding: 1rem;
-            }
-            .logo {
-                align-self: flex-start;
-            }
-            nav {
-                gap: 0.8rem;
-                flex-wrap: wrap;
-                justify-content: flex-start;
-            }
-            nav a {
-                font-size: 0.85rem;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Header med Logotyp & Hamburgarmeny -->
     <header>
         <div class="logo">
             <img src="./1784710545310.png" alt="FRUITS 'N ROOTS Logotyp">
@@ -515,15 +572,33 @@
                 <span style="color: #2d6a4f;">ROOTS</span>
             </span>
         </div>
-        <nav>
-            <a href="#frukt">Frukt</a>
-            <a href="#seamoss">Sea Moss</a>
-            <a href="#notter">Nötter</a>
-            <a href="#om-oss">Om oss</a>
-            <a href="#hitta-oss">Hitta oss</a>
-            <a href="#kontakt" class="cta-btn">Kontakt</a>
-        </nav>
+        
+        <!-- Hamburgare-knapp -->
+        <button class="hamburger-btn" onclick="toggleDrawer()" aria-label="Öppna meny">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
+
+    <!-- Drawer Meny Overlay -->
+    <div id="drawerOverlay" class="drawer-overlay" onclick="closeDrawer()"></div>
+
+    <!-- Drawer Sidomeny -->
+    <div id="drawerMenu" class="drawer-menu">
+        <div class="drawer-header">
+            <span class="elegant-heading" style="font-size: 1.8rem; color: #2d6a4f;">Meny</span>
+            <span class="close-drawer" onclick="closeDrawer()">&times;</span>
+        </div>
+        <nav class="drawer-nav">
+            <a href="#frukt" onclick="closeDrawer()">Frukt</a>
+            <a href="#seamoss" onclick="closeDrawer()">Sea Moss</a>
+            <a href="#notter" onclick="closeDrawer()">Nötter</a>
+            <a href="#om-oss" onclick="closeDrawer()">Om oss</a>
+            <a href="#hitta-oss" onclick="closeDrawer()">Hitta oss</a>
+            <a href="#kontakt" class="cta-btn" onclick="closeDrawer()">Kontakt</a>
+        </nav>
+    </div>
 
     <!-- Hero -->
     <section class="hero">
@@ -666,6 +741,21 @@
 
     <!-- JavaScript -->
     <script>
+        // Drawer meny funktioner
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawerMenu');
+            const overlay = document.getElementById('drawerOverlay');
+            drawer.classList.toggle('open');
+            overlay.style.display = drawer.classList.contains('open') ? 'block' : 'none';
+        }
+
+        function closeDrawer() {
+            const drawer = document.getElementById('drawerMenu');
+            const overlay = document.getElementById('drawerOverlay');
+            drawer.classList.remove('open');
+            overlay.style.display = 'none';
+        }
+
         const packageData = {
             frukt: {
                 title: "Frystorkade Fruktpaket & Påsar",
