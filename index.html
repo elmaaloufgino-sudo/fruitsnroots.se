@@ -14,7 +14,7 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, .logo, .hero-content p, .products-section h2, .package-item h4 {
+        h1, h2, h3, h4, .hero-content p, .products-section h2, .package-item h4 {
             font-family: 'Fredoka', sans-serif;
         }
 
@@ -44,8 +44,7 @@
             gap: 12px;
             font-size: 1.5rem;
             font-weight: 700;
-            font-family: 'Dancing Script', cursive;
-            color: #ffb703; /* Guld */
+            text-align: left;
         }
 
         .logo img {
@@ -54,6 +53,14 @@
             object-fit: cover;
             border-radius: 50%;
             border: 2px solid #2d6a4f;
+        }
+
+        .logo-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         nav {
@@ -81,31 +88,37 @@
             border-radius: 5px;
         }
 
-        /* Ny "Om oss"-sektion placerad mellan header och hero */
+        /* Om oss-sektion som en kompakt ruta */
         .about-intro-section {
-            background: linear-gradient(135deg, #f4f9f4 0%, #e8f4ec 100%);
-            padding: 3rem 5%;
+            padding: 2.5rem 5% 1rem 5%;
             text-align: center;
-            border-bottom: 1px solid #d8e8dc;
         }
 
         .about-intro-container {
             max-width: 850px;
             margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 2rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-left: 5px solid #2d6a4f;
+            text-align: left;
         }
 
         .about-intro-section h2 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: #1b4332;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             font-weight: 700;
+            text-align: center;
         }
 
         .about-intro-section p {
             color: #444;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
         }
 
         .hero {
@@ -119,18 +132,13 @@
             padding: 0 1rem;
             overflow: hidden;
             background-color: #1b4332;
+            margin-top: 1.5rem;
         }
 
         @keyframes heroZoom {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.10);
-            }
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.10); }
+            100% { transform: scale(1); }
         }
 
         .hero-bg {
@@ -151,24 +159,16 @@
         }
 
         .hero-title {
-            font-size: 3.2rem;
+            font-size: 2.4rem;
             font-weight: 600;
             margin-bottom: 0.8rem;
             text-shadow: 0 3px 8px rgba(0,0,0,0.5);
             letter-spacing: 1px;
-            color: #ffb703;
-        }
-
-        .color-fruits {
-            color: #ff4d6d;
-        }
-
-        .color-roots {
-            color: #ffd166;
+            color: #2d6a4f;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 1.5rem;
             max-width: 600px;
             margin-left: auto;
@@ -483,13 +483,17 @@
         @media (max-width: 600px) {
             header {
                 flex-direction: column;
+                align-items: flex-start;
                 gap: 0.8rem;
                 padding: 1rem;
+            }
+            .logo {
+                align-self: flex-start;
             }
             nav {
                 gap: 0.8rem;
                 flex-wrap: wrap;
-                justify-content: center;
+                justify-content: flex-start;
             }
             nav a {
                 font-size: 0.85rem;
@@ -503,7 +507,11 @@
     <header>
         <div class="logo">
             <img src="./1784710545310.png" alt="FRUITS 'N ROOTS Logotyp">
-            <span>FRUITS 'N ROOTS</span>
+            <span class="logo-text">
+                <span style="color: #2d6a4f;">FRUITS</span> 
+                <span style="color: #ffb703;">'N</span> 
+                <span style="color: #2d6a4f;">ROOTS</span>
+            </span>
         </div>
         <nav>
             <a href="#frukt">Frukt</a>
@@ -515,12 +523,12 @@
         </nav>
     </header>
 
-    <!-- Om oss - Utökad sektion placerad mellan Header och Hero -->
+    <!-- Om oss - Kompakt ruta -->
     <section class="about-intro-section" id="om-oss">
         <div class="about-intro-container">
             <h2>Vilka är FRUITS 'N ROOTS?</h2>
-            <p>Välkommen till vår värld av ren hälsa och naturlig livskraft! På <strong>FRUITS 'N ROOTS</strong> brinner vi för att erbjuda det allra bästa som naturen har att erbjuda. Vår affärsidé bygger på en stark övertygelse om att riktig mat ska vara fri från onödiga tillsatser, sockerbomber och industriella processer. Vi handplockar därför ett exklusivt sortiment av krispiga, frystorkade frukter som behåller alla sina naturliga vitaminer och smaker, vildskördad näringsrik Sea Moss från rena hav, samt noggrant utvalda premiumnötter av högsta kvalitet.</p>
-            <p>Vi tror på hållbarhet, transparens och äkta kvalitet i varje led – från jord till bord. Oavsett om du letar efter en hälsosam vardagssnack, ingredienser till din smoothie eller storpack och bulkordrar för ditt företag, finns vi här för att ge dig en smakupplevelse utöver det vanliga. Besök oss gärna i våra butiker i Göteborg eller upptäck vårt sortiment här på webben!</p>
+            <p>Välkommen till <strong>FRUITS 'N ROOTS</strong> – din destination för ren hälsa och naturlig livskraft! Vi brinner för att erbjuda frystorkade frukter helt utan tillsatser, vildskördad Sea Moss från rena hav och krispiga premiumnötter av högsta kvalitet.</p>
+            <p>Från jord till bord tror vi på äkta kvalitet och hållbarhet. Oavsett om du söker ett hälsosamt vardagssnack eller storpack för ditt företag, hittar du det hos oss i Göteborg eller här på webben.</p>
         </div>
     </section>
 
@@ -528,7 +536,7 @@
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1 class="hero-title"><span class="color-fruits">FRUITS 'N</span> <span class="color-roots">ROOTS</span></h1>
+            <h1 class="hero-title" style="color: #2d6a4f;">FRUITS 'N ROOTS</h1>
             <p>Frystorkade frukter, premium-nötter & vildskördad Sea Moss av högsta kvalitet.</p>
             <a href="#frukt" class="btn">Utforska sortimentet</a>
         </div>
