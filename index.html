@@ -14,7 +14,7 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, .logo, .hero-content p, .products-section h2, .package-item h4 {
+        h1, h2, h3, h4, .logo, .hero-title, .products-section h2, .package-item h4 {
             font-family: 'Fredoka', sans-serif;
         }
 
@@ -83,7 +83,7 @@
 
         .hero {
             position: relative;
-            height: 42vh;
+            height: 48vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -112,7 +112,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('./1784729911178.png') no-repeat center center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./1784729911178.png') no-repeat center center;
             background-size: cover;
             z-index: 1;
             animation: heroZoom 6s ease-in-out infinite;
@@ -121,6 +121,15 @@
         .hero-content {
             position: relative;
             z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 600; /* Mjukare vikt */
+            margin-bottom: 0.8rem;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
+            color: #ffb703; /* Varm guldig och mjuk ton */
         }
 
         .hero-content p {
@@ -161,72 +170,12 @@
             color: white;
         }
 
-        /* Tvåkolumns-layout med Sidebar */
-        .content-layout {
-            display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 2rem;
-            max-width: 1300px;
-            margin: 2rem auto;
-            padding: 0 5%;
-        }
-
-        .main-content {
-            min-width: 0;
-        }
-
-        .sidebar-column {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .sidebar-widget {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            padding: 1.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            border-left: 4px solid #2d6a4f;
-        }
-
-        .sidebar-widget h3 {
-            color: #1b4332;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .sidebar-widget p {
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.5;
-        }
-
-        .store-location h4 {
-            color: #2d6a4f;
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .map-container {
-            margin-top: 0.6rem;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
-        }
-
-        @media (max-width: 900px) {
-            .content-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .products-section {
-            padding: 3rem 5%;
+            padding: 4rem 5%;
             text-align: center;
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(4px);
-            margin-bottom: 2rem;
+            margin: 2rem 0;
             border-radius: 20px;
         }
 
@@ -254,7 +203,7 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             max-width: 1100px;
             margin: 0 auto;
@@ -277,7 +226,7 @@
 
         .product-card img {
             width: 100%;
-            height: 220px;
+            height: 240px;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
@@ -436,6 +385,66 @@
             margin-top: 0.5rem;
         }
 
+        /* Tvåkolumns-layout med Sidebar */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 2rem auto;
+            padding: 0 5%;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        .sidebar-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-widget {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-left: 4px solid #2d6a4f;
+        }
+
+        .sidebar-widget h3 {
+            color: #1b4332;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .sidebar-widget p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .store-location h4 {
+            color: #2d6a4f;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .map-container {
+            margin-top: 0.6rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 900px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 600px) {
             header {
                 flex-direction: column;
@@ -449,6 +458,9 @@
             }
             nav a {
                 font-size: 0.85rem;
+            }
+            .hero-title {
+                font-size: 2.2rem;
             }
         }
     </style>
@@ -475,6 +487,7 @@
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
+            <h1 class="hero-title">FRUITS 'N ROOTS</h1>
             <p>Frystorkade frukter, premium-nötter & vildskördad Sea Moss av högsta kvalitet.</p>
             <a href="#frukt" class="btn">Utforska sortimentet</a>
         </div>
