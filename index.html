@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRUITS 'N ROOTS | Frystorkade Frukter, Sea Moss & Nötter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Fredoka:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Fredoka:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,6 +12,11 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
+        }
+
+        /* Perfekt offset vid klick i menyn så headern inte döljer rubriker */
+        section, div[id] {
+            scroll-margin-top: 90px;
         }
 
         h1, h3, h4, .hero-content p, .package-item h4 {
@@ -24,45 +29,48 @@
         }
 
         body {
-            background: linear-gradient(rgba(255, 255, 255, 0.87), rgba(255, 255, 255, 0.87)), url('./1784729911178.png') no-repeat center center fixed;
+            background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('./1784729911178.png') no-repeat center center fixed;
             background-size: cover;
             color: #2b2b2b;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* Låst lyxig Header */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            background: rgba(27, 67, 50, 0.95);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            padding: 0.9rem 5%;
+            background: rgba(27, 67, 50, 0.96);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.18);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.3rem;
             text-align: left;
         }
 
         .logo img {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             object-fit: cover;
             border-radius: 50%;
             border: 2px solid #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        /* Smalare och mindre text i loggan */
+        /* Smal & elegant logotyptext */
         .logo-text, .logo-text span {
             font-family: 'Dancing Script', cursive !important;
-            font-size: 1.6rem;
+            font-size: 1.65rem;
             font-weight: 500;
             letter-spacing: 0.5px;
             white-space: nowrap;
@@ -76,15 +84,21 @@
             display: flex;
             flex-direction: column;
             gap: 5px;
-            padding: 5px;
+            padding: 6px;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .hamburger-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .hamburger-btn span {
             display: block;
-            width: 28px;
+            width: 26px;
             height: 3px;
             background-color: #ffffff;
-            border-radius: 2px;
+            border-radius: 3px;
             transition: 0.3s;
         }
 
@@ -96,9 +110,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(15, 35, 25, 0.5);
+            background-color: rgba(15, 35, 25, 0.55);
             z-index: 1000;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(6px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .drawer-menu {
@@ -109,8 +129,8 @@
             height: 100%;
             background: linear-gradient(180deg, #ffffff 0%, #f4f9f5 100%);
             z-index: 1001;
-            box-shadow: -8px 0 35px rgba(0,0,0,0.18);
-            transition: right 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.22);
+            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -229,6 +249,95 @@
             font-weight: bold;
         }
 
+        /* Hero-sektion utan h1 */
+        .hero {
+            position: relative;
+            height: 38vh;
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+            overflow: hidden;
+            background-color: #1b4332;
+            border-bottom: 3px solid #ffb703;
+        }
+
+        @keyframes heroZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./1784729911178.png') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+            animation: heroZoom 7s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* Gemensamma knappar */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(45, 106, 79, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 106, 79, 0.5);
+            background: linear-gradient(135deg, #388465 0%, #22543d 100%);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #2d6a4f;
+            color: #2d6a4f;
+            margin-top: 1rem;
+            width: 100%;
+            text-align: center;
+            box-shadow: none;
+            border-radius: 8px;
+            padding: 0.6rem;
+            transition: all 0.25s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: #2d6a4f;
+            color: white;
+        }
+
         /* Om oss-sektion som en kompakt ruta */
         .about-intro-section {
             padding: 2.5rem 5% 1rem 5%;
@@ -238,11 +347,12 @@
         .about-intro-container {
             max-width: 850px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(10px);
             padding: 2rem 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             border-left: 5px solid #2d6a4f;
             text-align: left;
         }
@@ -256,164 +366,44 @@
 
         .about-intro-section p {
             color: #444;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.96rem;
+            line-height: 1.65;
             margin-bottom: 0.8rem;
         }
 
-        .hero {
-            position: relative;
-            height: 38vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0 1rem;
-            overflow: hidden;
-            background-color: #1b4332;
-            margin-top: 1.5rem;
-        }
-
-        @keyframes heroZoom {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.10); }
-            100% { transform: scale(1); }
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('./1784729911178.png') no-repeat center center;
-            background-size: cover;
-            z-index: 1;
-            animation: heroZoom 6s ease-in-out infinite;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.7);
-            font-weight: 500;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #2d6a4f;
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid #2d6a4f;
-            color: #2d6a4f;
-            margin-top: 1rem;
-            width: 100%;
-            text-align: center;
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            background-color: #2d6a4f;
-            color: white;
-        }
-
-        /* Nyhetsbrev-sektion */
-        .newsletter-section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            max-width: 850px;
-            margin: 3rem auto 1rem auto;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            text-align: center;
-            border-top: 4px solid #ffb703;
-        }
-
-        .newsletter-section h3 {
-            color: #1b4332;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .newsletter-section p {
-            color: #555;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            max-width: 500px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .newsletter-form input[type="email"] {
-            flex: 1;
-            min-width: 240px;
-            padding: 0.8rem 1.2rem;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .newsletter-form input[type="email"]:focus {
-            border-color: #2d6a4f;
-        }
-
+        /* Produktsektioner */
         .products-section {
-            padding: 4rem 5%;
+            padding: 3.5rem 5%;
             text-align: center;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(6px);
             margin: 2rem 0;
-            border-radius: 20px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
         }
 
         .alt-bg {
-            background-color: rgba(240, 244, 239, 0.65);
+            background-color: rgba(240, 244, 239, 0.75);
         }
 
         .products-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.3rem;
+            margin-bottom: 0.4rem;
             color: #1b4332;
             cursor: pointer;
             display: inline-block;
+            transition: color 0.2s;
         }
 
         .products-section h2:hover {
-            text-decoration: underline;
+            color: #2d6a4f;
         }
 
         .section-intro {
-            color: #444;
+            color: #555;
             font-weight: 500;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.2rem;
+            font-size: 0.95rem;
         }
 
         .product-grid {
@@ -425,18 +415,19 @@
         }
 
         .product-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            border: 1px solid rgba(255, 255, 255, 0.9);
             text-align: left;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
         }
 
         .product-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.14);
         }
 
         .product-card img {
@@ -447,16 +438,17 @@
         }
 
         .product-card:hover img {
-            transform: scale(1.08);
+            transform: scale(1.07);
         }
 
         .card-content {
-            padding: 1.4rem;
+            padding: 1.5rem;
         }
 
         .product-card h3 {
             margin-bottom: 0.5rem;
             color: #2d6a4f;
+            font-size: 1.25rem;
         }
 
         .product-card p {
@@ -464,6 +456,60 @@
             font-size: 0.9rem;
         }
 
+        /* Nyhetsbrev-sektion */
+        .newsletter-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            max-width: 850px;
+            margin: 3rem auto 1rem auto;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            text-align: center;
+            border-top: 4px solid #ffb703;
+            border-left: 1px solid rgba(255,255,255,0.8);
+            border-right: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .newsletter-section h3 {
+            color: #1b4332;
+            font-size: 2.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .newsletter-section p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            max-width: 520px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.85rem 1.2rem;
+            border: 1.5 solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.25s ease;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            border-color: #2d6a4f;
+            box-shadow: 0 0 0 4px rgba(45, 106, 79, 0.15);
+        }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -472,21 +518,22 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            backdrop-filter: blur(5px);
+            background-color: rgba(0,0,0,0.65);
+            backdrop-filter: blur(6px);
             overflow-y: auto;
             padding: 20px 10px;
+            animation: fadeIn 0.25s ease;
         }
 
         .modal-content {
             background-color: #ffffff;
-            margin: 5% auto;
+            margin: 4% auto;
             padding: 2rem;
-            border-radius: 16px;
+            border-radius: 20px;
             max-width: 900px;
             width: 95%;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
         }
 
         .close-btn {
@@ -497,6 +544,7 @@
             font-weight: bold;
             color: #888;
             cursor: pointer;
+            transition: color 0.2s;
         }
 
         .close-btn:hover {
@@ -521,11 +569,17 @@
         }
 
         .package-item {
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 1rem;
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 1.1rem;
             background: #fafafa;
             text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .package-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
         }
 
         .package-item img {
@@ -546,7 +600,7 @@
             background: #e8f5e9;
             color: #2e7d32;
             font-size: 0.75rem;
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 12px;
             font-weight: 600;
             margin-bottom: 0.5rem;
@@ -567,32 +621,33 @@
         }
 
         #musicToggleBtn {
-            background-color: #2d6a4f;
+            background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);
             color: white;
             border: none;
-            padding: 0.7rem 1.4rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
             font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: background 0.3s, transform 0.3s;
+            transition: all 0.3s ease;
         }
 
         #musicToggleBtn:hover {
-            background-color: #1b4332;
             transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
         }
 
         footer {
-            background-color: rgba(27, 67, 50, 0.96);
+            background-color: rgba(27, 67, 50, 0.98);
             color: white;
             text-align: center;
-            padding: 3rem 5%;
-            margin-top: 3rem;
+            padding: 3.5rem 5%;
+            margin-top: 3.5rem;
+            border-top: 3px solid #ffb703;
         }
 
         footer p {
@@ -623,10 +678,11 @@
         .sidebar-widget {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(8px);
-            padding: 1.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            padding: 1.6rem;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
             border-left: 4px solid #2d6a4f;
+            border-top: 1px solid rgba(255,255,255,0.8);
         }
 
         .sidebar-widget h3 {
@@ -638,7 +694,7 @@
         .sidebar-widget p {
             font-size: 0.9rem;
             color: #555;
-            line-height: 1.5;
+            line-height: 1.55;
         }
 
         .store-location h4 {
@@ -649,9 +705,10 @@
 
         .map-container {
             margin-top: 0.6rem;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
             border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         @media (max-width: 900px) {
