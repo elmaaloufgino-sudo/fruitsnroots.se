@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRUITS 'N ROOTS | Frystorkade Frukter, Sea Moss & Nötter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Fredoka:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Fredoka:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -47,24 +47,23 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.3rem;
             text-align: left;
         }
 
         .logo img {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             object-fit: cover;
             border-radius: 50%;
             border: 2px solid #ffffff;
         }
 
-        /* Tvingar den eleganta skrivstilen på alla span-element i loggan */
+        /* Smalare och mindre text i loggan */
         .logo-text, .logo-text span {
             font-family: 'Dancing Script', cursive !important;
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 500;
             letter-spacing: 0.5px;
             white-space: nowrap;
         }
@@ -264,7 +263,7 @@
 
         .hero {
             position: relative;
-            height: 42vh;
+            height: 38vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -299,22 +298,13 @@
             z-index: 2;
         }
 
-        .hero-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            text-shadow: 0 3px 8px rgba(0,0,0,0.5);
-            letter-spacing: 1px;
-            color: #2d6a4f;
-        }
-
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             margin-bottom: 1.5rem;
-            max-width: 600px;
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.7);
             font-weight: 500;
         }
 
@@ -344,6 +334,55 @@
         .btn-outline:hover {
             background-color: #2d6a4f;
             color: white;
+        }
+
+        /* Nyhetsbrev-sektion */
+        .newsletter-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            max-width: 850px;
+            margin: 3rem auto 1rem auto;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            border-top: 4px solid #ffb703;
+        }
+
+        .newsletter-section h3 {
+            color: #1b4332;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter-section p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            min-width: 240px;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            border-color: #2d6a4f;
         }
 
         .products-section {
@@ -628,7 +667,7 @@
     <header>
         <div class="logo">
             <img src="./1784710545310.png" alt="FRUITS 'N ROOTS Logotyp">
-            <span class="logo-text elegant-heading">
+            <span class="logo-text">
                 <span style="color: #ffffff;">FRUITS</span> 
                 <span style="color: #ffb703;">'N</span> 
                 <span style="color: #ffffff;">ROOTS</span>
@@ -658,6 +697,7 @@
                 <a href="#seamoss" onclick="closeDrawer()"><span>🌿 Sea Moss</span> <span class="arrow">➔</span></a>
                 <a href="#notter" onclick="closeDrawer()"><span>🥜 Premium Nötter</span> <span class="arrow">➔</span></a>
                 <a href="#om-oss" onclick="closeDrawer()"><span>✨ Om oss</span> <span class="arrow">➔</span></a>
+                <a href="#nyhetsbrev" onclick="closeDrawer()"><span>✉️ Nyhetsbrev</span> <span class="arrow">➔</span></a>
                 <a href="#hitta-oss" onclick="closeDrawer()"><span>📍 Hitta oss</span> <span class="arrow">➔</span></a>
                 <a href="#kontakt" class="cta-btn" onclick="closeDrawer()">Kontakta oss</a>
             </nav>
@@ -668,11 +708,10 @@
         </div>
     </div>
 
-    <!-- Hero -->
+    <!-- Hero utan h1-rubrik -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1 class="hero-title elegant-heading">FRUITS 'N ROOTS</h1>
             <p>Frystorkade frukter, premium-nötter & vildskördad Sea Moss av högsta kvalitet.</p>
             <a href="#frukt" class="btn">Utforska sortimentet</a>
         </div>
@@ -779,6 +818,16 @@
             </div>
         </aside>
     </div><!-- Slut på .content-layout -->
+
+    <!-- Nyhetsbrev -->
+    <section class="newsletter-section" id="nyhetsbrev">
+        <h3 class="elegant-heading">Håll dig uppdaterad</h3>
+        <p>Prenumerera på vårt nyhetsbrev för exklusiva erbjudanden, nya produkter och hälsotips!</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Tack för din prenumeration!');">
+            <input type="email" placeholder="Skriv in din e-postadress..." required>
+            <button type="submit" class="btn">Prenumerera</button>
+        </form>
+    </section>
 
     <!-- Modal -->
     <div id="productModal" class="modal">
