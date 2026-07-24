@@ -322,10 +322,70 @@
         .sidebar-widget p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; font-weight: 300; }
 
         /* ==========================================
-           8. NYHETSBREV & FOOTER
+           8. SOCIALA MEDIER (NY SEKTION)
+           ========================================== */
+        .social-media-section {
+            padding: 2rem 5%;
+            text-align: center;
+            max-width: 1300px;
+            margin: 0 auto 2rem auto;
+        }
+        .social-media-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--glass-border);
+            border-top: 4px solid var(--primary-green);
+        }
+        .social-media-container h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        .social-media-container p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        .social-links-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .social-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem 2rem;
+            background: #ffffff;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .social-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-color: var(--primary-green);
+        }
+        .social-card.instagram:hover { color: #E1306C; border-color: #E1306C; }
+        .social-card.tiktok:hover { color: #000000; border-color: #000000; }
+        .social-card.facebook:hover { color: #1877F2; border-color: #1877F2; }
+
+
+        /* ==========================================
+           9. NYHETSBREV & FOOTER
            ========================================== */
         .newsletter-section {
-            background: var(--glass-bg); backdrop-filter: blur(10px); max-width: 850px; margin: 3rem auto 1rem auto;
+            background: var(--glass-bg); backdrop-filter: blur(10px); max-width: 850px; margin: 1rem auto;
             padding: 2.5rem 2rem; border-radius: 20px; box-shadow: var(--card-shadow); text-align: center;
             border-top: 4px solid var(--accent-gold);
         }
@@ -351,7 +411,7 @@
         }
 
         /* ==========================================
-           9. MODAL
+           10. MODAL
            ========================================== */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
@@ -397,7 +457,6 @@
         </div>
         
         <div class="header-actions">
-            <!-- Kundvagn-knapp -->
             <button class="cart-btn snipcart-checkout" aria-label="Kundvagn">
                 🛒
                 <span class="snipcart-items-count">0</span>
@@ -423,6 +482,7 @@
                 <a href="#seamoss" onclick="closeDrawer()"><span>Sea Moss</span> <span class="arrow">➔</span></a>
                 <a href="#notter" onclick="closeDrawer()"><span>Premium Nötter</span> <span class="arrow">➔</span></a>
                 <a href="#om-oss" onclick="closeDrawer()"><span>✨ Om oss</span> <span class="arrow">➔</span></a>
+                <a href="#socialt" onclick="closeDrawer()"><span>📱 Sociala Medier</span> <span class="arrow">➔</span></a>
                 <a href="#nyhetsbrev" onclick="closeDrawer()"><span>✉️ Nyhetsbrev</span> <span class="arrow">➔</span></a>
                 <a href="#kontakt" class="cta-btn" onclick="closeDrawer()">Kontakta oss</a>
             </nav>
@@ -512,6 +572,26 @@
             </div>
         </aside>
     </div>
+
+    <!-- HÄR ÄR DEN NYA SOCIALA MEDIER-SEKTIONEN -->
+    <section class="social-media-section" id="socialt">
+        <div class="social-media-container">
+            <h2 class="elegant-heading">Följ Vår Resa</h2>
+            <p>Häng med bakom kulisserna, få exklusiva rabatter och ta del av härliga recept på våra sociala medier!</p>
+            <div class="social-links-wrapper">
+                <!-- Byt ut href-länkarna nedan till dina riktiga profiler -->
+                <a href="https://instagram.com" target="_blank" class="social-card instagram">
+                    📷 Instagram
+                </a>
+                <a href="https://tiktok.com" target="_blank" class="social-card tiktok">
+                    🎵 TikTok
+                </a>
+                <a href="https://facebook.com" target="_blank" class="social-card facebook">
+                    📘 Facebook
+                </a>
+            </div>
+        </div>
+    </section>
 
     <section class="newsletter-section" id="nyhetsbrev">
         <h3 class="elegant-heading">Håll dig uppdaterad</h3>
