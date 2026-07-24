@@ -322,60 +322,24 @@
         .sidebar-widget p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; font-weight: 300; }
 
         /* ==========================================
-           8. SOCIALA MEDIER (NY SEKTION)
+           8. SOCIALA MEDIER
            ========================================== */
         .social-media-section {
-            padding: 2rem 5%;
-            text-align: center;
-            max-width: 1300px;
-            margin: 0 auto 2rem auto;
+            padding: 2rem 5%; text-align: center; max-width: 1300px; margin: 0 auto 2rem auto;
         }
         .social-media-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--glass-border);
-            border-top: 4px solid var(--primary-green);
+            background: var(--glass-bg); backdrop-filter: blur(10px); padding: 3rem 2rem; border-radius: 20px;
+            box-shadow: var(--card-shadow); border: 1px solid var(--glass-border); border-top: 4px solid var(--primary-green);
         }
-        .social-media-container h2 {
-            font-size: 2.2rem;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-        }
-        .social-media-container p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-        .social-links-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
+        .social-media-container h2 { font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 0.5rem; }
+        .social-media-container p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; font-weight: 300; }
+        .social-links-wrapper { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
         .social-card {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 1rem 2rem;
-            background: #ffffff;
-            border: 1.5px solid #e0e0e0;
-            border-radius: 15px;
-            text-decoration: none;
-            color: var(--primary-dark);
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            display: flex; align-items: center; gap: 10px; padding: 1rem 2rem; background: #ffffff;
+            border: 1.5px solid #e0e0e0; border-radius: 15px; text-decoration: none; color: var(--primary-dark);
+            font-weight: 500; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
-        .social-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            border-color: var(--primary-green);
-        }
+        .social-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-color: var(--primary-green); }
         .social-card.instagram:hover { color: #E1306C; border-color: #E1306C; }
         .social-card.tiktok:hover { color: #000000; border-color: #000000; }
         .social-card.facebook:hover { color: #1877F2; border-color: #1877F2; }
@@ -573,13 +537,12 @@
         </aside>
     </div>
 
-    <!-- HÄR ÄR DEN NYA SOCIALA MEDIER-SEKTIONEN -->
+    <!-- SOCIALA MEDIER-SEKTION -->
     <section class="social-media-section" id="socialt">
         <div class="social-media-container">
             <h2 class="elegant-heading">Följ Vår Resa</h2>
             <p>Häng med bakom kulisserna, få exklusiva rabatter och ta del av härliga recept på våra sociala medier!</p>
             <div class="social-links-wrapper">
-                <!-- Byt ut href-länkarna nedan till dina riktiga profiler -->
                 <a href="https://instagram.com" target="_blank" class="social-card instagram">
                     📷 Instagram
                 </a>
@@ -667,20 +630,20 @@
                 title: "Frystorkade Fruktpaket",
                 intro: "Krispiga, naturliga frukter helt utan tillsatser.",
                 packages: [
-                    { id: "f-jord", price: "69.00", name: "Skivade Jordgubbar", size: "50g", desc: "Söta frystorkade jordgubbs-skivor.", img: "./1784907097844.png" },
-                    { id: "f-mango", price: "79.00", name: "Tropisk Mangomix", size: "100g", desc: "Smakrik solmogen mango.", img: "./1784907251270.png" },
-                    { id: "f-hall", price: "69.00", name: "Frystorkade Hallon", size: "50g", desc: "Krispiga helbär med sötma och syra.", img: "./1784734785323.png" },
-                    { id: "f-drak", price: "89.00", name: "Frystorkad Drakfrukt", size: "75g", desc: "Exotisk och vacker frystorkad drakfrukt.", img: "./1784907182584.png" }
+                    { id: "f-jord", price: "69.00", name: "Skivade Jordgubbar", size: "50g", desc: "Söta och krispiga frystorkade jordgubbs-skivor. Perfekta som topping på yoghurten, i smoothies eller som ett lyxigt, hälsosamt snack direkt ur påsen.", img: "./1784907097844.png" },
+                    { id: "f-mango", price: "79.00", name: "Frystorkad Tropisk Mango", size: "100g", desc: "Smakrik, solmogen frystorkad mango som smälter i munnen. 100% naturlig sötma och packad med C-vitamin – en tropisk favorit för både barn och vuxna.", img: "./1784907251270.png" },
+                    { id: "f-hall", price: "69.00", name: "Frystorkade Hallon", size: "50g", desc: "Krispiga helbär med en perfekt balans mellan intensiv sötma och naturlig syra. Fantastiska i bakverk, gröt eller som ett fräscht och krispigt mellanmål.", img: "./1784734785323.png" },
+                    { id: "f-drak", price: "89.00", name: "Frystorkad Drakfrukt", size: "75g", desc: "Exotisk och vacker frystorkad drakfrukt (pitaya) med en otrolig färg och mild sötma. Ge din smoothie bowl eller frukost en magisk, krispig touch helt utan tillsatser.", img: "./1784907182584.png" }
                 ]
             },
             seamoss: {
                 title: "Sea Moss Sortiment",
                 intro: "Ren, vildskördad havsmossa.",
                 packages: [
-                    { id: "sm-goldg", price: "249.00", name: "Golden Sea Moss Gel", size: "375 ml", desc: "Klassisk näringsrik guldgelé.", img: "./1784906366996.png" },
-                    { id: "sm-purpg", price: "299.00", name: "Purple Sea Moss Gel", size: "375 ml", desc: "Ren lila havsmossa handgjord med endast källvatten och lime. Helt utan bär eller onödiga tillsatser.", img: "./1784906173116.png" },
-                    { id: "sm-goldr", price: "199.00", name: "Rå Torkad Golden", size: "100g", desc: "Blötlägg och koka din egen gelé.", img: "./1784906440086.png" },
-                    { id: "sm-purpr", price: "249.00", name: "Rå Torkad Purple", size: "100g", desc: "Naturlig lila Chondrus crispus.", img: "./1784906477486.png" }
+                    { id: "sm-goldg", price: "249.00", name: "Golden Sea Moss Gel", size: "375 ml", desc: "Klassisk näringsrik guldgelé av äkta Chondrus crispus. Proppfull med mineraler som ger naturlig energi.", img: "./1784906366996.png" },
+                    { id: "sm-purpg", price: "299.00", name: "Purple Sea Moss Gel", size: "375 ml", desc: "Ren lila Chondrus crispus handgjord med endast källvatten och lime. Helt utan bär. Rik på antocyaniner för optimal hälsa.", img: "./1784906173116.png" },
+                    { id: "sm-goldr", price: "199.00", name: "Soltorkad Golden Sea Moss", size: "100g", desc: "Varsamt soltorkad guld-mossa (Chondrus crispus) direkt från havet. Perfekt för att blötlägga och koka din egen fräscha gelé hemma.", img: "./1784906440086.png" },
+                    { id: "sm-purpr", price: "249.00", name: "Soltorkad Purple Sea Moss", size: "100g", desc: "Sällsynt och näringstät soltorkad lila havsmossa (Chondrus crispus). 100% naturlig råvara som bevarar havets alla kraftfulla egenskaper.", img: "./1784906477486.png" }
                 ]
             },
             notter: {
