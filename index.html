@@ -14,8 +14,13 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, .hero-content p, .products-section h2, .package-item h4 {
+        h1, h3, h4, .hero-content p, .package-item h4 {
             font-family: 'Fredoka', sans-serif;
+        }
+
+        .elegant-heading {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
         }
 
         body {
@@ -112,6 +117,7 @@
             margin-bottom: 0.8rem;
             font-weight: 700;
             text-align: center;
+            font-family: 'Fredoka', sans-serif;
         }
 
         .about-intro-section p {
@@ -159,8 +165,8 @@
         }
 
         .hero-title {
-            font-size: 2.4rem;
-            font-weight: 600;
+            font-size: 2.8rem;
+            font-weight: 700;
             margin-bottom: 0.8rem;
             text-shadow: 0 3px 8px rgba(0,0,0,0.5);
             letter-spacing: 1px;
@@ -219,7 +225,7 @@
         }
 
         .products-section h2 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
             color: #1b4332;
             cursor: pointer;
@@ -526,7 +532,7 @@
     <!-- Om oss - Kompakt ruta -->
     <section class="about-intro-section" id="om-oss">
         <div class="about-intro-container">
-            <h2>Vilka är FRUITS 'N ROOTS?</h2>
+            <h2>Om oss</h2>
             <p>Välkommen till <strong>FRUITS 'N ROOTS</strong> – din destination för ren hälsa och naturlig livskraft! Vi brinner för att erbjuda frystorkade frukter helt utan tillsatser, vildskördad Sea Moss från rena hav och krispiga premiumnötter av högsta kvalitet.</p>
             <p>Från jord till bord tror vi på äkta kvalitet och hållbarhet. Oavsett om du söker ett hälsosamt vardagssnack eller storpack för ditt företag, hittar du det hos oss i Göteborg eller här på webben.</p>
         </div>
@@ -536,7 +542,7 @@
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1 class="hero-title" style="color: #2d6a4f;">FRUITS 'N ROOTS</h1>
+            <h1 class="hero-title elegant-heading">FRUITS 'N ROOTS</h1>
             <p>Frystorkade frukter, premium-nötter & vildskördad Sea Moss av högsta kvalitet.</p>
             <a href="#frukt" class="btn">Utforska sortimentet</a>
         </div>
@@ -548,7 +554,7 @@
         <div class="main-content">
             <!-- Sektion: Frukt -->
             <section id="frukt" class="products-section">
-                <h2 onclick="openModal('frukt')">Frystorkad Frukt 🍓</h2>
+                <h2 class="elegant-heading" onclick="openModal('frukt')">Frystorkad Frukt 🍓</h2>
                 <p class="section-intro">Klicka för att se våra olika fruktpaket och påsar.</p>
                 <div class="product-grid">
                     <div class="product-card" onclick="openModal('frukt')">
@@ -564,7 +570,7 @@
 
             <!-- Sektion: Sea Moss -->
             <section id="seamoss" class="products-section alt-bg">
-                <h2 onclick="openModal('seamoss')">Sea Moss (Chondrus crispus) 🌿</h2>
+                <h2 class="elegant-heading" onclick="openModal('seamoss')">Sea Moss (Chondrus crispus) 🌿</h2>
                 <p class="section-intro">Klicka för att välja mellan Lila, Guld och Färdig Gelé.</p>
                 <div class="product-grid">
                     <div class="product-card" onclick="openModal('seamoss')">
@@ -580,7 +586,7 @@
 
             <!-- Sektion: Nötter -->
             <section id="notter" class="products-section">
-                <h2 onclick="openModal('notter')">Premium-nötter & Bulk 🥜</h2>
+                <h2 class="elegant-heading" onclick="openModal('notter')">Premium-nötter & Bulk 🥜</h2>
                 <p class="section-intro">Klicka för att se olika nötpåsar och partier för grossist.</p>
                 <div class="product-grid">
                     <div class="product-card" onclick="openModal('notter')">
