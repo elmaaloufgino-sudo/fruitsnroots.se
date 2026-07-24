@@ -14,8 +14,8 @@
             scroll-behavior: smooth;
         }
 
-        /* Perfekt offset vid klick i menyn så headern inte döljer rubriker */
-        section, div[id] {
+        /* Offset vid klick i menyn så headern inte döljer rubriker */
+        section, div[id], footer[id] {
             scroll-margin-top: 90px;
         }
 
@@ -36,7 +36,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Låst lyxig Header */
+        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -67,7 +67,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        /* Smal & elegant logotyptext */
         .logo-text, .logo-text span {
             font-family: 'Dancing Script', cursive !important;
             font-size: 1.65rem;
@@ -76,7 +75,6 @@
             white-space: nowrap;
         }
 
-        /* Hamburgarmeny-knapp */
         .hamburger-btn {
             background: none;
             border: none;
@@ -102,7 +100,7 @@
             transition: 0.3s;
         }
 
-        /* Tajt & Elegant Drawer Meny */
+        /* Drawer Meny */
         .drawer-overlay {
             display: none;
             position: fixed;
@@ -249,7 +247,7 @@
             font-weight: bold;
         }
 
-        /* Hero-sektion utan h1 */
+        /* Hero */
         .hero {
             position: relative;
             height: 38vh;
@@ -299,7 +297,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* Gemensamma knappar */
+        /* Knappar */
         .btn {
             display: inline-block;
             background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);
@@ -338,7 +336,7 @@
             color: white;
         }
 
-        /* Om oss-sektion som en kompakt ruta */
+        /* Om oss */
         .about-intro-section {
             padding: 2.5rem 5% 1rem 5%;
             text-align: center;
@@ -456,7 +454,7 @@
             font-size: 0.9rem;
         }
 
-        /* Nyhetsbrev-sektion */
+        /* Nyhetsbrev */
         .newsletter-section {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -496,7 +494,7 @@
             flex: 1;
             min-width: 250px;
             padding: 0.85rem 1.2rem;
-            border: 1.5 solid #e0e0e0;
+            border: 1.5px solid #e0e0e0;
             border-radius: 30px;
             font-size: 0.95rem;
             outline: none;
@@ -507,6 +505,190 @@
         .newsletter-form input[type="email"]:focus {
             border-color: #2d6a4f;
             box-shadow: 0 0 0 4px rgba(45, 106, 79, 0.15);
+        }
+
+        /* Ny & Förbättrad Kontakt & Footer Sektion */
+        .contact-footer-wrapper {
+            background: linear-gradient(180deg, #1b4332 0%, #0d2818 100%);
+            color: white;
+            margin-top: 4rem;
+            padding: 4rem 5% 2rem 5%;
+            border-top: 4px solid #ffb703;
+            position: relative;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-header h2 {
+            font-size: 2.8rem;
+            color: #ffb703;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-header p {
+            color: #d8f3dc;
+            font-size: 1.05rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3.5rem;
+        }
+
+        /* Vänster kolumn: Info & B2B */
+        .contact-info-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 2.2rem;
+        }
+
+        .contact-info-card h3 {
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid rgba(255, 183, 3, 0.4);
+            padding-bottom: 0.5rem;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail-item .icon-box {
+            background: rgba(255, 183, 3, 0.15);
+            color: #ffb703;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-item div h4 {
+            font-size: 1rem;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .contact-detail-item div p, .contact-detail-item div a {
+            color: #b7e4c7;
+            font-size: 0.92rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-detail-item div a:hover {
+            color: #ffb703;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .social-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.25s ease;
+        }
+
+        .social-btn:hover {
+            background: #ffb703;
+            color: #1b4332;
+            transform: translateY(-2px);
+            font-weight: 600;
+        }
+
+        /* Höger kolumn: Formulär */
+        .contact-form-card {
+            background: rgba(255, 255, 255, 0.97);
+            color: #2b2b2b;
+            border-radius: 20px;
+            padding: 2.2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .contact-form-card h3 {
+            color: #1b4332;
+            font-size: 1.4rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-form-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2d6a4f;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            outline: none;
+            transition: border-color 0.2s;
+            background: #fafafa;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #2d6a4f;
+            background: #ffffff;
+        }
+
+        .contact-form-card button[type="submit"] {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        /* Nedersta copyright-raden */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 1.8rem;
+            text-align: center;
+            color: #95d5b2;
+            font-size: 0.85rem;
         }
 
         /* Modal */
@@ -612,7 +794,7 @@
             margin-bottom: 0.8rem;
         }
 
-        /* Musikspelare widget - Vänster hörn */
+        /* Musikspelare widget */
         .music-player-widget {
             position: fixed;
             bottom: 20px;
@@ -641,21 +823,7 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.35);
         }
 
-        footer {
-            background-color: rgba(27, 67, 50, 0.98);
-            color: white;
-            text-align: center;
-            padding: 3.5rem 5%;
-            margin-top: 3.5rem;
-            border-top: 3px solid #ffb703;
-        }
-
-        footer p {
-            color: #d8f3dc;
-            margin-top: 0.5rem;
-        }
-
-        /* Tvåkolumns-layout med Sidebar */
+        /* Layout för innehåll & sidebar */
         .content-layout {
             display: grid;
             grid-template-columns: 1fr 340px;
@@ -715,6 +883,9 @@
             .content-layout {
                 grid-template-columns: 1fr;
             }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -731,7 +902,6 @@
             </span>
         </div>
         
-        <!-- Hamburgare-knapp -->
         <button class="hamburger-btn" onclick="toggleDrawer()" aria-label="Öppna meny">
             <span></span>
             <span></span>
@@ -765,7 +935,7 @@
         </div>
     </div>
 
-    <!-- Hero utan h1-rubrik -->
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
@@ -774,7 +944,7 @@
         </div>
     </section>
 
-    <!-- Om oss - Kompakt ruta -->
+    <!-- Om oss -->
     <section class="about-intro-section" id="om-oss">
         <div class="about-intro-container">
             <h2 class="elegant-heading">Om oss</h2>
@@ -785,7 +955,6 @@
 
     <!-- Main Container med Sidebar och Innehåll -->
     <div class="content-layout">
-        <!-- Huvudinnehåll -->
         <div class="main-content">
             <!-- Sektion: Frukt -->
             <section id="frukt" class="products-section">
@@ -834,7 +1003,7 @@
                     </div>
                 </div>
             </section>
-        </div><!-- Slut på .main-content -->
+        </div>
 
         <!-- Sidebar Kolumn -->
         <aside class="sidebar-column">
@@ -874,7 +1043,7 @@
                 <a href="#kontakt" class="btn" style="display: block; text-align: center; margin-top: 0.8rem;">Gå till kontakt</a>
             </div>
         </aside>
-    </div><!-- Slut på .content-layout -->
+    </div>
 
     <!-- Nyhetsbrev -->
     <section class="newsletter-section" id="nyhetsbrev">
@@ -885,6 +1054,101 @@
             <button type="submit" class="btn">Prenumerera</button>
         </form>
     </section>
+
+    <!-- Helt ny & Uppgraderad Kontakt & Footer-sektion -->
+    <footer class="contact-footer-wrapper" id="kontakt">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h2 class="elegant-heading">Kontakta FRUITS 'N ROOTS</h2>
+                <p>Har du frågor om våra produkter, vill lägga en bulkbeställning eller besöka våra butiker?</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Vänster kolumn: Kontaktinfo & B2B -->
+                <div class="contact-info-card">
+                    <h3>Hör av dig till oss</h3>
+
+                    <div class="contact-detail-item">
+                        <div class="icon-box">📧</div>
+                        <div>
+                            <h4>E-postadress</h4>
+                            <p><a href="mailto:info@fruitsnroots.com">info@fruitsnroots.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail-item">
+                        <div class="icon-box">📍</div>
+                        <div>
+                            <h4>Butiker i Göteborg</h4>
+                            <p>Frölunda Torg & Nordstan Shoppingcenter</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail-item">
+                        <div class="icon-box">📦</div>
+                        <div>
+                            <h4>Partihandel & Bulk (B2B)</h4>
+                            <p>Leverans av nötter, Sea Moss & frystorkat från mindre påsar upp till 1 000 kg.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail-item">
+                        <div class="icon-box">⚡</div>
+                        <div>
+                            <h4>Snabb svarstid</h4>
+                            <p>Vi besvarar alla e-postmeddelanden inom 24 timmar på vardagar.</p>
+                        </div>
+                    </div>
+
+                    <h4 style="color: #ffffff; margin-top: 1.5rem; font-size: 0.95rem;">Följ vår resa</h4>
+                    <div class="social-buttons">
+                        <a href="https://instagram.com" target="_blank" class="social-btn">📷 Instagram</a>
+                        <a href="https://tiktok.com" target="_blank" class="social-btn">🎵 TikTok</a>
+                    </div>
+                </div>
+
+                <!-- Höger kolumn: Interaktivt Kontaktformulär -->
+                <div class="contact-form-card">
+                    <h3>Skicka ett meddelande</h3>
+                    <p>Fyll i formuläret nedan så återkommer vi så snabbt vi kan!</p>
+
+                    <form onsubmit="event.preventDefault(); alert('Tack för ditt meddelande! Vi återkommer inom kort.'); this.reset();">
+                        <div class="form-group">
+                            <label for="contact-name">Ditt Namn</label>
+                            <input type="text" id="contact-name" placeholder="För- och efternamn" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-email">Din E-post</label>
+                            <input type="email" id="contact-email" placeholder="exempel@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-subject">Ärende</label>
+                            <select id="contact-subject">
+                                <option value="general">Allmän fråga</option>
+                                <option value="b2b">Bulk & Partihandel (Grossist)</option>
+                                <option value="stores">Butikerna i Göteborg</option>
+                                <option value="feedback">Feedback / Övrigt</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-message">Meddelande</label>
+                            <textarea id="contact-message" rows="4" placeholder="Skriv ditt meddelande här..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn">Skicka Meddelande</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Nedersta copyright-raden -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 FRUITS 'N ROOTS. Alla rättigheter förbehållna. Ren hälsa & naturlig kraft.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Modal -->
     <div id="productModal" class="modal">
@@ -905,17 +1169,8 @@
         </audio>
     </div>
 
-    <!-- Footer -->
-    <footer id="kontakt">
-        <h2>Kontakta FRUITS 'N ROOTS</h2>
-        <p>E-post: info@fruitsnroots.com</p>
-        <p>Följ oss på Instagram & TikTok: @fruitsnroots</p>
-        <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #95d5b2;">&copy; 2026 FRUITS 'N ROOTS. Alla rättigheter förbehållna.</p>
-    </footer>
-
     <!-- JavaScript -->
     <script>
-        // Drawer meny funktioner
         function toggleDrawer() {
             const drawer = document.getElementById('drawerMenu');
             const overlay = document.getElementById('drawerOverlay');
@@ -1026,7 +1281,6 @@
             }
         }
 
-        // Musikspelare logik
         const music = document.getElementById('bgMusic');
         const musicBtnText = document.getElementById('musicBtnText');
         let isPlaying = false;
