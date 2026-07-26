@@ -1,9 +1,28 @@
+<style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Plus Jakarta Sans', sans-serif;
     scroll-behavior: smooth;
+}
+
+/* --- SKRÄDDARSYDD SCROLLBAR --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f4ef;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2d6a4f;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1b4332;
 }
 
 body {
@@ -63,6 +82,7 @@ nav a:hover {
 
 /* Hero Section */
 .hero {
+    position: relative; /* TILLAGD FÖR ANIMERAD PIL */
     background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
     height: 70vh;
     display: flex;
@@ -102,6 +122,25 @@ nav a:hover {
     background-color: #1b4332;
 }
 
+/* --- ANIMERAD PIL I HERO --- */
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+    z-index: 3;
+    opacity: 0.8;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+    40% { transform: translateY(-15px) translateX(-50%); }
+    60% { transform: translateY(-7px) translateX(-50%); }
+}
+
 /* Produkter & Sektioner */
 .products-section {
     padding: 5rem 5%;
@@ -138,6 +177,7 @@ nav a:hover {
     box-shadow: 0 4px 15px rgba(0,0,0,0.04);
     transition: transform 0.3s;
     text-align: left;
+    position: relative; /* TILLAGD FÖR BÄSTSÄLJARE-ETIKETT */
 }
 
 .product-card:hover {
@@ -163,6 +203,21 @@ nav a:hover {
 .product-card p {
     color: #666;
     font-size: 0.95rem;
+}
+
+/* --- FLYTANDE ETIKETT (BÄSTSÄLJARE) --- */
+.card-badge {
+    position: absolute;
+    top: 15px;
+    right: -10px;
+    background: #ffb703; /* Accentfärg för etiketten */
+    color: #1b4332;
+    padding: 5px 15px;
+    border-radius: 20px 0 0 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 2;
 }
 
 /* Om oss */
@@ -213,3 +268,16 @@ footer p {
     font-size: 0.85rem;
     color: #95d5b2;
 }
+
+/* --- SCROLL-ANIMATIONER (FADE-IN) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
