@@ -34,6 +34,21 @@
             --hover-shadow: 0 15px 35px rgba(0,0,0,0.12);
         }
 
+        /* --- SKRÄDDARSYDD SCROLLBAR --- */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light-green);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
         section, div[id], footer[id] {
             scroll-margin-top: 90px;
         }
@@ -253,6 +268,24 @@
             text-shadow: 0 2px 6px rgba(0,0,0,0.8); font-weight: 400; letter-spacing: 0.3px;
         }
 
+        /* --- ANIMERAD PIL I HERO --- */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffffff;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            z-index: 3;
+            opacity: 0.8;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-15px) translateX(-50%); }
+            60% { transform: translateY(-7px) translateX(-50%); }
+        }
+
         /* ==========================================
            5. KNAPPAR
            ========================================== */
@@ -299,10 +332,12 @@
         .products-section h2 { font-size: 2rem; font-weight: 500; margin-bottom: 1.5rem; color: var(--primary-dark); cursor: pointer; }
         .products-section h2:hover { color: var(--primary-green); }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+        
         .product-card {
             background: rgba(255, 255, 255, 0.96); border-radius: 20px; overflow: hidden;
             box-shadow: var(--card-shadow); border: 1px solid var(--glass-border); text-align: left;
             cursor: pointer; transition: transform 0.35s, box-shadow 0.35s; display: flex; flex-direction: column; height: 100%;
+            position: relative;
         }
         .product-card:hover { transform: translateY(-8px); box-shadow: var(--hover-shadow); }
         .product-card img { width: 100%; height: 240px; object-fit: cover; transition: transform 0.6s ease; }
@@ -310,6 +345,21 @@
         .card-content { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
         .product-card h3 { margin-bottom: 0.4rem; color: var(--primary-green); font-size: 1.15rem; font-weight: 500; }
         .product-card p { color: var(--text-muted); font-size: 0.88rem; font-weight: 300; margin-bottom: 1rem; flex-grow: 1; }
+
+        /* --- FLYTANDE ETIKETT (BÄSTSÄLJARE) --- */
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: -10px;
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 5px 15px;
+            border-radius: 20px 0 0 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 2;
+        }
 
         .content-layout { display: grid; grid-template-columns: 1fr 340px; gap: 2rem; max-width: 1300px; margin: 2rem auto; padding: 0 5%; }
         .main-content { min-width: 0; }
@@ -343,7 +393,6 @@
         .social-card.instagram:hover { color: #E1306C; border-color: #E1306C; }
         .social-card.tiktok:hover { color: #000000; border-color: #000000; }
         .social-card.facebook:hover { color: #1877F2; border-color: #1877F2; }
-
 
         /* ==========================================
            9. NYHETSBREV & FOOTER
@@ -406,6 +455,17 @@
         }
 
         @media (max-width: 900px) { .content-layout, .contact-grid { grid-template-columns: 1fr; } }
+
+        /* --- SCROLL-ANIMATIONER (FADE-IN) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -463,9 +523,10 @@
             <p>Frystorkade frukter, premium-nötter & vildskördad Sea Moss av högsta kvalitet.</p>
             <a href="#frukt" class="btn">Utforska sortimentet</a>
         </div>
+        <div class="scroll-indicator">↓</div>
     </section>
 
-    <section class="about-intro-section" id="om-oss">
+    <section class="about-intro-section reveal" id="om-oss">
         <div class="about-intro-container">
             <h2 class="elegant-heading">Om oss</h2>
             <p>Välkommen till <strong>FRUITS N ROOTS</strong> – din destination för ren hälsa och naturlig livskraft! Vi brinner för att erbjuda frystorkade frukter helt utan tillsatser, vildskördad Sea Moss från rena hav och krispiga premiumnötter av högsta kvalitet.</p>
@@ -475,10 +536,12 @@
 
     <div class="content-layout">
         <div class="main-content">
-            <section id="frukt" class="products-section">
+            
+            <section id="frukt" class="products-section reveal">
                 <h2 class="elegant-heading" onclick="openModal('frukt')">Frystorkad Frukt</h2>
                 <div class="product-grid">
                     <div class="product-card" onclick="openModal('frukt')">
+                        <span class="card-badge">Bästsäljare ✨</span>
                         <img src="./1784729911178.png" alt="FRUITS N ROOTS Frystorkad Frukt och Påsar">
                         <div class="card-content">
                             <h3>Krispiga Fruktbowls & Påsar</h3>
@@ -489,10 +552,11 @@
                 </div>
             </section>
 
-            <section id="seamoss" class="products-section alt-bg">
+            <section id="seamoss" class="products-section alt-bg reveal">
                 <h2 class="elegant-heading" onclick="openModal('seamoss')">Sea Moss</h2>
                 <div class="product-grid">
                     <div class="product-card" onclick="openModal('seamoss')">
+                        <span class="card-badge">Populär 🌊</span>
                         <img src="./1784707625353.png" alt="Purple & Golden Sea Moss Gel">
                         <div class="card-content">
                             <h3>Purple & Golden Sea Moss</h3>
@@ -503,10 +567,11 @@
                 </div>
             </section>
 
-            <section id="notter" class="products-section">
+            <section id="notter" class="products-section reveal">
                 <h2 class="elegant-heading" onclick="openModal('notter')">Premium-nötter & Bulk</h2>
                 <div class="product-grid">
                     <div class="product-card" onclick="openModal('notter')">
+                        <span class="card-badge">Nyhet 🌰</span>
                         <img src="./1784707424319.png" alt="FRUITS N ROOTS Premium Nötter">
                         <div class="card-content">
                             <h3>Pistage, Cashew, Mandlar & Valnötter</h3>
@@ -518,7 +583,7 @@
             </section>
         </div>
 
-        <aside class="sidebar-column">
+        <aside class="sidebar-column reveal">
             <div class="sidebar-widget">
                 <h3>Vårt Löfte</h3>
                 <p>100% naturliga råvaror utan tillsatser. Vi strävar efter att erbjuda marknadens bästa kvalitet inom hälsa och superfoods.</p>
@@ -537,13 +602,13 @@
         </aside>
     </div>
 
-    <!-- SOCIALA MEDIER-SEKTION -->
-    <section class="social-media-section" id="socialt">
+    <!-- SOCIALA MEDIER-SEKTION MED DIN INSTAGRAM-LÄNK -->
+    <section class="social-media-section reveal" id="socialt">
         <div class="social-media-container">
             <h2 class="elegant-heading">Följ Vår Resa</h2>
             <p>Häng med bakom kulisserna, få exklusiva rabatter och ta del av härliga recept på våra sociala medier!</p>
             <div class="social-links-wrapper">
-                <a href="https://instagram.com" target="_blank" class="social-card instagram">
+                <a href="https://www.instagram.com/fruits_n_root?igsh=MWFjcjBzNGFyZjE0OQ==" target="_blank" class="social-card instagram">
                     📷 Instagram
                 </a>
                 <a href="https://tiktok.com" target="_blank" class="social-card tiktok">
@@ -556,7 +621,7 @@
         </div>
     </section>
 
-    <section class="newsletter-section" id="nyhetsbrev">
+    <section class="newsletter-section reveal" id="nyhetsbrev">
         <h3 class="elegant-heading">Håll dig uppdaterad</h3>
         <p>Prenumerera på vårt nyhetsbrev för exklusiva erbjudanden, nya produkter och hälsotips!</p>
         <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Tack för din prenumeration!');">
@@ -565,7 +630,7 @@
         </form>
     </section>
 
-    <footer class="contact-footer-wrapper" id="kontakt">
+    <footer class="contact-footer-wrapper reveal" id="kontakt">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 3rem;">
                 <h2 class="elegant-heading" style="font-size: 2.2rem; color: var(--accent-gold);">Kontakta oss</h2>
@@ -612,7 +677,7 @@
         <audio id="bgMusic" loop><source src="Fruitsnroots.mp3" type="audio/mpeg"></audio>
     </div>
 
-    <!-- Data och Logik -->
+    <!-- Skript för UI-Logik -->
     <script>
         function toggleDrawer() {
             const drawer = document.getElementById('drawerMenu');
@@ -711,6 +776,28 @@
             if (isPlaying) { music.pause(); musicBtnText.textContent = "Spela låt"; isPlaying = false; } 
             else { music.play(); musicBtnText.textContent = "Pausa låt"; isPlaying = true; }
         }
+    </script>
+
+    <!-- Skript för Scroll-animationer -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
     </script>
 
     <!-- Snipcart Kassa-Skript -->
