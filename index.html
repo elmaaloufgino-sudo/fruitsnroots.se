@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Fruits N Roots | Frystorkade Frukter, Sea Moss & Nötter</title>
-    <!-- Uppdaterad Google Fonts: Dancing Script för loggan, Playfair Display för lyxiga, kompakta rubriker, Poppins för brödtext -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Oswald är ett extremt kompakt, rakt och tätt typsnitt för rubriker -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Oswald:wght@300;400;500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         /* ==========================================
@@ -31,8 +31,9 @@
             --accent-gold: #d4af37; 
             --accent-glow: rgba(212, 175, 55, 0.4);
             --bg-light-green: #f4f9f5;
-            --text-dark: #2b2b2b;
-            --text-muted: #555555;
+            /* Tvingar all brödtext att vara mörkgrön */
+            --text-dark: #1b4332; 
+            --text-muted: #1b4332; 
             --glass-bg: rgba(255, 255, 255, 0.85);
             --glass-border: rgba(255, 255, 255, 0.9);
             --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -66,7 +67,7 @@
         body {
             background-color: var(--bg-light-green);
             color: var(--text-dark);
-            line-height: 1.65;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -81,16 +82,21 @@
         }
 
         /* ==========================================
-           NYA LYXIGA, KOMPAKTA GULDRUBRIKER (PLAYFAIR DISPLAY)
+           NYA RUBRIKER: TÄTA, KOMPAKTA OCH RAKA (Guld)
            ========================================== */
         h1, h2, h3, h4, .elegant-heading, .drawer-title, .package-item h4 {
-            font-family: 'Playfair Display', serif !important;
-            font-weight: 600 !important;
+            font-family: 'Oswald', sans-serif !important;
+            font-weight: 400 !important;
             color: var(--accent-gold) !important;
-            letter-spacing: -0.2px !important; /* Gör texten tätare och mer kompakt */
+            letter-spacing: 0px !important; 
+            line-height: 1.2 !important;
+            text-transform: uppercase; /* Ger det kompakta och raka utseendet */
+            margin-bottom: 0.5rem;
         }
         
-        .hero-content p { font-weight: 400; font-family: 'Poppins', sans-serif; }
+        /* Brödtexten förblir mörkgrön och mjuk */
+        p, span, div, a { color: var(--text-dark); }
+        .hero-content p { font-family: 'Poppins', sans-serif; font-weight: 400; color: #ffffff; /* Endast vit i heron för läsbarhet mot bild */ }
 
         .elegant-heading {
             position: relative;
@@ -98,7 +104,7 @@
         }
         .elegant-heading::after {
             content: ''; position: absolute; width: 40%; height: 2px;
-            bottom: -4px; left: 30%; background-color: var(--accent-gold);
+            bottom: -2px; left: 30%; background-color: var(--accent-gold);
             transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1), left 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .products-section:hover .elegant-heading::after, 
@@ -130,11 +136,12 @@
         }
         .logo:hover img { transform: rotate(10deg) scale(1.05); }
 
-        /* LOGGAN BEHÅLLER SKRIVSTILEN FÖR ATT STICKA UT SOM VARUMÄRKE */
+        /* LOGGAN BEHÅLLER SKRIVSTILEN */
         .logo-text {
             font-family: 'Dancing Script', cursive !important;
-            font-size: 1.6rem; font-weight: 600; letter-spacing: 1.5px;
-            white-space: nowrap; color: var(--primary-dark); /* Mörk för att synas bra i headern, N är i guld */
+            font-size: 1.6rem; font-weight: 600; letter-spacing: 1px;
+            white-space: nowrap; color: var(--primary-dark) !important;
+            text-transform: none;
         }
 
         .header-actions { display: flex; align-items: center; gap: 20px; }
@@ -201,7 +208,6 @@
         .drawer-nav .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(27,67,50,0.3); background: var(--primary-green); }
 
         .drawer-footer { border-top: 1px solid #eee; padding-top: 1.5rem; text-align: center; }
-        .drawer-footer span { font-family: 'Playfair Display', serif !important; color: var(--accent-gold); font-size: 1.5rem; font-weight: 600;}
 
         /* ==========================================
            4. HERO SEKTION 
@@ -218,7 +224,7 @@
         @keyframes heroSlowPan { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(27, 67, 50, 0.3), rgba(27, 67, 50, 0.15)), url('./1784410818535.png') no-repeat center center;
+            background: linear-gradient(rgba(27, 67, 50, 0.4), rgba(27, 67, 50, 0.2)), url('./1784410818535.png') no-repeat center center;
             background-size: cover; z-index: 1; animation: heroSlowPan 15s ease-in-out infinite alternate;
         }
         .hero-content { position: relative; z-index: 3; max-width: 800px; }
@@ -227,7 +233,7 @@
             position: relative; display: inline-block; overflow: hidden;
             background: rgba(255, 255, 255, 0.9); color: var(--primary-dark);
             border: 2px solid var(--accent-gold); padding: 6px 20px; border-radius: 30px;
-            font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 1.5rem;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; margin-bottom: 1.5rem;
             text-transform: uppercase; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         .pre-launch-badge::before {
@@ -252,7 +258,7 @@
             position: relative; overflow: hidden;
             font-family: 'Poppins', sans-serif;
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(27, 67, 50, 0.3); background: var(--primary-green); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(27, 67, 50, 0.3); background: var(--primary-green); color: #fff;}
         
         .btn-outline {
             background: transparent; border: 1.5px solid var(--accent-gold);
@@ -271,14 +277,14 @@
             padding: 3rem; border-radius: 24px; box-shadow: var(--card-shadow);
             border: 1px solid var(--glass-border); border-top: 4px solid var(--accent-gold); text-align: center;
         }
-        .about-intro-section h2 { font-size: 2.6rem; margin-bottom: 1rem; }
-        .about-intro-section p { color: var(--text-dark); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1rem; font-weight: 300; }
+        .about-intro-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .about-intro-section p { font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; font-weight: 400; }
 
         /* ==========================================
            7. PRODUKTER & LAYOUT (SHOWCASE)
            ========================================== */
         .products-section { padding: 3rem 5%; text-align: center; position: relative; z-index: 5; }
-        .products-section h2 { font-size: 2.6rem; margin-bottom: 2rem; }
+        .products-section h2 { font-size: 2rem; margin-bottom: 2rem; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; }
         
         .product-card {
@@ -295,8 +301,8 @@
         .product-card img { width: 100%; height: 240px; object-fit: cover; transition: transform 0.8s; }
         .product-card:hover img { transform: scale(1.05); }
         .card-content { padding: 1.8rem; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-card h3 { margin-bottom: 0.6rem; font-size: 1.6rem; }
-        .product-card p { color: var(--text-muted); font-size: 0.95rem; font-weight: 300; margin-bottom: 1.5rem; flex-grow: 1; line-height: 1.6; }
+        .product-card h3 { font-size: 1.4rem; }
+        .product-card p { font-size: 0.95rem; font-weight: 400; margin-bottom: 1.5rem; flex-grow: 1; line-height: 1.6; }
 
         .card-badge {
             position: absolute; top: 20px; right: -10px; background: var(--accent-gold); color: #fff;
@@ -311,8 +317,9 @@
             background: rgba(255,255,255,0.85); backdrop-filter: blur(15px); padding: 2rem;
             border-radius: 24px; box-shadow: var(--card-shadow); border: 1px solid var(--glass-border); border-left: 5px solid var(--primary-green);
         }
-        .sidebar-widget h3 { margin-bottom: 1.2rem; font-size: 1.8rem; }
-        .sidebar-widget p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+        .sidebar-widget h3 { margin-bottom: 1rem; font-size: 1.5rem; }
+        .sidebar-widget h4 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .sidebar-widget p { font-size: 0.95rem; line-height: 1.6; font-weight: 400; }
 
         /* ==========================================
            8. SOCIALA MEDIER
@@ -322,8 +329,8 @@
             background: rgba(255,255,255,0.85); backdrop-filter: blur(15px); padding: 3.5rem 2rem; border-radius: 24px;
             box-shadow: var(--card-shadow); border: 1px solid var(--glass-border); border-top: 4px solid var(--primary-green);
         }
-        .social-media-container h2 { font-size: 2.6rem; margin-bottom: 1rem; }
-        .social-media-container p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2.5rem; font-weight: 300; }
+        .social-media-container h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .social-media-container p { font-size: 1.05rem; margin-bottom: 2.5rem; font-weight: 400; }
         .social-links-wrapper { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
         .social-card {
             display: flex; align-items: center; gap: 10px; padding: 0.8rem 1.8rem; background: #ffffff;
@@ -331,32 +338,36 @@
             font-weight: 500; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
             font-family: 'Poppins', sans-serif;
         }
-        .social-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.06); border-color: var(--accent-gold); color: var(--primary-dark); }
+        .social-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.06); border-color: var(--accent-gold); }
 
         /* ==========================================
            9. NYHETSBREV & FOOTER
            ========================================== */
+        /* Gjorde bakgrunden ljus så mörkgrön text blir synlig! */
         .newsletter-section {
-            background: var(--primary-dark); color: white; max-width: 850px; margin: 2rem auto;
-            padding: 3.5rem 2rem; border-radius: 24px; box-shadow: 0 15px 35px rgba(27,67,50,0.2); text-align: center;
+            background: rgba(255, 255, 255, 0.9); max-width: 850px; margin: 2rem auto;
+            padding: 3.5rem 2rem; border-radius: 24px; box-shadow: 0 15px 35px rgba(27,67,50,0.1); text-align: center;
             border: 1px solid rgba(212,175,55,0.3); position: relative; overflow: hidden; z-index: 5;
+            backdrop-filter: blur(15px);
         }
-        .newsletter-section h3 { font-size: 2.4rem; margin-bottom: 1rem; }
+        .newsletter-section h3 { font-size: 1.8rem; margin-bottom: 1rem; }
         .newsletter-form { display: flex; gap: 15px; justify-content: center; max-width: 550px; margin: 1.5rem auto 0 auto; flex-wrap: wrap; }
         .newsletter-form input[type="email"] {
-            flex: 1; min-width: 250px; padding: 0.8rem 1.5rem; border: none; background: #fff; color: var(--text-dark);
+            flex: 1; min-width: 250px; padding: 0.8rem 1.5rem; border: 1px solid #ddd; background: #fafafa; color: var(--text-dark);
             border-radius: 30px; font-size: 0.95rem; outline: none; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
             font-family: 'Poppins', sans-serif;
         }
         
+        /* FOOTER: Ljus bakgrund så den mörkgröna texten poppar */
         .contact-footer-wrapper {
-            background: var(--primary-dark); 
-            color: white; margin-top: 4rem; padding: 4rem 5% 2rem 5%; border-top: 4px solid var(--accent-gold); position: relative; z-index: 5;
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(20px);
+            margin-top: 4rem; padding: 4rem 5% 2rem 5%; border-top: 4px solid var(--accent-gold); position: relative; z-index: 5;
         }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
         .contact-info-card, .contact-form-card { padding: 2.5rem; border-radius: 24px; }
-        .contact-info-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .contact-form-card { background: rgba(255, 255, 255, 0.98); color: var(--text-dark); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .contact-info-card { background: rgba(0, 0, 0, 0.02); border: 1px solid rgba(0, 0, 0, 0.05); }
+        .contact-form-card { background: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); }
         
         .contact-detail-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 2rem; }
         .contact-detail-item .icon-box {
@@ -367,7 +378,7 @@
         /* --- FOOTER LOGO OCH COPYRIGHT LÄNGST NER TILL VÄNSTER --- */
         .footer-bottom {
             display: flex; justify-content: flex-start; align-items: center; 
-            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; 
+            border-top: 1px solid rgba(0,0,0,0.1); padding-top: 2rem; 
             flex-wrap: wrap; gap: 2rem;
         }
         .footer-logo {
@@ -378,7 +389,8 @@
             object-fit: cover;
         }
         .footer-logo span {
-            font-family: 'Dancing Script', cursive !important; font-size: 1.6rem; color: #fff; letter-spacing: 1px;
+            font-family: 'Dancing Script', cursive !important; font-size: 1.6rem; color: var(--primary-dark) !important; letter-spacing: 1px;
+            text-transform: none;
         }
 
         /* ==========================================
@@ -386,23 +398,23 @@
            ========================================== */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(27, 67, 50, 0.7); backdrop-filter: blur(8px); overflow-y: auto; padding: 40px 15px;
+            background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); overflow-y: auto; padding: 40px 15px;
             cursor: auto;
         }
         .modal-content {
             background: #ffffff; margin: 0 auto; padding: 2.5rem; border-radius: 24px; max-width: 900px;
-            width: 100%; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 100%; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.1);
         }
-        .close-btn { position: absolute; right: 1.5rem; top: 1rem; font-size: 2.5rem; color: #888; cursor: pointer; transition: color 0.3s; }
-        .close-btn:hover { color: var(--primary-dark); }
+        .close-btn { position: absolute; right: 1.5rem; top: 1rem; font-size: 2.5rem; color: var(--primary-dark); cursor: pointer; transition: transform 0.3s; }
+        .close-btn:hover { transform: rotate(90deg); color: var(--accent-gold); }
         .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
         .package-item {
             border: 1px solid #eee; border-radius: 20px; padding: 1.5rem; background: #fafafa;
             text-align: center; display: flex; flex-direction: column; height: 100%;
         }
         .package-item img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem; }
-        .package-item h4 { margin-bottom: 0.5rem; font-size: 1.4rem; }
-        .package-item p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1; }
+        .package-item h4 { margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .package-item p { font-size: 0.9rem; margin-bottom: 1rem; flex-grow: 1; }
         .package-item .badge {
             display: inline-block; background: rgba(212,175,55,0.1); color: var(--accent-gold); font-size: 0.8rem;
             padding: 4px 12px; border-radius: 12px; font-weight: 500; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;
@@ -426,7 +438,7 @@
             .hero { min-height: 320px; height: auto; padding: 3rem 1rem; }
             .hero-content p { font-size: 1rem; }
             .pre-launch-badge { font-size: 0.75rem; padding: 5px 15px; }
-            h2.elegant-heading { font-size: 2.2rem !important; }
+            h2.elegant-heading { font-size: 1.8rem !important; }
             .about-intro-section, .products-section, .social-media-section { padding: 2rem 5%; }
             .about-intro-container, .social-media-container, .sidebar-widget, .newsletter-section { padding: 2rem 1.5rem; }
             .product-grid { gap: 1.5rem; }
@@ -450,7 +462,7 @@
         <div class="logo">
             <img src="./1784710545310.png" alt="Fruits N Roots Logotyp">
             <span class="logo-text">
-                Fruits <span style="color: var(--accent-gold);">N</span> Roots
+                Fruits <span style="color: var(--accent-gold) !important;">N</span> Roots
             </span>
         </div>
         
@@ -481,8 +493,8 @@
             </nav>
         </div>
         <div class="drawer-footer">
-            <span>Fruits N Roots</span>
-            <p style="font-size: 0.8rem; color: #888; margin-top: 5px; font-family: 'Poppins', sans-serif;">Lansering Sommaren 2026</p>
+            <span style="color: var(--accent-gold); font-family: 'Oswald', sans-serif !important; font-weight: 400; text-transform: uppercase;">Fruits N Roots</span>
+            <p style="font-size: 0.8rem; margin-top: 5px; font-family: 'Poppins', sans-serif;">Lansering Sommaren 2026</p>
         </div>
     </div>
 
@@ -554,18 +566,18 @@
 
         <aside class="sidebar-column reveal">
             <div class="sidebar-widget">
-                <h3 class="elegant-heading" style="font-size: 2rem; margin-bottom: 1.5rem;">Vårt Löfte</h3>
+                <h3 class="elegant-heading">Vårt Löfte</h3>
                 <p>100% naturliga råvaror utan tillsatser. Vi strävar efter att erbjuda marknadens absolut bästa kvalitet inom hälsa och superfoods när vi slår upp dörrarna.</p>
             </div>
             <div class="sidebar-widget">
-                <h3 class="elegant-heading" style="font-size: 2rem; margin-bottom: 1.5rem;">Kommande Butiker</h3>
+                <h3 class="elegant-heading">Kommande Butiker</h3>
                 <div style="margin-top: 15px;">
-                    <h4 style="font-size: 1.3rem;">Frölunda Torg</h4>
-                    <p style="font-size: 0.9rem;">Vår framtida hubb för färska produkter.</p>
+                    <h4>Frölunda Torg</h4>
+                    <p>Vår framtida hubb för färska produkter.</p>
                 </div>
                 <div style="margin-top: 20px;">
-                    <h4 style="font-size: 1.3rem;">Nordstan</h4>
-                    <p style="font-size: 0.9rem;">Mitt i pulsen i Nordstans shoppingcenter.</p>
+                    <h4>Nordstan</h4>
+                    <p>Mitt i pulsen i Nordstans shoppingcenter.</p>
                 </div>
             </div>
         </aside>
@@ -588,7 +600,7 @@
 
     <section class="newsletter-section reveal" id="nyhetsbrev">
         <h3 class="elegant-heading">Få VIP-Inbjudan</h3>
-        <p style="font-size: 1rem; font-weight: 300; position: relative; z-index: 2; font-family: 'Poppins', sans-serif;">Prenumerera på vår väntelista för att få förtur till vår grand opening och exklusiva rabatter.</p>
+        <p>Prenumerera på vår väntelista för att få förtur till vår grand opening och exklusiva rabatter.</p>
         <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Tack! Du står nu på vår VIP-väntelista.');">
             <input type="email" placeholder="Din e-postadress..." required>
             <button type="submit" class="btn" style="background: var(--accent-gold); color: var(--primary-dark);">Gå med i listan</button>
@@ -598,22 +610,22 @@
     <footer class="contact-footer-wrapper reveal" id="kontakt">
         <div style="max-width: 1100px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 class="elegant-heading" style="font-size: 3rem;">Hör av dig</h2>
+                <h2 class="elegant-heading" style="font-size: 2.2rem;">Hör av dig</h2>
             </div>
             <div class="contact-grid">
                 <div class="contact-info-card">
-                    <h3 class="elegant-heading" style="margin-bottom: 2rem; font-size: 2rem;">Pre-Launch Kontakt</h3>
+                    <h3 class="elegant-heading" style="margin-bottom: 1.5rem; font-size: 1.5rem;">Pre-Launch Kontakt</h3>
                     <div class="contact-detail-item">
                         <div class="icon-box">📧</div>
-                        <div><h4 style="font-size: 1.3rem;">E-post</h4><p style="color: #c9d6d0; margin-top: 5px; font-size: 0.9rem;">info@fruitsnroots.com</p></div>
+                        <div><h4>E-post</h4><p style="margin-top: 5px;">info@fruitsnroots.com</p></div>
                     </div>
                     <div class="contact-detail-item">
                         <div class="icon-box">📦</div>
-                        <div><h4 style="font-size: 1.3rem;">B2B / Partihandel</h4><p style="color: #c9d6d0; margin-top: 5px; font-size: 0.9rem;">Öppen för förhandsbokning upp till 1 000 kg.</p></div>
+                        <div><h4>B2B / Partihandel</h4><p style="margin-top: 5px;">Öppen för förhandsbokning upp till 1 000 kg.</p></div>
                     </div>
                 </div>
                 <div class="contact-form-card">
-                    <h3 class="elegant-heading" style="margin-bottom: 2rem; font-size: 2rem;">Intresseanmälan B2B</h3>
+                    <h3 class="elegant-heading" style="margin-bottom: 1.5rem; font-size: 1.5rem;">Intresseanmälan B2B</h3>
                     <form onsubmit="event.preventDefault(); alert('Tack! Vi kontaktar dig så snart vi närmar oss lansering.');">
                         <input type="text" placeholder="Namn / Företag" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required>
                         <input type="email" placeholder="E-post" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required>
@@ -627,9 +639,9 @@
             <div class="footer-bottom">
                 <div class="footer-logo">
                     <img src="./1784710545310.png" alt="Fruits N Roots Logotyp">
-                    <span style="color: #ffffff; font-family: 'Dancing Script', cursive !important;">Fruits <span style="color: var(--accent-gold);">N</span> Roots</span>
+                    <span style="font-family: 'Dancing Script', cursive !important; color: var(--primary-dark) !important; text-transform: none;">Fruits <span style="color: var(--accent-gold) !important;">N</span> Roots</span>
                 </div>
-                <div style="color: #a4bba8; font-size: 0.9rem; font-family: 'Poppins', sans-serif;">
+                <div style="font-size: 0.9rem;">
                     <p>&copy; 2026 Fruits N Roots. Alla rättigheter förbehållna.</p>
                 </div>
             </div>
@@ -728,8 +740,8 @@
 
             let html = `
                 <div style="margin-bottom: 2rem; border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 1.5rem; text-align: center;">
-                    <h2 class="elegant-heading" style="font-size: 2.2rem;">${data.title}</h2>
-                    <p style="color:var(--text-muted); font-size: 1rem; margin-top:10px; font-family: 'Poppins', sans-serif;">${data.intro}</p>
+                    <h2 class="elegant-heading" style="font-size: 1.8rem;">${data.title}</h2>
+                    <p style="font-size: 1rem; margin-top:10px;">${data.intro}</p>
                 </div>
                 <div class="package-grid">
             `;
@@ -742,7 +754,7 @@
                         ${imgHtml}
                         <div><span class="badge">${pkg.size}</span></div>
                         <h4>${pkg.name}</h4>
-                        <p style="font-family: 'Poppins', sans-serif;">${pkg.desc}</p>
+                        <p>${pkg.desc}</p>
                         <button class="btn-outline" style="width:100%; border-color: #ddd; color: #aaa !important; background: transparent;" disabled>Kommer Snart</button>
                     </div>
                 `;
