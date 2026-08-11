@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Fruits N Roots | Frystorkade Frukter, Sea Moss & Nötter</title>
-    <!-- Oswald är ett extremt kompakt, rakt och tätt typsnitt för rubriker -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Oswald:wght@300;400;500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         /* ==========================================
@@ -30,14 +29,14 @@
             --primary-green: #2d6a4f;
             --accent-gold: #d4af37; 
             --accent-glow: rgba(212, 175, 55, 0.4);
-            --bg-light-green: #f4f9f5;
-            /* Tvingar all brödtext att vara mörkgrön */
+            /* Den nya, djupa mörkgröna bakgrunden */
+            --bg-dark-green: #142e20; 
             --text-dark: #1b4332; 
             --text-muted: #1b4332; 
-            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-bg: rgba(255, 255, 255, 0.88);
             --glass-border: rgba(255, 255, 255, 0.9);
-            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            --hover-shadow: 0 20px 40px rgba(45, 106, 79, 0.15);
+            --card-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            --hover-shadow: 0 25px 50px rgba(212, 175, 55, 0.15);
         }
 
         @media (pointer: fine) {
@@ -59,13 +58,14 @@
         }
 
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-light-green); }
+        ::-webkit-scrollbar-track { background: var(--bg-dark-green); }
         ::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 10px; }
 
         section, div[id], footer[id] { scroll-margin-top: 90px; }
 
         body {
-            background-color: var(--bg-light-green);
+            /* Hela sidans bakgrund är nu mörkgrön */
+            background-color: var(--bg-dark-green);
             color: var(--text-dark);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
@@ -73,7 +73,7 @@
 
         .ambient-glow {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, rgba(45, 106, 79, 0.05) 50%, transparent 100%);
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, rgba(20, 46, 32, 0.8) 50%, transparent 100%);
             z-index: -1; filter: blur(60px); animation: pulseGlow 15s infinite alternate ease-in-out;
         }
         @keyframes pulseGlow {
@@ -82,39 +82,36 @@
         }
 
         /* ==========================================
-           NYA RUBRIKER: TÄTA, KOMPAKTA OCH RAKA (Guld)
+           RUBRIKER: SMALA, TJOCKA, CENTRERADE & GULD
            ========================================== */
         h1, h2, h3, h4, .elegant-heading, .drawer-title, .package-item h4 {
-            font-family: 'Oswald', sans-serif !important;
-            font-weight: 400 !important;
+            font-family: 'Cormorant Garamond', serif !important;
+            font-weight: 700 !important;
             color: var(--accent-gold) !important;
-            letter-spacing: 0px !important; 
+            letter-spacing: 1px !important; 
             line-height: 1.2 !important;
-            text-transform: uppercase; /* Ger det kompakta och raka utseendet */
-            margin-bottom: 0.5rem;
+            text-align: center !important;
+            margin-bottom: 1rem;
         }
         
-        /* Brödtexten förblir mörkgrön och mjuk */
-        p, span, div, a { color: var(--text-dark); }
-        .hero-content p { font-family: 'Poppins', sans-serif; font-weight: 400; color: #ffffff; /* Endast vit i heron för läsbarhet mot bild */ }
-
         .elegant-heading {
-            position: relative;
             display: inline-block;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 6px;
         }
-        .elegant-heading::after {
-            content: ''; position: absolute; width: 40%; height: 2px;
-            bottom: -2px; left: 30%; background-color: var(--accent-gold);
-            transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1), left 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        
+        .about-intro-section h2, .products-section h2, .social-media-container h2, .contact-footer-wrapper h2 {
+            font-size: 1.8rem !important;
         }
-        .products-section:hover .elegant-heading::after, 
-        .about-intro-container:hover .elegant-heading::after,
-        .sidebar-widget:hover .elegant-heading::after,
-        .social-media-container:hover .elegant-heading::after,
-        .contact-info-card:hover .elegant-heading::after,
-        .contact-form-card:hover .elegant-heading::after {
-            width: 100%; left: 0;
+        .sidebar-widget h3, .contact-info-card h3, .contact-form-card h3, .newsletter-section h3 {
+            font-size: 1.5rem !important;
         }
+        .product-card h3 {
+            font-size: 1.4rem !important;
+        }
+
+        p, span, div, a { color: var(--text-dark); }
+        .hero-content p { font-family: 'Poppins', sans-serif; font-weight: 400; color: #ffffff; }
 
         /* ==========================================
            2. HEADER & LOGOTYP
@@ -123,9 +120,9 @@
             display: flex; justify-content: space-between; align-items: center;
             padding: 1rem 5%; background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             position: sticky; top: 0; z-index: 100;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.5);
         }
 
         .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
@@ -136,12 +133,10 @@
         }
         .logo:hover img { transform: rotate(10deg) scale(1.05); }
 
-        /* LOGGAN BEHÅLLER SKRIVSTILEN */
         .logo-text {
             font-family: 'Dancing Script', cursive !important;
             font-size: 1.6rem; font-weight: 600; letter-spacing: 1px;
             white-space: nowrap; color: var(--primary-dark) !important;
-            text-transform: none;
         }
 
         .header-actions { display: flex; align-items: center; gap: 20px; }
@@ -162,7 +157,7 @@
            ========================================== */
         .drawer-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.6); z-index: 1000;
             backdrop-filter: blur(5px); animation: fadeIn 0.4s ease;
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -170,7 +165,7 @@
         .drawer-menu {
             position: fixed; top: 0; right: -320px; width: 300px; height: 100%;
             background: rgba(255, 255, 255, 0.98); color: var(--text-dark); z-index: 1001;
-            box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.2);
             transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex; flex-direction: column; justify-content: space-between;
             padding: 2.5rem 1.5rem; border-left: 3px solid var(--accent-gold);
@@ -219,7 +214,7 @@
         }
         .hero::after {
             content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100px;
-            background: linear-gradient(to top, var(--bg-light-green), transparent); z-index: 2;
+            background: linear-gradient(to top, var(--bg-dark-green), transparent); z-index: 2;
         }
         @keyframes heroSlowPan { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
         .hero-bg {
@@ -244,8 +239,8 @@
         @keyframes liquidShimmer { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
 
         .hero-content p {
-            font-size: 1.2rem; margin-bottom: 2rem; letter-spacing: 0.5px; line-height: 1.6;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+            font-size: 1.1rem; margin-bottom: 2rem; letter-spacing: 0.5px; line-height: 1.6;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         /* ==========================================
@@ -253,12 +248,12 @@
            ========================================== */
         .btn {
             display: inline-block; background: var(--primary-dark);
-            color: #ffffff; padding: 0.9rem 2.2rem; border-radius: 30px; text-decoration: none; font-weight: 500; letter-spacing: 0.5px;
-            cursor: pointer; border: none; box-shadow: 0 8px 20px rgba(27, 67, 50, 0.2); transition: all 0.3s;
+            color: #ffffff; padding: 0.8rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 500; letter-spacing: 0.5px;
+            cursor: pointer; border: none; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); transition: all 0.3s;
             position: relative; overflow: hidden;
             font-family: 'Poppins', sans-serif;
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(27, 67, 50, 0.3); background: var(--primary-green); color: #fff;}
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5); background: var(--primary-green); color: #fff;}
         
         .btn-outline {
             background: transparent; border: 1.5px solid var(--accent-gold);
@@ -277,47 +272,44 @@
             padding: 3rem; border-radius: 24px; box-shadow: var(--card-shadow);
             border: 1px solid var(--glass-border); border-top: 4px solid var(--accent-gold); text-align: center;
         }
-        .about-intro-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
         .about-intro-section p { font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; font-weight: 400; }
 
         /* ==========================================
            7. PRODUKTER & LAYOUT (SHOWCASE)
            ========================================== */
         .products-section { padding: 3rem 5%; text-align: center; position: relative; z-index: 5; }
-        .products-section h2 { font-size: 2rem; margin-bottom: 2rem; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; }
         
         .product-card {
-            background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
-            border-radius: 24px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--glass-border); text-align: left;
+            background: var(--glass-bg); backdrop-filter: blur(15px);
+            border-radius: 24px; overflow: hidden; box-shadow: var(--card-shadow); border: 1px solid var(--glass-border); text-align: center;
             cursor: pointer; transition: all 0.4s; display: flex; flex-direction: column; height: 100%;
             position: relative;
         }
         .product-card:hover { 
             transform: translateY(-8px); 
-            box-shadow: 0 15px 35px rgba(27, 67, 50, 0.1); 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
             border-color: var(--accent-gold); 
         }
         .product-card img { width: 100%; height: 240px; object-fit: cover; transition: transform 0.8s; }
         .product-card:hover img { transform: scale(1.05); }
-        .card-content { padding: 1.8rem; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-card h3 { font-size: 1.4rem; }
+        .card-content { padding: 1.8rem; display: flex; flex-direction: column; flex-grow: 1; align-items: center; }
         .product-card p { font-size: 0.95rem; font-weight: 400; margin-bottom: 1.5rem; flex-grow: 1; line-height: 1.6; }
 
         .card-badge {
             position: absolute; top: 20px; right: -10px; background: var(--accent-gold); color: #fff;
             padding: 5px 18px; border-radius: 20px 0 0 20px; font-size: 0.75rem; font-weight: 600;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 2; letter-spacing: 1px; text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25); z-index: 2; letter-spacing: 1px; text-transform: uppercase;
             font-family: 'Poppins', sans-serif;
         }
 
         .content-layout { display: grid; grid-template-columns: 1fr 340px; gap: 3rem; max-width: 1250px; margin: 2rem auto; padding: 0 5%; position: relative; z-index: 5;}
         .sidebar-column { display: flex; flex-direction: column; gap: 2rem; }
         .sidebar-widget {
-            background: rgba(255,255,255,0.85); backdrop-filter: blur(15px); padding: 2rem;
-            border-radius: 24px; box-shadow: var(--card-shadow); border: 1px solid var(--glass-border); border-left: 5px solid var(--primary-green);
+            background: var(--glass-bg); backdrop-filter: blur(15px); padding: 2rem;
+            border-radius: 24px; box-shadow: var(--card-shadow); border: 1px solid var(--glass-border); border-top: 4px solid var(--accent-gold);
+            text-align: center;
         }
-        .sidebar-widget h3 { margin-bottom: 1rem; font-size: 1.5rem; }
         .sidebar-widget h4 { font-size: 1.1rem; margin-bottom: 0.2rem; }
         .sidebar-widget p { font-size: 0.95rem; line-height: 1.6; font-weight: 400; }
 
@@ -326,31 +318,28 @@
            ========================================== */
         .social-media-section { padding: 3rem 5%; text-align: center; max-width: 1250px; margin: 0 auto 3rem auto; position: relative; z-index: 5;}
         .social-media-container {
-            background: rgba(255,255,255,0.85); backdrop-filter: blur(15px); padding: 3.5rem 2rem; border-radius: 24px;
+            background: var(--glass-bg); backdrop-filter: blur(15px); padding: 3.5rem 2rem; border-radius: 24px;
             box-shadow: var(--card-shadow); border: 1px solid var(--glass-border); border-top: 4px solid var(--primary-green);
         }
-        .social-media-container h2 { font-size: 2rem; margin-bottom: 1rem; }
-        .social-media-container p { font-size: 1.05rem; margin-bottom: 2.5rem; font-weight: 400; }
+        .social-media-container p { font-size: 1rem; margin-bottom: 2.5rem; font-weight: 400; }
         .social-links-wrapper { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
         .social-card {
             display: flex; align-items: center; gap: 10px; padding: 0.8rem 1.8rem; background: #ffffff;
             border: 1px solid #eaeaea; border-radius: 20px; text-decoration: none; color: var(--primary-dark);
-            font-weight: 500; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            font-weight: 500; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             font-family: 'Poppins', sans-serif;
         }
-        .social-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.06); border-color: var(--accent-gold); }
+        .social-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-color: var(--accent-gold); }
 
         /* ==========================================
            9. NYHETSBREV & FOOTER
            ========================================== */
-        /* Gjorde bakgrunden ljus så mörkgrön text blir synlig! */
         .newsletter-section {
-            background: rgba(255, 255, 255, 0.9); max-width: 850px; margin: 2rem auto;
-            padding: 3.5rem 2rem; border-radius: 24px; box-shadow: 0 15px 35px rgba(27,67,50,0.1); text-align: center;
-            border: 1px solid rgba(212,175,55,0.3); position: relative; overflow: hidden; z-index: 5;
+            background: var(--glass-bg); max-width: 850px; margin: 2rem auto;
+            padding: 3.5rem 2rem; border-radius: 24px; box-shadow: var(--card-shadow); text-align: center;
+            border: 1px solid var(--glass-border); position: relative; overflow: hidden; z-index: 5;
             backdrop-filter: blur(15px);
         }
-        .newsletter-section h3 { font-size: 1.8rem; margin-bottom: 1rem; }
         .newsletter-form { display: flex; gap: 15px; justify-content: center; max-width: 550px; margin: 1.5rem auto 0 auto; flex-wrap: wrap; }
         .newsletter-form input[type="email"] {
             flex: 1; min-width: 250px; padding: 0.8rem 1.5rem; border: 1px solid #ddd; background: #fafafa; color: var(--text-dark);
@@ -358,24 +347,24 @@
             font-family: 'Poppins', sans-serif;
         }
         
-        /* FOOTER: Ljus bakgrund så den mörkgröna texten poppar */
         .contact-footer-wrapper {
             background: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(20px);
             margin-top: 4rem; padding: 4rem 5% 2rem 5%; border-top: 4px solid var(--accent-gold); position: relative; z-index: 5;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
         }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-        .contact-info-card, .contact-form-card { padding: 2.5rem; border-radius: 24px; }
+        
+        .contact-info-card, .contact-form-card { padding: 2.5rem; border-radius: 24px; text-align: center; }
         .contact-info-card { background: rgba(0, 0, 0, 0.02); border: 1px solid rgba(0, 0, 0, 0.05); }
         .contact-form-card { background: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); }
         
-        .contact-detail-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 2rem; }
+        .contact-detail-item { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 2rem; }
         .contact-detail-item .icon-box {
             background: rgba(212, 175, 55, 0.15); color: var(--accent-gold); width: 45px; height: 45px;
             border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
         }
 
-        /* --- FOOTER LOGO OCH COPYRIGHT LÄNGST NER TILL VÄNSTER --- */
         .footer-bottom {
             display: flex; justify-content: flex-start; align-items: center; 
             border-top: 1px solid rgba(0,0,0,0.1); padding-top: 2rem; 
@@ -398,12 +387,13 @@
            ========================================== */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); overflow-y: auto; padding: 40px 15px;
+            background-color: rgba(20, 46, 32, 0.8); backdrop-filter: blur(10px); overflow-y: auto; padding: 40px 15px;
             cursor: auto;
         }
         .modal-content {
             background: #ffffff; margin: 0 auto; padding: 2.5rem; border-radius: 24px; max-width: 900px;
-            width: 100%; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.1);
+            width: 100%; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1px solid rgba(0,0,0,0.1);
+            text-align: center;
         }
         .close-btn { position: absolute; right: 1.5rem; top: 1rem; font-size: 2.5rem; color: var(--primary-dark); cursor: pointer; transition: transform 0.3s; }
         .close-btn:hover { transform: rotate(90deg); color: var(--accent-gold); }
@@ -411,9 +401,9 @@
         .package-item {
             border: 1px solid #eee; border-radius: 20px; padding: 1.5rem; background: #fafafa;
             text-align: center; display: flex; flex-direction: column; height: 100%;
+            align-items: center;
         }
         .package-item img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem; }
-        .package-item h4 { margin-bottom: 0.5rem; font-size: 1.3rem; }
         .package-item p { font-size: 0.9rem; margin-bottom: 1rem; flex-grow: 1; }
         .package-item .badge {
             display: inline-block; background: rgba(212,175,55,0.1); color: var(--accent-gold); font-size: 0.8rem;
@@ -424,7 +414,7 @@
         #musicToggleBtn {
             background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);
             color: var(--primary-dark); padding: 0.7rem 1.4rem; border-radius: 30px; cursor: pointer; font-size: 0.9rem; font-weight: 500;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; font-family: 'Poppins', sans-serif;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; font-family: 'Poppins', sans-serif;
         }
         #musicToggleBtn:hover { background: var(--accent-gold); color: #fff; }
 
@@ -436,9 +426,7 @@
             body { cursor: auto; } 
             .cursor-dot, .cursor-ring { display: none !important; }
             .hero { min-height: 320px; height: auto; padding: 3rem 1rem; }
-            .hero-content p { font-size: 1rem; }
             .pre-launch-badge { font-size: 0.75rem; padding: 5px 15px; }
-            h2.elegant-heading { font-size: 1.8rem !important; }
             .about-intro-section, .products-section, .social-media-section { padding: 2rem 5%; }
             .about-intro-container, .social-media-container, .sidebar-widget, .newsletter-section { padding: 2rem 1.5rem; }
             .product-grid { gap: 1.5rem; }
@@ -493,7 +481,7 @@
             </nav>
         </div>
         <div class="drawer-footer">
-            <span style="color: var(--accent-gold); font-family: 'Oswald', sans-serif !important; font-weight: 400; text-transform: uppercase;">Fruits N Roots</span>
+            <span style="color: var(--accent-gold); font-family: 'Cormorant Garamond', serif !important; font-weight: 700;">Fruits N Roots</span>
             <p style="font-size: 0.8rem; margin-top: 5px; font-family: 'Poppins', sans-serif;">Lansering Sommaren 2026</p>
         </div>
     </div>
@@ -525,7 +513,7 @@
                         <span class="card-badge">Bästsäljare ✨</span>
                         <img src="./1784729911178.png" alt="Fruits N Roots Frystorkad Frukt och Påsar">
                         <div class="card-content">
-                            <h3>Krispiga Fruktbowls & Påsar</h3>
+                            <h3 class="elegant-heading">Krispiga Fruktbowls & Påsar</h3>
                             <p>Naturligt söta frystorkade bär och tropiska frukter. 100% utan tillsatt socker.</p>
                             <button class="btn-outline">Upptäck Kollektionen</button>
                         </div>
@@ -540,7 +528,7 @@
                         <span class="card-badge">Populär 🌊</span>
                         <img src="./1784707625353.png" alt="Purple & Golden Sea Moss Gel">
                         <div class="card-content">
-                            <h3>Purple & Golden Sea Moss</h3>
+                            <h3 class="elegant-heading">Purple & Golden Sea Moss</h3>
                             <p>Ren vildskördad havsmossa i både råform och fräsch färdigblandad gelé.</p>
                             <button class="btn-outline">Upptäck Kollektionen</button>
                         </div>
@@ -555,7 +543,7 @@
                         <span class="card-badge">Kommande 🌰</span>
                         <img src="./1784707424319.png" alt="Fruits N Roots Premium Nötter">
                         <div class="card-content">
-                            <h3>Pistage, Cashew, Mandlar & Valnötter</h3>
+                            <h3 class="elegant-heading">Pistage, Cashew, Mandlar & Valnötter</h3>
                             <p>Färska nötter av högsta kvalitet med fina hela valnötshalvor, krispiga mandlar och cashewnötter.</p>
                             <button class="btn-outline">Upptäck Kollektionen</button>
                         </div>
@@ -572,11 +560,11 @@
             <div class="sidebar-widget">
                 <h3 class="elegant-heading">Kommande Butiker</h3>
                 <div style="margin-top: 15px;">
-                    <h4>Frölunda Torg</h4>
+                    <h4 class="elegant-heading">Frölunda Torg</h4>
                     <p>Vår framtida hubb för färska produkter.</p>
                 </div>
                 <div style="margin-top: 20px;">
-                    <h4>Nordstan</h4>
+                    <h4 class="elegant-heading">Nordstan</h4>
                     <p>Mitt i pulsen i Nordstans shoppingcenter.</p>
                 </div>
             </div>
@@ -600,7 +588,7 @@
 
     <section class="newsletter-section reveal" id="nyhetsbrev">
         <h3 class="elegant-heading">Få VIP-Inbjudan</h3>
-        <p>Prenumerera på vår väntelista för att få förtur till vår grand opening och exklusiva rabatter.</p>
+        <p style="font-family: 'Poppins', sans-serif;">Prenumerera på vår väntelista för att få förtur till vår grand opening och exklusiva rabatter.</p>
         <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Tack! Du står nu på vår VIP-väntelista.');">
             <input type="email" placeholder="Din e-postadress..." required>
             <button type="submit" class="btn" style="background: var(--accent-gold); color: var(--primary-dark);">Gå med i listan</button>
@@ -610,22 +598,22 @@
     <footer class="contact-footer-wrapper reveal" id="kontakt">
         <div style="max-width: 1100px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 class="elegant-heading" style="font-size: 2.2rem;">Hör av dig</h2>
+                <h2 class="elegant-heading">Hör av dig</h2>
             </div>
             <div class="contact-grid">
                 <div class="contact-info-card">
-                    <h3 class="elegant-heading" style="margin-bottom: 1.5rem; font-size: 1.5rem;">Pre-Launch Kontakt</h3>
+                    <h3 class="elegant-heading">Pre-Launch Kontakt</h3>
                     <div class="contact-detail-item">
                         <div class="icon-box">📧</div>
-                        <div><h4>E-post</h4><p style="margin-top: 5px;">info@fruitsnroots.com</p></div>
+                        <div><h4 class="elegant-heading" style="border:none;">E-post</h4><p style="margin-top: 5px;">info@fruitsnroots.com</p></div>
                     </div>
                     <div class="contact-detail-item">
                         <div class="icon-box">📦</div>
-                        <div><h4>B2B / Partihandel</h4><p style="margin-top: 5px;">Öppen för förhandsbokning upp till 1 000 kg.</p></div>
+                        <div><h4 class="elegant-heading" style="border:none;">B2B / Partihandel</h4><p style="margin-top: 5px;">Öppen för förhandsbokning upp till 1 000 kg.</p></div>
                     </div>
                 </div>
                 <div class="contact-form-card">
-                    <h3 class="elegant-heading" style="margin-bottom: 1.5rem; font-size: 1.5rem;">Intresseanmälan B2B</h3>
+                    <h3 class="elegant-heading">Intresseanmälan B2B</h3>
                     <form onsubmit="event.preventDefault(); alert('Tack! Vi kontaktar dig så snart vi närmar oss lansering.');">
                         <input type="text" placeholder="Namn / Företag" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required>
                         <input type="email" placeholder="E-post" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required>
@@ -740,7 +728,7 @@
 
             let html = `
                 <div style="margin-bottom: 2rem; border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 1.5rem; text-align: center;">
-                    <h2 class="elegant-heading" style="font-size: 1.8rem;">${data.title}</h2>
+                    <h2 class="elegant-heading">${data.title}</h2>
                     <p style="font-size: 1rem; margin-top:10px;">${data.intro}</p>
                 </div>
                 <div class="package-grid">
@@ -753,7 +741,7 @@
                     <div class="package-item">
                         ${imgHtml}
                         <div><span class="badge">${pkg.size}</span></div>
-                        <h4>${pkg.name}</h4>
+                        <h4 class="elegant-heading" style="border:none;">${pkg.name}</h4>
                         <p>${pkg.desc}</p>
                         <button class="btn-outline" style="width:100%; border-color: #ddd; color: #aaa !important; background: transparent;" disabled>Kommer Snart</button>
                     </div>
