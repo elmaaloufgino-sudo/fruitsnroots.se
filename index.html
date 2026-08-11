@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRUITS N ROOTS | Frystorkade Frukter, Sea Moss & Nötter</title>
+    <title>Fruitsnroots | Frystorkade Frukter, Sea Moss & Nötter</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Fredoka:wght@300;400;500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Snipcart CSS för varukorgen -->
@@ -61,9 +61,17 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h3, h4, .hero-content p, .package-item h4 {
+        h1, h2, h3, h4, .hero-content p, .package-item h4 {
             font-family: 'Fredoka', sans-serif;
             font-weight: 400;
+        }
+
+        /* --- ELEGANT UNDERLINES FÖR RUBRIKER --- */
+        h1, h2, h3, h4, .elegant-heading {
+            text-decoration: underline;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: var(--accent-gold);
         }
 
         .elegant-heading {
@@ -111,6 +119,11 @@
             font-weight: 400;
             letter-spacing: 0.8px;
             white-space: nowrap;
+            /* --- ELEGANT UNDERLINE FÖR LOGOTYP --- */
+            text-decoration: underline;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: var(--accent-gold);
         }
 
         .header-actions {
@@ -213,6 +226,7 @@
         .drawer-title {
             font-family: 'Dancing Script', cursive !important;
             font-size: 2rem; font-weight: 700; color: var(--primary-dark);
+            text-decoration: none; /* Keep drawer title clean */
         }
 
         .close-drawer {
@@ -424,7 +438,7 @@
         }
 
         /* ==========================================
-           10. MODAL
+           10. MODAL & KORT
            ========================================== */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
@@ -472,11 +486,9 @@
 
     <header>
         <div class="logo">
-            <img src="./1784710545310.png" alt="FRUITS N ROOTS Logotyp">
+            <img src="./1784710545310.png" alt="Fruitsnroots Logotyp">
             <span class="logo-text">
-                <span style="color: #ffffff;">FRUITS</span> 
-                <span style="color: #ffb703;">N</span> 
-                <span style="color: #ffffff;">ROOTS</span>
+                <span style="color: #ffffff;">Fruits</span><span style="color: #ffb703;">n</span><span style="color: #ffffff;">roots</span>
             </span>
         </div>
         
@@ -512,7 +524,7 @@
             </nav>
         </div>
         <div class="drawer-footer">
-            <span>FRUITS N ROOTS</span>
+            <span>Fruitsnroots</span>
             <p style="font-size: 0.75rem; color: #666; margin-top: 2px;">Ren hälsa & naturlig kraft</p>
         </div>
     </div>
@@ -529,7 +541,7 @@
     <section class="about-intro-section reveal" id="om-oss">
         <div class="about-intro-container">
             <h2 class="elegant-heading">Om oss</h2>
-            <p>Välkommen till <strong>FRUITS N ROOTS</strong> – din destination för ren hälsa och naturlig livskraft! Vi brinner för att erbjuda frystorkade frukter helt utan tillsatser, vildskördad Sea Moss från rena hav och krispiga premiumnötter av högsta kvalitet.</p>
+            <p>Välkommen till <strong>Fruitsnroots</strong> – din destination för ren hälsa och naturlig livskraft! Vi brinner för att erbjuda frystorkade frukter helt utan tillsatser, vildskördad Sea Moss från rena hav och krispiga premiumnötter av högsta kvalitet.</p>
             <p>Från jord till bord tror vi på äkta kvalitet och hållbarhet. Oavsett om du söker ett hälsosamt vardagssnack eller storpack för ditt företag, hittar du det hos oss i Göteborg eller här på webben.</p>
         </div>
     </section>
@@ -542,7 +554,7 @@
                 <div class="product-grid">
                     <div class="product-card" onclick="openModal('frukt')">
                         <span class="card-badge">Bästsäljare ✨</span>
-                        <img src="./1784729911178.png" alt="FRUITS N ROOTS Frystorkad Frukt och Påsar">
+                        <img src="./1784729911178.png" alt="Fruitsnroots Frystorkad Frukt och Påsar">
                         <div class="card-content">
                             <h3>Krispiga Fruktbowls & Påsar</h3>
                             <p>Naturligt söta frystorkade bär och tropiska frukter. 100% utan tillsatt socker.</p>
@@ -572,7 +584,7 @@
                 <div class="product-grid">
                     <div class="product-card" onclick="openModal('notter')">
                         <span class="card-badge">Nyhet 🌰</span>
-                        <img src="./1784707424319.png" alt="FRUITS N ROOTS Premium Nötter">
+                        <img src="./1784707424319.png" alt="Fruitsnroots Premium Nötter">
                         <div class="card-content">
                             <h3>Pistage, Cashew, Mandlar & Valnötter</h3>
                             <p>Färska nötter av högsta kvalitet med fina hela valnötshalvor, krispiga mandlar och cashewnötter.</p>
@@ -658,7 +670,7 @@
                 </div>
             </div>
             <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; font-size: 0.85rem; color: #95d5b2;">
-                <p>&copy; 2026 FRUITS N ROOTS. Alla rättigheter förbehållna.</p>
+                <p>&copy; 2026 Fruitsnroots. Alla rättigheter förbehållna.</p>
             </div>
         </div>
     </footer>
@@ -705,10 +717,10 @@
                 title: "Sea Moss Sortiment",
                 intro: "Ren, vildskördad havsmossa.",
                 packages: [
-                    { id: "sm-goldg", price: "249.00", name: "Golden Sea Moss Gel", size: "375 ml", desc: "Klassisk näringsrik guldgelé av äkta Chondrus crispus. Proppfull med mineraler som ger naturlig energi.", img: "./1784906366996.png" },
-                    { id: "sm-purpg", price: "299.00", name: "Purple Sea Moss Gel", size: "375 ml", desc: "Ren lila Chondrus crispus handgjord med endast källvatten och lime. Helt utan bär. Rik på antocyaniner för optimal hälsa.", img: "./1784906173116.png" },
-                    { id: "sm-goldr", price: "199.00", name: "Soltorkad Golden Sea Moss", size: "100g", desc: "Varsamt soltorkad guld-mossa (Chondrus crispus) direkt från havet. Perfekt för att blötlägga och koka din egen fräscha gelé hemma.", img: "./1784906440086.png" },
-                    { id: "sm-purpr", price: "249.00", name: "Soltorkad Purple Sea Moss", size: "100g", desc: "Sällsynt och näringstät soltorkad lila havsmossa (Chondrus crispus). 100% naturlig råvara som bevarar havets alla kraftfulla egenskaper.", img: "./1784906477486.png" }
+                    { id: "sm-goldg", price: "249.00", name: "Golden Sea Moss Gel", size: "375 ml", desc: "Klassisk näringsrik guldgelé av äkta Chondrus crispis. Proppfull med mineraler som ger naturlig energi.", img: "./1784906366996.png" },
+                    { id: "sm-purpg", price: "299.00", name: "Purple Sea Moss Gel", size: "375 ml", desc: "Ren lila Chondrus crispis handgjord med endast källvatten och lime. Helt utan bär. Rik på antocyaniner för optimal hälsa.", img: "./1784906173116.png" },
+                    { id: "sm-goldr", price: "199.00", name: "Soltorkad Golden Sea Moss", size: "100g", desc: "Varsamt soltorkad guld-mossa (Chondrus crispis) direkt från havet. Perfekt för att blötlägga och koka din egen fräscha gelé hemma.", img: "./1784906440086.png" },
+                    { id: "sm-purpr", price: "249.00", name: "Soltorkad Purple Sea Moss", size: "100g", desc: "Sällsynt och näringstät soltorkad lila havsmossa (Chondrus crispis). 100% naturlig råvara som bevarar havets alla kraftfulla egenskaper.", img: "./1784906477486.png" }
                 ]
             },
             notter: {
