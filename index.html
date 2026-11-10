@@ -573,6 +573,131 @@
             font-size: 0.75rem;
         }
 
+
+        /* Product collection presentation */
+        .collection-open {
+            display: inline-flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.8rem;
+            margin-top: auto;
+            padding: 0.7rem 0.85rem;
+            border-color: rgba(27, 67, 50, 0.22);
+            background: transparent;
+            text-align: left;
+            transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+        }
+        .collection-open:hover, .collection-open:focus-visible {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+        .collection-open span { color: #8b7028; font-size: 1.05rem; }
+        .modal-content { text-align: left; }
+        .collection-modal-heading {
+            max-width: 700px;
+            margin: 0 auto 1.8rem;
+            padding: 0.25rem 2rem 1.5rem;
+            border-bottom: 1px solid rgba(27, 67, 50, 0.12);
+            text-align: center;
+        }
+        .collection-modal-heading .eyebrow { color: #8b7028; }
+        .collection-modal-heading h2 {
+            margin-bottom: 0.65rem;
+            color: var(--forest-800);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+        }
+        .collection-modal-heading p {
+            color: #617066;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 0;
+        }
+        .package-item {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            align-items: stretch;
+            overflow: hidden;
+            padding: 0;
+            border: 1px solid rgba(27, 67, 50, 0.11);
+            border-radius: 4px;
+            background: #fff;
+            color: var(--ink);
+            text-align: left;
+        }
+        .package-item img {
+            width: 100%;
+            height: 205px;
+            margin: 0;
+            border-radius: 0;
+            background: #eeece4;
+            object-fit: cover;
+        }
+        .package-item-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 1.15rem;
+        }
+        .package-size {
+            display: inline-block;
+            margin-bottom: 0.65rem;
+            padding: 0.22rem 0.55rem;
+            border: 1px solid rgba(139, 112, 40, 0.25);
+            border-radius: 2px;
+            background: rgba(212, 175, 55, 0.1);
+            color: #80651d;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+        .package-item h3 {
+            margin: 0 0 0.6rem;
+            color: var(--forest-800);
+            font-size: 1.5rem;
+            line-height: 1.12;
+        }
+        .package-item p {
+            flex: 1;
+            margin: 0 0 1rem;
+            color: #53645a;
+            font-size: 0.83rem;
+            line-height: 1.7;
+        }
+        .product-status {
+            display: inline-block;
+            padding-top: 0.7rem;
+            border-top: 1px solid rgba(27, 67, 50, 0.12);
+            color: #8b7028;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+        .close-btn {
+            display: grid;
+            width: 40px;
+            height: 40px;
+            place-items: center;
+            border: 1px solid rgba(27, 67, 50, 0.16);
+            border-radius: 50%;
+            background: #fff;
+            color: var(--forest-800);
+            font-size: 1.8rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+        .close-btn:hover, .close-btn:focus-visible {
+            border-color: var(--gold);
+            background: #fbf7e9;
+        }
+
         /* Responsive layout */
         @media (max-width: 860px) {
             .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -603,6 +728,8 @@
             .contact-grid { grid-template-columns: 1fr; gap: 0.9rem; }
             .footer-bottom { align-items: flex-start; flex-direction: column; gap: 0.8rem; }
             .package-grid { grid-template-columns: 1fr; }
+            .package-item img { height: 220px; }
+            .collection-modal-heading { padding-inline: 1.2rem; }
             .modal { padding: 0.8rem; }
             .modal-content { padding: 3rem 1rem 1.2rem; }
         }
@@ -682,33 +809,33 @@
             </div>
 
             <div class="product-grid">
-                <article id="frukt" class="product-card" onclick="openModal('frukt')">
+                <article id="frukt" class="product-card">
                     <img src="./1784729911178.png" alt="Fruits N Roots frystorkad frukt och förpackningar" loading="lazy">
                     <div class="card-content">
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Frystorkad frukt</h3>
                         <p>Krispiga frukter och bär i flera smaker och format. Se de produkter vi förbereder inför lanseringen.</p>
-                        <button class="btn-outline" type="button">Visa kollektionen</button>
+                        <button class="btn-outline collection-open" type="button" onclick="openModal('frukt', this)" aria-haspopup="dialog" aria-controls="productModal">Visa kollektionen <span aria-hidden="true">↗</span></button>
                     </div>
                 </article>
 
-                <article id="seamoss" class="product-card" onclick="openModal('seamoss')">
+                <article id="seamoss" class="product-card">
                     <img src="./1784707625353.png" alt="Purple och Golden Sea Moss" loading="lazy">
                     <div class="card-content">
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Sea Moss</h3>
                         <p>En kommande kollektion med Sea Moss i olika former. Utforska de produkter som planeras.</p>
-                        <button class="btn-outline" type="button">Visa kollektionen</button>
+                        <button class="btn-outline collection-open" type="button" onclick="openModal('seamoss', this)" aria-haspopup="dialog" aria-controls="productModal">Visa kollektionen <span aria-hidden="true">↗</span></button>
                     </div>
                 </article>
 
-                <article id="notter" class="product-card" onclick="openModal('notter')">
+                <article id="notter" class="product-card">
                     <img src="./1784707424319.png" alt="Fruits N Roots premium-nötter" loading="lazy">
                     <div class="card-content">
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Premium-nötter</h3>
                         <p>Mandlar, cashewnötter, pistage och valnötter – i kommande konsumentförpackningar och för B2B.</p>
-                        <button class="btn-outline" type="button">Visa kollektionen</button>
+                        <button class="btn-outline collection-open" type="button" onclick="openModal('notter', this)" aria-haspopup="dialog" aria-controls="productModal">Visa kollektionen <span aria-hidden="true">↗</span></button>
                     </div>
                 </article>
             </div>
@@ -804,10 +931,10 @@
         </div>
     </footer>
 
-    <!-- Modal -->
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
+    <!-- Product collection dialog -->
+    <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content" tabindex="-1">
+            <button type="button" class="close-btn" onclick="closeModal()" aria-label="Stäng produktfönstret">&times;</button>
             <div id="modalBody"></div>
         </div>
     </div>
@@ -858,39 +985,76 @@
             }
         };
 
-        function openModal(category) {
+        let lastModalTrigger = null;
+
+        function openModal(category, trigger) {
             const data = packageData[category];
             if (!data) return;
 
+            const modal = document.getElementById('productModal');
+            const modalContent = modal.querySelector('.modal-content');
+            if (trigger instanceof HTMLElement) {
+                lastModalTrigger = trigger;
+            } else if (document.activeElement instanceof HTMLElement) {
+                lastModalTrigger = document.activeElement;
+            }
+
             let html = `
-                <div style="margin-bottom: 2rem; border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 1.5rem; text-align: center;">
-                    <h2 class="elegant-heading">${data.title}</h2>
-                    <p style="font-size: 1rem; margin-top:10px;">${data.intro}</p>
+                <div class="collection-modal-heading">
+                    <span class="eyebrow">Kommande kollektion</span>
+                    <h2 id="modalTitle">${data.title}</h2>
+                    <p>${data.intro}</p>
                 </div>
                 <div class="package-grid">
             `;
 
             data.packages.forEach(pkg => {
-                let imgHtml = pkg.img ? `<img src="${pkg.img}" alt="${pkg.name}" onerror="this.src='https://via.placeholder.com/200x160?text=Bild+saknas'">` : '';
-                
+                const imgHtml = pkg.img
+                    ? `<img src="${pkg.img}" alt="${pkg.name}" loading="lazy">`
+                    : '';
+
                 html += `
-                    <div class="package-item">
+                    <article class="package-item">
                         ${imgHtml}
-                        <div><span class="badge">${pkg.size}</span></div>
-                        <h4 class="elegant-heading" style="border:none;">${pkg.name}</h4>
-                        <p>${pkg.desc}</p>
-                        <button class="btn-outline" style="width:100%; border-color: #ddd; color: #aaa !important; background: transparent;" disabled>Kommer Snart</button>
-                    </div>
+                        <div class="package-item-body">
+                            <span class="package-size">${pkg.size}</span>
+                            <h3>${pkg.name}</h3>
+                            <p>${pkg.desc}</p>
+                            <span class="product-status">Kommer vid lansering</span>
+                        </div>
+                    </article>
                 `;
             });
 
             html += `</div>`;
             document.getElementById('modalBody').innerHTML = html;
-            document.getElementById('productModal').style.display = 'block';
+            modal.style.display = 'block';
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            modalContent.focus();
         }
 
-        function closeModal() { document.getElementById('productModal').style.display = 'none'; }
-        window.onclick = function(e) { if (e.target == document.getElementById('productModal')) closeModal(); }
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            if (lastModalTrigger && typeof lastModalTrigger.focus === 'function') {
+                lastModalTrigger.focus();
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                closeModal();
+            }
+        });
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target === modal) closeModal();
+        };
 
     </script>
 
