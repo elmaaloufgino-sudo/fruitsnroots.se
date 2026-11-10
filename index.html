@@ -907,21 +907,14 @@
                 <a href="https://www.instagram.com/fruits_n_root?igsh=MWFjcjBzNGFyZjE0OQ==" target="_blank" class="social-card instagram">
                     📷 Instagram
                 </a>
-                <a href="https://tiktok.com" target="_blank" class="social-card tiktok">
-                    🎵 TikTok
-                </a>
+                
             </div>
         </div>
     </section>
 
     <section class="newsletter-section" id="nyhetsbrev">
-        <h3 class="elegant-heading">Få VIP-Inbjudan</h3>
-        <p style="font-family: 'Poppins', sans-serif;">Prenumerera på vår väntelista för att få förtur till vår grand opening och exklusiva rabatter.</p>
-        <form class="newsletter-form" aria-label="Intresseanmälan till VIP-väntelistan" onsubmit="event.preventDefault(); alert('Tack! Du står nu på vår VIP-väntelista.');">
-            <label class="sr-only" for="waitlist-email">E-postadress</label>
-            <input id="waitlist-email" type="email" name="email" autocomplete="email" placeholder="Din e-postadress..." required>
-            <button type="submit" class="btn" style="background: var(--accent-gold); color: var(--primary-dark);">Gå med i listan</button>
-        </form>
+        <h3 class="elegant-heading">VIP-listan öppnar snart</h3>
+        <p style="font-family: 'Poppins', sans-serif;">Vi förbereder vår VIP-väntelista. Anmälan öppnar när vi har en fungerande registrering på plats. Följ oss på Instagram för uppdateringar inför lanseringen.</p>
     </section>
     </main>
 
@@ -930,27 +923,19 @@
             <h2 class="footer-heading">Hör av dig</h2>
             <div class="contact-grid">
                 <div class="contact-info-card">
-                    <h3 class="elegant-heading">Pre-Launch Kontakt</h3>
-                    <div class="contact-detail-item">
-                        <div class="icon-box">📧</div>
-                        <div><h4 class="elegant-heading" style="border:none;">E-post</h4><p style="margin-top: 5px;">info@fruitsnroots.com</p></div>
-                    </div>
+                    <h3 class="elegant-heading">Kontakt inför lansering</h3>
                     <div class="contact-detail-item">
                         <div class="icon-box">📦</div>
-                        <div><h4 class="elegant-heading" style="border:none;">B2B / Partihandel</h4><p style="margin-top: 5px;">Öppen för förhandsbokning upp till 1 000 kg.</p></div>
+                        <div><h4 class="elegant-heading" style="border:none;">B2B / Partihandel</h4><p style="margin-top: 5px;">Vi förbereder vårt B2B-sortiment. Information om partier, volymer och tillgänglighet publiceras inför lanseringen.</p></div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <div class="icon-box">ℹ️</div>
+                        <div><h4 class="elegant-heading" style="border:none;">Kontaktuppgifter</h4><p style="margin-top: 5px;">Våra kontaktvägar publiceras här när de är redo.</p></div>
                     </div>
                 </div>
                 <div class="contact-form-card">
-                    <h3 class="elegant-heading">Intresseanmälan B2B</h3>
-                    <form aria-label="Intresseanmälan för företag" onsubmit="event.preventDefault(); alert('Tack! Vi kontaktar dig så snart vi närmar oss lansering.');">
-                        <label class="sr-only" for="b2b-name">Namn eller företag</label>
-                        <input id="b2b-name" type="text" name="name" autocomplete="name" placeholder="Namn / Företag" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required>
-                        <label class="sr-only" for="b2b-email">E-postadress</label>
-                        <input id="b2b-email" type="email" name="email" autocomplete="email" placeholder="E-post" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required>
-                        <label class="sr-only" for="b2b-message">Beskriv vad du är intresserad av</label>
-                        <textarea id="b2b-message" name="message" rows="4" placeholder="Vad är du intresserad av?" style="width: 100%; padding: 0.8rem; margin-bottom: 1.5rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required></textarea>
-                        <button type="submit" class="btn" style="width: 100%;">Skicka Förfrågan</button>
-                    </form>
+                    <h3 class="elegant-heading">B2B – inför lansering</h3>
+                    <p>Vi tar för närvarande inte emot B2B-förfrågningar via webbplatsen. Information om sortiment och kontaktvägar kommer inför lanseringen.</p>
                 </div>
             </div>
             
@@ -1046,32 +1031,32 @@
         const packageData = {
             frukt: {
                 title: "Frystorkade Fruktpaket",
-                intro: "Krispiga, naturliga frukter helt utan tillsatser. Släpps vid lansering.",
+                intro: "Krispiga frukter och bär i flera smaker och format. Planeras inför lanseringen.",
                 packages: [
                     { name: "Skivade Jordgubbar", size: "50g", desc: "Söta och krispiga frystorkade jordgubbs-skivor. Perfekta som topping på yoghurten, i smoothies eller som ett lyxigt snack.", img: "./1784907097844.png" },
-                    { name: "Frystorkad Tropisk Mango", size: "100g", desc: "Smakrik, solmogen frystorkad mango som smälter i munnen. 100% naturlig sötma och packad med C-vitamin.", img: "./1784907251270.png" },
+                    { name: "Frystorkad Tropisk Mango", size: "100g", desc: "Frystorkad mango med fruktig smak och krispig konsistens.", img: "./1784907251270.png" },
                     { name: "Frystorkade Hallon", size: "50g", desc: "Krispiga helbär med en perfekt balans mellan intensiv sötma och naturlig syra. Fantastiska i bakverk eller gröt.", img: "./1784734785323.png" },
                     { name: "Frystorkad Drakfrukt", size: "75g", desc: "Exotisk och vacker frystorkad drakfrukt (pitaya) med en otrolig färg och mild sötma.", img: "./1784907182584.png" }
                 ]
             },
             seamoss: {
                 title: "Sea Moss Sortiment",
-                intro: "Ren, vildskördad havsmossa. Snart tillgänglig.",
+                intro: "En kommande kollektion med Sea Moss-produkter i olika former.",
                 packages: [
-                    { name: "Golden Sea Moss Gel", size: "375 ml", desc: "Klassisk näringsrik guldgelé av äkta Chondrus crispis. Proppfull med mineraler som ger naturlig energi.", img: "./1784906366996.png" },
-                    { name: "Purple Sea Moss Gel", size: "375 ml", desc: "Ren lila Chondrus crispis handgjord med endast källvatten och lime. Rik på antocyaniner för optimal hälsa.", img: "./1784906173116.png" },
+                    { name: "Golden Sea Moss Gel", size: "375 ml", desc: "Golden Sea Moss-gelé. Produktens ingredienser och näringsinformation presenteras i samband med lanseringen.", img: "./1784906366996.png" },
+                    { name: "Purple Sea Moss Gel", size: "375 ml", desc: "Purple Sea Moss-gelé. Produktens ingredienser och näringsinformation presenteras i samband med lanseringen.", img: "./1784906173116.png" },
                     { name: "Soltorkad Golden Sea Moss", size: "100g", desc: "Varsamt soltorkad guld-mossa direkt från havet. Perfekt för att blötlägga och koka din egen fräscha gelé hemma.", img: "./1784906440086.png" },
-                    { name: "Soltorkad Purple Sea Moss", size: "100g", desc: "Sällsynt och näringstät soltorkad lila havsmossa (Chondrus crispis). 100% naturlig råvara.", img: "./1784906477486.png" }
+                    { name: "Soltorkad Purple Sea Moss", size: "100g", desc: "Soltorkad lila Sea Moss. Produktens art, ursprung och ingrediensinformation bekräftas inför lanseringen.", img: "./1784906477486.png" }
                 ]
             },
             notter: {
                 title: "Nötpåsar & Bulk",
-                intro: "Premiumnötter i konsumentpåsar samt partier för B2B. Förhandsboka nu.",
+                intro: "Nötter i konsumentförpackningar samt ett planerat sortiment för B2B. Information om tillgänglighet kommer inför lanseringen.",
                 packages: [
-                    { name: "Valnötshalvor Premium", size: "500g", desc: "Riktigt fina, hela valnötshalvor av högsta sortering. Inga krossade bitar.", img: "./1784905572207.png" },
+                    { name: "Valnötshalvor Premium", size: "500g", desc: "Valnötshalvor i 500 g-förpackning. Produktens slutliga specifikation presenteras inför lanseringen.", img: "./1784905572207.png" },
                     { name: "Skalade Pistagenötter", size: "500g", desc: "Gröna, aromatiska och krispiga pistagenötter.", img: "./1784905679038.png" },
                     { name: "Krämiga Cashewnötter", size: "500g", desc: "Stora, naturliga cashews med härlig textur.", img: "./1784905645560.png" },
-                    { name: "Bulk-mix Partier", size: "B2B", desc: "För grossister, bagerier och återförsäljare. Kontakta oss för offert inför lansering.", img: "./1784906643451.png" }
+                    { name: "Bulk-mix Partier", size: "B2B", desc: "Planerade bulkpartier för grossister, bagerier och återförsäljare. Mer information kommer inför lanseringen.", img: "./1784906643451.png" }
                 ]
             }
         };
