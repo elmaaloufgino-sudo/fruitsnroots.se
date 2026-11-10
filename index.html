@@ -2,8 +2,18 @@
 <html lang="sv-SE">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Fruits N Roots | Frystorkade Frukter, Sea Moss & Nötter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fruits N Roots förbereder ett kommande sortiment av frystorkad frukt, Sea Moss och premium-nötter. Följ vår resa och få besked inför lanseringen.">
+    <meta name="theme-color" content="#0d2118">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sv_SE">
+    <meta property="og:title" content="Fruits N Roots | Snart öppnar vi">
+    <meta property="og:description" content="Upptäck vårt kommande sortiment av frystorkad frukt, Sea Moss och premium-nötter. Följ vår resa inför lanseringen.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Fruits N Roots | Snart öppnar vi">
+    <meta name="twitter:description" content="Frystorkad frukt, Sea Moss och premium-nötter – ett nytt sortiment förbereds inför lanseringen.">
+    <title>Fruits N Roots | Frystorkad frukt, Sea Moss & premium-nötter</title>
+    <link rel="icon" type="image/png" href="./1784710545310.png">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
@@ -45,6 +55,18 @@
         a { color: inherit; }
         button, input, textarea { font: inherit; }
         button, a { -webkit-tap-highlight-color: transparent; }
+        :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+        .skip-link {
+            position: fixed; top: 0.75rem; left: 0.75rem; z-index: 3000;
+            padding: 0.75rem 1rem; transform: translateY(-160%);
+            border-radius: 3px; background: var(--gold); color: var(--forest-950);
+            font-size: 0.9rem; font-weight: 600; text-decoration: none;
+        }
+        .skip-link:focus { transform: translateY(0); }
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
         h1, h2, h3, h4 {
             margin: 0;
             font-family: var(--serif);
@@ -112,7 +134,11 @@
         }
         .hamburger-btn {
             display: flex;
+            min-width: 44px;
+            min-height: 44px;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
             gap: 6px;
             padding: 10px;
             border: 1px solid rgba(234, 210, 139, 0.3);
@@ -164,8 +190,8 @@
         .drawer-title { color: var(--gold-soft); font-family: var(--serif); font-size: 1.8rem; }
         .close-drawer {
             display: grid;
-            width: 38px;
-            height: 38px;
+            width: 44px;
+            height: 44px;
             place-items: center;
             border: 1px solid rgba(234, 210, 139, 0.3);
             border-radius: 50%;
@@ -452,7 +478,7 @@
             outline-color: var(--gold);
             background: #fff;
             color: var(--ink);
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
         .contact-footer-wrapper {
             padding: 4.5rem clamp(1.25rem, 5vw, 4.5rem) 2rem;
@@ -497,7 +523,7 @@
             border-radius: 3px;
             background: #fbfaf6;
             color: var(--ink);
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
         .contact-form-card textarea { resize: vertical; }
         .contact-form-card .btn { width: 100%; }
@@ -732,6 +758,15 @@
             .collection-modal-heading { padding-inline: 1.2rem; }
             .modal { padding: 0.8rem; }
             .modal-content { padding: 3rem 1rem 1.2rem; }
+            .newsletter-form { gap: 0.65rem; }
+            .newsletter-form input[type="email"], .newsletter-form .btn { width: 100%; flex-basis: 100%; }
+            .contact-form-card input, .contact-form-card textarea { font-size: 16px; }
+        }
+        @media (max-width: 360px) {
+            .logo { gap: 0.5rem; }
+            .logo-text { font-size: 1.25rem; }
+            .hero-content h1 { font-size: 2.55rem; }
+            .section-heading h2 { font-size: 2rem; }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -744,19 +779,18 @@
 </style>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Hoppa till innehållet</a>
 
-
-
-    <header>
-        <div class="logo">
+    <header id="top">
+        <a class="logo" href="#top" aria-label="Fruits N Roots – startsidan">
             <img src="./1784710545310.png" alt="Fruits N Roots Logotyp">
             <span class="logo-text">
                 Fruits <span style="color: var(--accent-gold) !important;">N</span> Roots
             </span>
-        </div>
+        </a>
         
         <div class="header-actions">
-            <button class="hamburger-btn" onclick="toggleDrawer()" aria-label="Öppna meny">
+            <button id="menuToggle" class="hamburger-btn" type="button" onclick="toggleDrawer()" aria-label="Öppna meny" aria-controls="drawerMenu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -764,15 +798,15 @@
         </div>
     </header>
 
-    <div id="drawerOverlay" class="drawer-overlay" onclick="closeDrawer()"></div>
+    <div id="drawerOverlay" class="drawer-overlay" aria-hidden="true" onclick="closeDrawer()"></div>
 
-    <div id="drawerMenu" class="drawer-menu">
+    <div id="drawerMenu" class="drawer-menu" aria-hidden="true" inert>
         <div>
             <div class="drawer-header">
                 <span class="drawer-title">Meny</span>
-                <div class="close-drawer" onclick="closeDrawer()">&times;</div>
+                <button class="close-drawer" type="button" onclick="closeDrawer()" aria-label="Stäng menyn">&times;</button>
             </div>
-            <nav class="drawer-nav">
+            <nav class="drawer-nav" aria-label="Huvudmeny">
                 <a href="#frukt" onclick="closeDrawer()"><span>Frystorkad Frukt</span> <span class="arrow">➔</span></a>
                 <a href="#seamoss" onclick="closeDrawer()"><span>Sea Moss</span> <span class="arrow">➔</span></a>
                 <a href="#notter" onclick="closeDrawer()"><span>Premium Nötter</span> <span class="arrow">➔</span></a>
@@ -800,7 +834,7 @@
         </div>
     </section>
 
-    <main>
+    <main id="main-content">
         <section id="sortiment" class="collections-section">
             <div class="section-heading">
                 <span class="eyebrow">Upptäck Fruits N Roots</span>
@@ -810,7 +844,7 @@
 
             <div class="product-grid">
                 <article id="frukt" class="product-card">
-                    <img src="./1784729911178.png" alt="Fruits N Roots frystorkad frukt och förpackningar" loading="lazy">
+                    <img src="./1784729911178.png" alt="Fruits N Roots frystorkad frukt och förpackningar" loading="lazy" decoding="async">
                     <div class="card-content">
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Frystorkad frukt</h3>
@@ -820,7 +854,7 @@
                 </article>
 
                 <article id="seamoss" class="product-card">
-                    <img src="./1784707625353.png" alt="Purple och Golden Sea Moss" loading="lazy">
+                    <img src="./1784707625353.png" alt="Purple och Golden Sea Moss" loading="lazy" decoding="async">
                     <div class="card-content">
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Sea Moss</h3>
@@ -830,7 +864,7 @@
                 </article>
 
                 <article id="notter" class="product-card">
-                    <img src="./1784707424319.png" alt="Fruits N Roots premium-nötter" loading="lazy">
+                    <img src="./1784707424319.png" alt="Fruits N Roots premium-nötter" loading="lazy" decoding="async">
                     <div class="card-content">
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Premium-nötter</h3>
@@ -865,8 +899,6 @@
                 </div>
             </div>
         </section>
-    </main>
-
     <section class="social-media-section" id="socialt">
         <div class="social-media-container">
             <h2 class="elegant-heading">Följ Vår Resa</h2>
@@ -885,11 +917,13 @@
     <section class="newsletter-section" id="nyhetsbrev">
         <h3 class="elegant-heading">Få VIP-Inbjudan</h3>
         <p style="font-family: 'Poppins', sans-serif;">Prenumerera på vår väntelista för att få förtur till vår grand opening och exklusiva rabatter.</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Tack! Du står nu på vår VIP-väntelista.');">
-            <input type="email" placeholder="Din e-postadress..." required>
+        <form class="newsletter-form" aria-label="Intresseanmälan till VIP-väntelistan" onsubmit="event.preventDefault(); alert('Tack! Du står nu på vår VIP-väntelista.');">
+            <label class="sr-only" for="waitlist-email">E-postadress</label>
+            <input id="waitlist-email" type="email" name="email" autocomplete="email" placeholder="Din e-postadress..." required>
             <button type="submit" class="btn" style="background: var(--accent-gold); color: var(--primary-dark);">Gå med i listan</button>
         </form>
     </section>
+    </main>
 
     <footer class="contact-footer-wrapper" id="kontakt">
         <div class="footer-inner">
@@ -908,10 +942,13 @@
                 </div>
                 <div class="contact-form-card">
                     <h3 class="elegant-heading">Intresseanmälan B2B</h3>
-                    <form onsubmit="event.preventDefault(); alert('Tack! Vi kontaktar dig så snart vi närmar oss lansering.');">
-                        <input type="text" placeholder="Namn / Företag" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required>
-                        <input type="email" placeholder="E-post" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required>
-                        <textarea rows="4" placeholder="Vad är du intresserad av?" style="width: 100%; padding: 0.8rem; margin-bottom: 1.5rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required></textarea>
+                    <form aria-label="Intresseanmälan för företag" onsubmit="event.preventDefault(); alert('Tack! Vi kontaktar dig så snart vi närmar oss lansering.');">
+                        <label class="sr-only" for="b2b-name">Namn eller företag</label>
+                        <input id="b2b-name" type="text" name="name" autocomplete="name" placeholder="Namn / Företag" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required>
+                        <label class="sr-only" for="b2b-email">E-postadress</label>
+                        <input id="b2b-email" type="email" name="email" autocomplete="email" placeholder="E-post" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required>
+                        <label class="sr-only" for="b2b-message">Beskriv vad du är intresserad av</label>
+                        <textarea id="b2b-message" name="message" rows="4" placeholder="Vad är du intresserad av?" style="width: 100%; padding: 0.8rem; margin-bottom: 1.5rem; border: 1px solid #ddd; border-radius: 12px; background: #fafafa;" required></textarea>
                         <button type="submit" class="btn" style="width: 100%;">Skicka Förfrågan</button>
                     </form>
                 </div>
@@ -932,7 +969,7 @@
     </footer>
 
     <!-- Product collection dialog -->
-    <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true" inert>
         <div class="modal-content" tabindex="-1">
             <button type="button" class="close-btn" onclick="closeModal()" aria-label="Stäng produktfönstret">&times;</button>
             <div id="modalBody"></div>
@@ -941,16 +978,70 @@
 
     <!-- Skript -->
     <script>
+        let lastDrawerTrigger = null;
+
         function toggleDrawer() {
             const drawer = document.getElementById('drawerMenu');
+            if (drawer.classList.contains('open')) {
+                closeDrawer();
+                return;
+            }
+
             const overlay = document.getElementById('drawerOverlay');
-            drawer.classList.toggle('open');
-            overlay.style.display = drawer.classList.contains('open') ? 'block' : 'none';
+            const trigger = document.getElementById('menuToggle');
+            lastDrawerTrigger = trigger;
+
+            drawer.classList.add('open');
+            drawer.inert = false;
+            drawer.setAttribute('aria-hidden', 'false');
+            overlay.style.display = 'block';
+            trigger.setAttribute('aria-expanded', 'true');
+            document.querySelector('main').inert = true;
+            document.querySelector('footer').inert = true;
+            document.body.style.overflow = 'hidden';
+            drawer.querySelector('.close-drawer').focus();
         }
+
         function closeDrawer() {
-            document.getElementById('drawerMenu').classList.remove('open');
-            document.getElementById('drawerOverlay').style.display = 'none';
+            const drawer = document.getElementById('drawerMenu');
+            const overlay = document.getElementById('drawerOverlay');
+            const trigger = document.getElementById('menuToggle');
+
+            drawer.classList.remove('open');
+            drawer.inert = true;
+            drawer.setAttribute('aria-hidden', 'true');
+            overlay.style.display = 'none';
+            trigger.setAttribute('aria-expanded', 'false');
+            document.querySelector('main').inert = false;
+            document.querySelector('footer').inert = false;
+            document.body.style.overflow = '';
+
+            if (lastDrawerTrigger) lastDrawerTrigger.focus();
         }
+
+        document.addEventListener('keydown', function(event) {
+            const drawer = document.getElementById('drawerMenu');
+            if (!drawer.classList.contains('open')) return;
+
+            if (event.key === 'Escape') {
+                closeDrawer();
+                return;
+            }
+
+            if (event.key === 'Tab') {
+                const focusable = drawer.querySelectorAll('a[href], button:not([disabled])');
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            }
+        });
 
         const packageData = {
             frukt: {
@@ -1029,15 +1120,23 @@
             html += `</div>`;
             document.getElementById('modalBody').innerHTML = html;
             modal.style.display = 'block';
+            modal.inert = false;
             modal.setAttribute('aria-hidden', 'false');
+            document.querySelectorAll('header, main, footer').forEach(element => {
+                element.inert = true;
+            });
             document.body.style.overflow = 'hidden';
-            modalContent.focus();
+            modal.querySelector('.close-btn').focus();
         }
 
         function closeModal() {
             const modal = document.getElementById('productModal');
             modal.style.display = 'none';
+            modal.inert = true;
             modal.setAttribute('aria-hidden', 'true');
+            document.querySelectorAll('header, main, footer').forEach(element => {
+                element.inert = false;
+            });
             document.body.style.overflow = '';
             if (lastModalTrigger && typeof lastModalTrigger.focus === 'function') {
                 lastModalTrigger.focus();
@@ -1046,8 +1145,25 @@
 
         document.addEventListener('keydown', function(event) {
             const modal = document.getElementById('productModal');
-            if (event.key === 'Escape' && modal.style.display === 'block') {
+            if (modal.style.display !== 'block') return;
+
+            if (event.key === 'Escape') {
                 closeModal();
+                return;
+            }
+
+            if (event.key === 'Tab') {
+                const focusable = modal.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), textarea:not([disabled])');
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
             }
         });
 
