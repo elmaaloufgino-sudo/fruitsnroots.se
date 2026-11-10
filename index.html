@@ -832,7 +832,7 @@
 
     <div id="drawerOverlay" class="drawer-overlay" aria-hidden="true" onclick="closeDrawer()"></div>
 
-    <div id="drawerMenu" class="drawer-menu" aria-hidden="true" inert>
+    <div id="drawerMenu" class="drawer-menu" role="dialog" aria-modal="true" aria-label="Huvudmeny" aria-hidden="true" inert>
         <div>
             <div class="drawer-header">
                 <span class="drawer-title">Meny</span>
@@ -997,6 +997,56 @@
     <!-- Skript -->
     <script>
         let lastDrawerTrigger = null;
+        let lastModalTrigger = null;
+
+        function getFocusableElements(container) {
+            return Array.from(container.querySelectorAll(
+                'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            )).filter(element =>
+                !element.hidden &&
+                element.getAttribute('aria-hidden') !== 'true' &&
+                element.getClientRects().length > 0
+            );
+        }
+
+        function keepFocusInside(event, container) {
+            if (event.key !== 'Tab') return;
+
+            const focusable = getFocusableElements(container);
+            if (focusable.length === 0) {
+                event.preventDefault();
+                return;
+            }
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (!container.contains(document.activeElement)) {
+                event.preventDefault();
+                (event.shiftKey ? last : first).focus();
+            } else if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        }
+
+        document.addEventListener('focusin', function(event) {
+            const modal = document.getElementById('productModal');
+            if (modal && modal.style.display === 'block' && !modal.contains(event.target)) {
+                const closeButton = modal.querySelector('.close-btn');
+                if (closeButton) closeButton.focus();
+                return;
+            }
+
+            const drawer = document.getElementById('drawerMenu');
+            if (drawer && drawer.classList.contains('open') && !drawer.contains(event.target)) {
+                const closeButton = drawer.querySelector('.close-drawer');
+                if (closeButton) closeButton.focus();
+            }
+        });
 
         function toggleDrawer() {
             const drawer = document.getElementById('drawerMenu');
@@ -1013,6 +1063,7 @@
             drawer.inert = false;
             drawer.setAttribute('aria-hidden', 'false');
             overlay.style.display = 'block';
+            overlay.setAttribute('aria-hidden', 'false');
             trigger.setAttribute('aria-expanded', 'true');
             document.querySelector('main').inert = true;
             document.querySelector('footer').inert = true;
@@ -1029,6 +1080,7 @@
             drawer.inert = true;
             drawer.setAttribute('aria-hidden', 'true');
             overlay.style.display = 'none';
+            overlay.setAttribute('aria-hidden', 'true');
             trigger.setAttribute('aria-expanded', 'false');
             document.querySelector('main').inert = false;
             document.querySelector('footer').inert = false;
@@ -1046,19 +1098,7 @@
                 return;
             }
 
-            if (event.key === 'Tab') {
-                const focusable = drawer.querySelectorAll('a[href], button:not([disabled])');
-                const first = focusable[0];
-                const last = focusable[focusable.length - 1];
-
-                if (event.shiftKey && document.activeElement === first) {
-                    event.preventDefault();
-                    last.focus();
-                } else if (!event.shiftKey && document.activeElement === last) {
-                    event.preventDefault();
-                    first.focus();
-                }
-            }
+            keepFocusInside(event, drawer);
         });
 
         const packageData = {
@@ -1093,8 +1133,6 @@
                 ]
             }
         };
-
-        let lastModalTrigger = null;
 
         function openModal(category, trigger) {
             const data = packageData[category];
@@ -1181,19 +1219,7 @@
                 return;
             }
 
-            if (event.key === 'Tab') {
-                const focusable = modal.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), textarea:not([disabled])');
-                const first = focusable[0];
-                const last = focusable[focusable.length - 1];
-
-                if (event.shiftKey && document.activeElement === first) {
-                    event.preventDefault();
-                    last.focus();
-                } else if (!event.shiftKey && document.activeElement === last) {
-                    event.preventDefault();
-                    first.focus();
-                }
-            }
+            keepFocusInside(event, modal);
         });
 
         window.onclick = function(event) {
