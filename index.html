@@ -1770,6 +1770,11 @@
             background: rgba(255, 255, 255, 0.11);
             box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
         }
+        .site-search input:focus-visible,
+        .site-search > button:focus-visible {
+            outline: 3px solid var(--gold-soft);
+            outline-offset: 3px;
+        }
         .site-search > button {
             position: absolute;
             top: 5px;
@@ -1817,10 +1822,15 @@
             cursor: pointer;
             text-align: left;
         }
-        .site-search-result:hover,
-        .site-search-result:focus-visible {
+        .site-search-result:hover {
             border-color: rgba(234, 210, 139, 0.28);
             background: rgba(255, 255, 255, 0.075);
+        }
+        .site-search-result:focus-visible {
+            outline: 3px solid var(--gold-soft);
+            outline-offset: 1px;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.1);
         }
         .site-search-result strong { color: var(--gold-soft); font-size: 0.9rem; }
         .site-search-result span { color: rgba(245, 242, 233, 0.76); font-size: 0.76rem; line-height: 1.5; }
@@ -1948,9 +1958,11 @@
 
         <form class="site-search" id="siteSearchForm" role="search" aria-label="Sök på Fruits N Roots">
             <label class="sr-only" for="siteSearchInput">Sök produkter och innehåll</label>
-            <input id="siteSearchInput" type="search" placeholder="Sök produkter och innehåll" autocomplete="off" aria-controls="siteSearchResults" aria-expanded="false">
+            <input id="siteSearchInput" type="search" placeholder="Sök produkter och innehåll" autocomplete="off" aria-describedby="siteSearchInstructions" aria-controls="siteSearchResults" aria-expanded="false">
+            <p class="sr-only" id="siteSearchInstructions">När sökresultat visas kan du använda upp- och nedpilarna för att flytta mellan träffarna. Tryck Enter för att öppna en träff och Escape för att stänga listan.</p>
             <button type="submit" aria-label="Sök"><span aria-hidden="true">⌕</span></button>
-            <div class="site-search-results" id="siteSearchResults" role="region" aria-label="Sökresultat" aria-live="polite" hidden></div>
+            <div class="site-search-results" id="siteSearchResults" role="region" aria-label="Sökresultat" hidden></div>
+            <p class="sr-only" id="siteSearchStatus" role="status" aria-live="polite" aria-atomic="true"></p>
         </form>
 
         <div class="header-actions">
@@ -2428,6 +2440,7 @@
         const siteSearchForm = document.getElementById('siteSearchForm');
         const siteSearchInput = document.getElementById('siteSearchInput');
         const siteSearchResults = document.getElementById('siteSearchResults');
+        const siteSearchStatus = document.getElementById('siteSearchStatus');
         const collectionLabels = {
             frukt: 'Frystorkad frukt',
             seamoss: 'Sea Moss',
@@ -2482,10 +2495,11 @@
             return [...productEntries, ...collectionEntries, ...faqEntries, ...sectionEntries];
         }
 
-        function closeSiteSearchResults() {
+        function closeSiteSearchResults(announcement = '') {
             siteSearchResults.hidden = true;
             siteSearchInput.setAttribute('aria-expanded', 'false');
             siteSearchResults.replaceChildren();
+            siteSearchStatus.textContent = announcement;
         }
 
         function scrollToSiteSearchTarget(element, block) {
@@ -2550,7 +2564,10 @@
                 emptyMessage.className = 'site-search-empty';
                 emptyMessage.textContent = 'Inga träffar. Prova ett annat sökord.';
                 siteSearchResults.appendChild(emptyMessage);
+                siteSearchStatus.textContent = 'Inga sökresultat för ' + query + '. Prova ett annat sökord.';
             } else {
+                siteSearchStatus.textContent = matches.length + (matches.length === 1 ? ' träff' : ' träffar') +
+                    ' för ' + query + '. Använd upp- och nedpilarna för att navigera och Enter för att välja.';
                 matches.forEach(({ entry }) => {
                     const button = document.createElement('button');
                     button.type = 'button';
@@ -2580,6 +2597,7 @@
                 help.className = 'site-search-empty';
                 help.textContent = 'Skriv minst två tecken för att söka.';
                 siteSearchResults.appendChild(help);
+                siteSearchStatus.textContent = 'Skriv minst två tecken för att söka.';
                 siteSearchResults.hidden = false;
                 siteSearchInput.setAttribute('aria-expanded', 'true');
                 return;
@@ -2596,7 +2614,46 @@
         });
 
         siteSearchInput.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') closeSiteSearchResults();
+            if (event.key === 'Escape') {
+                closeSiteSearchResults('Sökresultat stängda.');
+                return;
+            }
+
+            if (event.key === 'ArrowDown' && !siteSearchResults.hidden) {
+                const firstResult = siteSearchResults.querySelector('.site-search-result');
+                if (firstResult) {
+                    event.preventDefault();
+                    firstResult.focus();
+                }
+            }
+        });
+
+        siteSearchResults.addEventListener('keydown', function(event) {
+            const resultButtons = Array.from(siteSearchResults.querySelectorAll('.site-search-result'));
+            if (resultButtons.length === 0) return;
+
+            const currentIndex = resultButtons.indexOf(document.activeElement);
+            if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                resultButtons[Math.min(currentIndex + 1, resultButtons.length - 1)].focus();
+            } else if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                if (currentIndex <= 0) {
+                    siteSearchInput.focus();
+                } else {
+                    resultButtons[currentIndex - 1].focus();
+                }
+            } else if (event.key === 'Home') {
+                event.preventDefault();
+                resultButtons[0].focus();
+            } else if (event.key === 'End') {
+                event.preventDefault();
+                resultButtons[resultButtons.length - 1].focus();
+            } else if (event.key === 'Escape') {
+                event.preventDefault();
+                closeSiteSearchResults('Sökresultat stängda.');
+                siteSearchInput.focus();
+            }
         });
 
         document.addEventListener('click', function(event) {
