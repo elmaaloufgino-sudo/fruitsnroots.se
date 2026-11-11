@@ -1599,6 +1599,92 @@
             .modal-switcher-button:hover { transform: none; }
         }
 
+    
+        /* Distinct, appetizing identities for each product collection */
+        .package-grid[data-category="frukt"] {
+            --collection-accent: #df7182;
+            --collection-accent-soft: #fff0f2;
+            --collection-accent-line: rgba(223, 113, 130, 0.28);
+            --collection-image-bg: #fff5f3;
+        }
+        .package-grid[data-category="seamoss"] {
+            --collection-accent: #568f7b;
+            --collection-accent-soft: #edf6f0;
+            --collection-accent-line: rgba(86, 143, 123, 0.28);
+            --collection-image-bg: #f0f7f3;
+        }
+        .package-grid[data-category="notter"] {
+            --collection-accent: #a87543;
+            --collection-accent-soft: #f7f0e5;
+            --collection-accent-line: rgba(168, 117, 67, 0.28);
+            --collection-image-bg: #f8f3e9;
+        }
+        .collection-modal-heading[data-category="frukt"] .eyebrow {
+            border-color: rgba(223, 113, 130, 0.3);
+            background: #fff0f2;
+            color: #a94e61;
+        }
+        .collection-modal-heading[data-category="seamoss"] .eyebrow {
+            border-color: rgba(86, 143, 123, 0.3);
+            background: #edf6f0;
+            color: #386d59;
+        }
+        .collection-modal-heading[data-category="notter"] .eyebrow {
+            border-color: rgba(168, 117, 67, 0.3);
+            background: #f7f0e5;
+            color: #80562f;
+        }
+        .package-grid .package-item {
+            position: relative;
+            border-color: var(--collection-accent-line, rgba(27, 67, 50, 0.12));
+            border-radius: 22px;
+        }
+        .package-grid .package-item::before {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 3px;
+            background: var(--collection-accent, #d4af37);
+            content: "";
+        }
+        .package-grid .package-image-wrap {
+            background:
+                radial-gradient(circle at 18% 18%, var(--collection-accent-line, rgba(212, 175, 55, 0.12)), transparent 42%),
+                var(--collection-image-bg, #f5f2e9);
+        }
+        .package-grid .package-size {
+            border-color: var(--collection-accent-line, rgba(139, 112, 40, 0.25));
+            background: var(--collection-accent-soft, #f8f0d9);
+            color: var(--collection-accent, #80651d);
+            border-radius: 999px;
+            padding: 0.3rem 0.72rem;
+        }
+        .package-grid .package-item h3 {
+            font-size: clamp(1.2rem, 2.2vw, 1.52rem);
+            letter-spacing: -0.018em;
+        }
+        .package-grid .package-item p {
+            line-height: 1.65;
+        }
+        .package-grid .product-status {
+            padding: 0.38rem 0.68rem;
+            border-color: var(--collection-accent-line, rgba(139, 112, 40, 0.2));
+            background: var(--collection-accent-soft, #f0f5ed);
+            color: var(--collection-accent, #486a4e);
+            font-size: 0.69rem;
+            letter-spacing: 0.015em;
+        }
+        @media (max-width: 640px) {
+            .package-grid .package-item {
+                border-radius: 18px;
+            }
+            .package-grid .package-item-body {
+                padding: 1rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1941,7 +2027,7 @@
             }
 
             let html = `
-                <div class="collection-modal-heading">
+                <div class="collection-modal-heading" data-category="${category}">
                     <span class="eyebrow">Kommande kollektion</span>
                     <h2 id="modalTitle">${data.title}</h2>
                     <p id="modalDescription">${data.intro}</p>
@@ -1951,7 +2037,7 @@
                     <button type="button" class="modal-switcher-button" data-category="seamoss" aria-pressed="${category === 'seamoss'}" onclick="switchModalCategory('seamoss')">Sea Moss</button>
                     <button type="button" class="modal-switcher-button" data-category="notter" aria-pressed="${category === 'notter'}" onclick="switchModalCategory('notter')">Nötter</button>
                 </nav>
-                <div class="package-grid">
+                <div class="package-grid" data-category="${category}">
             `;
 
             data.packages.forEach(pkg => {
