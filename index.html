@@ -19,6 +19,33 @@
     <meta name="twitter:image" content="https://fruitsnroots.se/1784410818535.png">
     <meta name="twitter:image:alt" content="Fruits N Roots – frystorkad frukt, Sea Moss och premium-nötter">
     <title>Fruits N Roots | Frystorkad frukt, Sea Moss & premium-nötter</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://fruitsnroots.se/#organization",
+          "name": "Fruits N Roots",
+          "url": "https://fruitsnroots.se/",
+          "sameAs": [
+            "https://www.instagram.com/fruits_n_root?igsh=MWFjcjBzNGFyZjE0OQ==",
+            "https://www.facebook.com/share/1ADqd2898W/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://fruitsnroots.se/#website",
+          "url": "https://fruitsnroots.se/",
+          "name": "Fruits N Roots",
+          "publisher": {
+            "@id": "https://fruitsnroots.se/#organization"
+          },
+          "inLanguage": "sv-SE"
+        }
+      ]
+    }
+    </script>
     <link rel="icon" type="image/png" href="./1784710545310.png">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     
@@ -115,7 +142,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            min-height: 76px;
+            min-height: 84px;
             padding: 0.75rem clamp(1.25rem, 5vw, 4.5rem);
             border-bottom: 1px solid rgba(234, 210, 139, 0.18);
             background: rgba(13, 33, 24, 0.94);
@@ -124,8 +151,8 @@
         }
         .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
         .logo img {
-            width: 42px;
-            height: 42px;
+            width: 50px;
+            height: 50px;
             border: 1px solid rgba(234, 210, 139, 0.75);
             border-radius: 50%;
             object-fit: cover;
@@ -133,7 +160,7 @@
         .logo-text {
             color: var(--cream) !important;
             font-family: var(--serif) !important;
-            font-size: 1.65rem;
+            font-size: 1.82rem;
             font-weight: 600;
             letter-spacing: 0.02em;
             white-space: nowrap;
@@ -763,9 +790,9 @@
             .brand-story-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 620px) {
-            header { min-height: 68px; padding-inline: 1rem; }
-            .logo img { width: 38px; height: 38px; }
-            .logo-text { font-size: 1.42rem; }
+            header { min-height: 76px; padding-inline: 1rem; }
+            .logo img { width: 44px; height: 44px; }
+            .logo-text { font-size: 1.52rem; }
             .hero { min-height: 550px; padding: 5rem 1.2rem; }
             .hero-bg {
                 background:
@@ -799,7 +826,8 @@
         }
         @media (max-width: 360px) {
             .logo { gap: 0.5rem; }
-            .logo-text { font-size: 1.25rem; }
+            .logo img { width: 40px; height: 40px; }
+            .logo-text { font-size: 1.28rem; }
             .hero-content h1 { font-size: 2.55rem; }
             .section-heading h2 { font-size: 2rem; }
             .modal { padding: 0.35rem; }
