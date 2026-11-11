@@ -1934,7 +1934,6 @@
         }
 
     </style>
-</head>    </style>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Hoppa till innehållet</a>
@@ -2489,6 +2488,12 @@
             siteSearchResults.replaceChildren();
         }
 
+        function scrollToSiteSearchTarget(element, block) {
+            const prefersReducedMotion = window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            element.scrollIntoView({ block: block || 'start', behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+        }
+
         function selectSiteSearchResult(entry) {
             closeSiteSearchResults();
             siteSearchInput.value = '';
@@ -2502,7 +2507,7 @@
                     );
                     if (matchingCard) {
                         matchingCard.classList.add('search-result-highlight');
-                        matchingCard.scrollIntoView({ block: 'center', behavior: 'smooth' });
+                        scrollToSiteSearchTarget(matchingCard, 'center');
                     }
                 }
                 return;
@@ -2512,13 +2517,13 @@
                 const faqItem = document.querySelectorAll('#faqAccordion .faq-item')[entry.index];
                 if (faqItem) {
                     faqItem.open = true;
-                    faqItem.scrollIntoView({ block: 'start', behavior: 'smooth' });
+                    scrollToSiteSearchTarget(faqItem, 'start');
                 }
                 return;
             }
 
             const target = document.getElementById(entry.targetId);
-            if (target) target.scrollIntoView({ block: 'start', behavior: 'smooth' });
+            if (target) scrollToSiteSearchTarget(target, 'start');
         }
 
         function renderSiteSearchResults(query) {
