@@ -1538,6 +1538,67 @@
             }
         }
 
+    
+        /* Collection discovery – switch categories without closing the product dialog */
+        .product-card { cursor: default; }
+        .product-card .collection-open { cursor: pointer; }
+        .modal-collection-switcher {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.55rem;
+            margin: 0 auto 1.35rem;
+        }
+        .modal-switcher-button {
+            min-width: 104px;
+            min-height: 44px;
+            padding: 0.62rem 1.05rem;
+            border: 1px solid rgba(27, 67, 50, 0.16);
+            border-radius: 999px;
+            background: #fff;
+            color: var(--forest-800);
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+        }
+        .modal-switcher-button[data-category="frukt"][aria-pressed="true"] {
+            border-color: #e85d75;
+            background: #e85d75;
+            color: #fff;
+        }
+        .modal-switcher-button[data-category="seamoss"][aria-pressed="true"] {
+            border-color: #548f7c;
+            background: #548f7c;
+            color: #fff;
+        }
+        .modal-switcher-button[data-category="notter"][aria-pressed="true"] {
+            border-color: #b97935;
+            background: #b97935;
+            color: #fff;
+        }
+        .modal-switcher-button:hover {
+            transform: translateY(-1px);
+            border-color: var(--gold);
+        }
+        .modal-switcher-button:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+        }
+        @media (max-width: 420px) {
+            .modal-collection-switcher { gap: 0.4rem; }
+            .modal-switcher-button {
+                min-width: 0;
+                flex: 1 1 28%;
+                padding-inline: 0.65rem;
+                font-size: 0.78rem;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .modal-switcher-button { transition: none; }
+            .modal-switcher-button:hover { transform: none; }
+        }
+
     </style>
 </head>
 <body>
@@ -1612,7 +1673,7 @@
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Frystorkad frukt</h3>
                         <p>Krispiga frukter och bär i flera smaker och format. Se de produkter vi förbereder inför lanseringen.</p>
-                        <button class="btn-outline collection-open" type="button" onclick="openModal('frukt', this)" aria-haspopup="dialog" aria-controls="productModal">Visa kollektionen <span aria-hidden="true">↗</span></button>
+                        <button class="btn-outline collection-open" type="button" onclick="openModal('frukt', this)" aria-label="Visa kollektionen Frystorkad frukt" aria-haspopup="dialog" aria-controls="productModal">Visa kollektionen <span aria-hidden="true">↗</span></button>
                     </div>
                 </article>
 
@@ -1622,7 +1683,7 @@
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Sea Moss</h3>
                         <p>En kommande kollektion med Sea Moss i olika former. Utforska de produkter som planeras.</p>
-                        <button class="btn-outline collection-open" type="button" onclick="openModal('seamoss', this)" aria-haspopup="dialog" aria-controls="productModal">Visa kollektionen <span aria-hidden="true">↗</span></button>
+                        <button class="btn-outline collection-open" type="button" onclick="openModal('seamoss', this)" aria-label="Visa kollektionen Sea Moss" aria-haspopup="dialog" aria-controls="productModal">Visa kollektionen <span aria-hidden="true">↗</span></button>
                     </div>
                 </article>
 
@@ -1632,7 +1693,7 @@
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Premium-nötter</h3>
                         <p>Mandlar, cashewnötter, pistage och valnötter – i kommande konsumentförpackningar och för B2B.</p>
-                        <button class="btn-outline collection-open" type="button" onclick="openModal('notter', this)" aria-haspopup="dialog" aria-controls="productModal">Visa kollektionen <span aria-hidden="true">↗</span></button>
+                        <button class="btn-outline collection-open" type="button" onclick="openModal('notter', this)" aria-label="Visa kollektionen Premium-nötter" aria-haspopup="dialog" aria-controls="productModal">Visa kollektionen <span aria-hidden="true">↗</span></button>
                     </div>
                 </article>
             </div>
@@ -1885,6 +1946,11 @@
                     <h2 id="modalTitle">${data.title}</h2>
                     <p id="modalDescription">${data.intro}</p>
                 </div>
+                <nav class="modal-collection-switcher" aria-label="Byt kollektion">
+                    <button type="button" class="modal-switcher-button" data-category="frukt" aria-pressed="${category === 'frukt'}" onclick="switchModalCategory('frukt')">Frukt</button>
+                    <button type="button" class="modal-switcher-button" data-category="seamoss" aria-pressed="${category === 'seamoss'}" onclick="switchModalCategory('seamoss')">Sea Moss</button>
+                    <button type="button" class="modal-switcher-button" data-category="notter" aria-pressed="${category === 'notter'}" onclick="switchModalCategory('notter')">Nötter</button>
+                </nav>
                 <div class="package-grid">
             `;
 
@@ -1927,6 +1993,16 @@
             });
             document.body.style.overflow = 'hidden';
             modal.querySelector('.close-btn').focus();
+        }
+
+        function switchModalCategory(category) {
+            if (!packageData[category]) return;
+
+            const trigger = lastModalTrigger;
+            openModal(category, trigger);
+
+            const activeButton = document.querySelector('#modalBody .modal-switcher-button[aria-pressed="true"]');
+            if (activeButton) activeButton.focus();
         }
 
         function closeModal() {
