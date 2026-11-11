@@ -142,7 +142,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            min-height: 84px;
+            min-height: 96px;
             padding: 0.75rem clamp(1.25rem, 5vw, 4.5rem);
             border-bottom: 1px solid rgba(234, 210, 139, 0.18);
             background: rgba(13, 33, 24, 0.94);
@@ -151,8 +151,8 @@
         }
         .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
         .logo img {
-            width: 50px;
-            height: 50px;
+            width: 64px;
+            height: 64px;
             border: 1px solid rgba(234, 210, 139, 0.75);
             border-radius: 50%;
             object-fit: cover;
@@ -790,8 +790,8 @@
             .brand-story-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 620px) {
-            header { min-height: 76px; padding-inline: 1rem; }
-            .logo img { width: 44px; height: 44px; }
+            header { min-height: 88px; padding-inline: 1rem; }
+            .logo img { width: 56px; height: 56px; }
             .logo-text { font-size: 1.52rem; }
             .hero { min-height: 550px; padding: 5rem 1.2rem; }
             .hero-bg {
@@ -826,7 +826,7 @@
         }
         @media (max-width: 360px) {
             .logo { gap: 0.5rem; }
-            .logo img { width: 40px; height: 40px; }
+            .logo img { width: 48px; height: 48px; }
             .logo-text { font-size: 1.28rem; }
             .hero-content h1 { font-size: 2.55rem; }
             .section-heading h2 { font-size: 2rem; }
@@ -1720,7 +1720,7 @@
 
     <header id="top">
         <a class="logo" href="#top" aria-label="Fruits N Roots – startsidan">
-            <img src="./1784710545310.png" alt="Fruits N Roots Logotyp">
+            <img src="./1784710545310.png" alt="Fruits N Roots Logotyp" width="64" height="64" fetchpriority="high" decoding="async">
             <span class="logo-text">
                 Fruits <span style="color: var(--accent-gold) !important;">N</span> Roots
             </span>
@@ -1782,7 +1782,7 @@
 
             <div class="product-grid">
                 <article id="frukt" class="product-card">
-                    <img src="./1784729911178.png" alt="Fruits N Roots frystorkad frukt och förpackningar" loading="lazy" decoding="async">
+                    <img src="./1784729911178.png" alt="Fruits N Roots frystorkad frukt och förpackningar" width="800" height="600" loading="lazy" decoding="async">
                     <div class="card-content">
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Frystorkad frukt</h3>
@@ -1792,7 +1792,7 @@
                 </article>
 
                 <article id="seamoss" class="product-card">
-                    <img src="./1784707625353.png" alt="Purple och Golden Sea Moss" loading="lazy" decoding="async">
+                    <img src="./1784707625353.png" alt="Purple och Golden Sea Moss" width="800" height="600" loading="lazy" decoding="async">
                     <div class="card-content">
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Sea Moss</h3>
@@ -1802,7 +1802,7 @@
                 </article>
 
                 <article id="notter" class="product-card">
-                    <img src="./1784707424319.png" alt="Fruits N Roots premium-nötter" loading="lazy" decoding="async">
+                    <img src="./1784707424319.png" alt="Fruits N Roots premium-nötter" width="800" height="600" loading="lazy" decoding="async">
                     <div class="card-content">
                         <span class="card-kicker">Kommer vid lansering</span>
                         <h3>Premium-nötter</h3>
@@ -1883,7 +1883,7 @@
             <!-- FOOTER LOGO OCH COPYRIGHT LÄNGST NER TILL VÄNSTER -->
             <div class="footer-bottom">
                 <div class="footer-logo">
-                    <img src="./1784710545310.png" alt="Fruits N Roots Logotyp">
+                    <img src="./1784710545310.png" alt="Fruits N Roots Logotyp" width="42" height="42" loading="lazy" decoding="async">
                     <span style="font-family: 'Dancing Script', cursive !important; color: var(--primary-dark) !important; text-transform: none;">Fruits <span style="color: var(--accent-gold) !important;">N</span> Roots</span>
                 </div>
                 <div style="font-size: 0.9rem;">
@@ -2070,7 +2070,7 @@
 
             data.packages.forEach(pkg => {
                 const imgHtml = pkg.img
-                    ? `<div class="package-image-wrap"><img src="${pkg.img}" alt="${pkg.name}" loading="lazy" decoding="async"><span class="package-image-fallback" role="img" aria-label="Produktbild för ${pkg.name}" hidden>Produktbilden kunde inte visas</span></div>`
+                    ? `<div class="package-image-wrap"><img src="${pkg.img}" alt="${pkg.name}" width="800" height="600" loading="lazy" decoding="async"><span class="package-image-fallback" role="img" aria-label="Produktbild för ${pkg.name}" hidden>Produktbilden kunde inte visas</span></div>`
                     : '';
 
                 html += `
